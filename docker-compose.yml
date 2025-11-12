@@ -1,50 +1,19 @@
-version: '3.8'
-
 services:
-  app:
+  web:
     build:
       context: .
       dockerfile: Dockerfile.dev
     ports:
       - "3078:3000"
+    environment:
+      # Improve watcher reliability on Docker Desktop/WSL2
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+      # Optional: help dev websockets on some setups
+      - WDS_SOCKET_HOST=127.0.0.1
+      - WDS_SOCKET_PORT=0
     volumes:
       - .:/app
-      # Exclude node_modules and build artifacts
-
+      # Mask container build/deps so bind mount doesn't overwrite
       - /app/node_modules
       - /app/.next
-    environment:
-      - NODE_ENV=development
-    restart: unless-stopped
-
-  # Security scanning services
-  trivy:
-    image: aquasec/trivy:latest
-    volumes:
-      - ./security-reports/trivy:/reports
-    command: >
-      sh -c "trivy filesystem --security-checks vuln,config,secret /
-      -f json -o /reports/report-$(date +%Y%m%d).json || true"
-      
-  sonarqube:
-    image: sonarqube:community
-    ports:
-      - "9090:9000"
-    environment:
-      - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
-    volumes:
-      - ./sonarqube/data:/opt/sonarqube/data
-      - ./sonarqube/extensions:/opt/sonarqube/extensions
-      - ./sonarqube/logs:/opt/sonarqube/logs
-
-  snyk:
-    image: snyk/snyk:node
-    volumes:
-      - .:/app
-      - ./security-reports/snyk:/reports
-    command: >
-      sh -c "snyk test --json > /reports/report-$(date +%Y%m%d).json || true"
-    environment:
-      - SNYK_TOKEN=${SNYK_TOKEN}
-
-

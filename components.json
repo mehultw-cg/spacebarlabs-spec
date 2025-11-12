@@ -1,0 +1,36 @@
+{
+	"$schema": "https://ui.shadcn.com/schema.json",
+	"style": "new-york",
+	"rsc": true,
+	"tsx": true,
+	"tailwind": {
+		"config": "",
+		"css": "src/app/globals.css",
+		"baseColor": "slate",
+		"cssVariables": true,
+		"prefix": ""
+	},
+	"iconLibrary": "lucide",
+	"aliases": {
+		"components": "@/components",
+		"utils": "@/lib/utils",
+		"ui": "@/components/ui",
+		"lib": "@/lib",
+		"hooks": "@/hooks"
+	},
+	"registries": {
+		"@aceternity": "https://ui.aceternity.com/registry/{name}.json",
+		"@supabase": "https://supabase.com/ui/r/{name}.json",
+		"@shadcn-studio": "https://shadcnstudio.com/r/{name}.json",
+		"@fancy": "https://fancycomponents.dev/r/{name}.json",
+		"@tweakcn": "https://tweakcn.com/r/themes/{name}.json",
+		"@formcn": "https://formcn.dev/r/{name}.json",
+		"@smoothui": "https://smoothui.dev/r/{name}.json",
+		"@shadcnblocks": "https://shadcnblocks.com/r/{name}.json",
+		"@magic-ui": "https://magicui.design/r/{name}.json",
+		"@motion-primitives": "https://motion-primitives.com/c/{name}.json",
+		"@kibo-ui": "https://www.kibo-ui.com/r/{name}.json",
+		"@clerk": "https://clerk.com/r/{name}.json",
+		"@animate-ui": "https://animate-ui.com/r/{name}.json"
+	}
+}
