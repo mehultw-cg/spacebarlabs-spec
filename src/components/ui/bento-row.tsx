@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import { BentoGridItem } from "./bento-grid";
 
 import { BadgeProps } from "@/components/ui/badge";
@@ -12,6 +13,7 @@ type BentoRowItem = {
   header?: React.ReactNode;
   icon?: React.ReactNode;
   badges?: { text: string; variant: BadgeProps["variant"]; className?: string }[];
+  className?: string;
 };
 
 type BentoRowProps = {
@@ -31,7 +33,7 @@ export const BentoRow = ({ items, initialExpandedIndex = 0 }: BentoRowProps) => 
     // Better to stick to the user's requested logic: 3 items per row, 4 columns total.
     // If we have < 3 items, this specific layout logic breaks.
     // For now, assuming we will chunk data into groups of 3.
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+    <motion.div layout className="grid grid-cols-1 md:grid-cols-4 gap-4">
       {items.map((item, index) => (
         <BentoGridItem
           key={item.id}
@@ -44,11 +46,11 @@ export const BentoRow = ({ items, initialExpandedIndex = 0 }: BentoRowProps) => 
           isExpanded={index === expandedIndex}
           // Dynamically set the col-span
           // If it's the expanded one, it takes 2 cols. Others take 1.
-          className={index === expandedIndex ? "md:col-span-2 col-span-1" : "col-span-1"}
+          className={`${index === expandedIndex ? "md:col-span-2 col-span-1" : "col-span-1"} ${item.className || ""}`}
           // Set the new expanded index on click
           onClick={() => setExpandedIndex(index)}
         />
       ))}
-    </div>
+    </motion.div>
   );
 };

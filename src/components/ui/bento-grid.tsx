@@ -49,8 +49,9 @@ export const BentoGridItem = ({
     <motion.div
       layout
       transition={{
-        duration: 0.3,
-        ease: "easeInOut"
+        type: "spring",
+        stiffness: 300,
+        damping: 40
       }}
       onClick={onClick}
       className={cn(
@@ -59,30 +60,31 @@ export const BentoGridItem = ({
       )}
     >
       {header}
-      <div className="height-16">
-        <div>{icon}</div>
-        <div className="mt-2 mb-2 font-sans font-bold text-neutral-600 dark:text-neutral-200">
-          {title}
+      <motion.div layout className="group-hover/bento:translate-x-2 transition duration-200 flex flex-col justify-between h-full">
+        <div>
+          <motion.div layout>{icon}</motion.div>
+          <motion.div layout className="mt-2 mb-2 font-sans font-bold text-neutral-600 dark:text-neutral-200">
+            {title}
+          </motion.div>
+          <motion.div layout className="font-sans text-xs font-normal text-neutral-600 dark:text-neutral-300 mb-2">
+            {description}
+          </motion.div>
+          
+          
+            {isExpanded && detail && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                className="font-sans text-sm font-normal text-neutral-500 dark:text-neutral-400 mt-2 mb-2 overflow-hidden"
+              >
+                {detail}
+              </motion.div>
+            )}
         </div>
-        <div className="font-sans text-xs font-normal text-neutral-600 dark:text-neutral-300 mb-2">
-          {description}
-        </div>
-        
-        
-          {isExpanded && detail && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="font-sans text-sm font-normal text-neutral-500 dark:text-neutral-400 mt-2 mb-2 overflow-hidden"
-            >
-              {detail}
-            </motion.div>
-          )}
-        
 
         {badges && badges.length > 0 && (
-          <div className="flex flex-wrap gap-2 mt-2">
+          <div className="flex flex-wrap gap-2 mt-auto pt-4">
             {badges.map((badge, index) => (
               <Badge 
                 key={index} 
@@ -95,7 +97,7 @@ export const BentoGridItem = ({
             ))}
           </div>
         )}
-      </div>
+      </motion.div>
     </motion.div>
     </AnimatePresence>
   );

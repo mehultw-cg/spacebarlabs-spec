@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { BentoRow } from "@/components/ui/bento-row";
 import { 
   Lightbulb, Briefcase, FlaskConical as Flask, Code, Server, Database, 
@@ -12,6 +12,7 @@ import { validatedServices, securityNote } from "@/lib/data/services";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { BadgeProps } from "@/components/ui/badge";
+import { useLenis } from "lenis/react";
 import { ChevronUp } from "lucide-react";
 
 // ... (imports remain the same)
@@ -85,22 +86,31 @@ const getPseudoRandomIndex = (rowIndex: number): 0 | 1 | 2 => {
 }
 
 export function ServicesSection() {
+  const lenis = useLenis();
   const rows = chunkArray(validatedServices, 3);
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [visibleRows, setVisibleRows] = useState(3);
 
   // Assuming validatedServices is the source data, and we need to chunk it for BentoRow
   const servicesData = validatedServices; 
   const allRows = chunkArray(servicesData, 3);
-  const visibleRows = isExpanded ? allRows : allRows.slice(0, 1); // Show only the first row initially
+  const totalRows = allRows.length;
 
-  const isAllVisible = visibleRows.length >= allRows.length;
+  const isAllVisible = visibleRows >= totalRows;
 
-  const handleToggleExpand = () => {
-    setIsExpanded(!isExpanded);
+  const handleShowMore = () => {
+    setVisibleRows(prev => Math.min(prev + 2, totalRows));
+  };
+
+  const handleCollapse = () => {
+    setVisibleRows(3);
+    // Scroll back to the top of the section using Lenis
+    if (lenis) {
+      lenis.scrollTo('#services', { offset: -100 });
+    }
   };
 
   return (
-    <section id="services" className="space-y-10 bg-white dark:bg-black text-black dark:text-white">
+    <section id="services" className="space-y-10 py-20 bg-white dark:bg-black text-black dark:text-white">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black dark:text-white">
@@ -113,117 +123,131 @@ export function ServicesSection() {
         </div>
 
         <div className="flex flex-col gap-4 relative">
-          <AnimatePresence initial={false}>
-            {allRows.map((row, rowIndex) => {
-              // Determine the state of this row
-              const isFirst = rowIndex === 0;
-              const isSecond = rowIndex === 1;
-              
-              // State logic:
-              // - If expanded: All rows are "visible" (auto height, opacity 1)
-              // - If collapsed:
-              //   - First row: "visible"
-              //   - Second row: "partial" (fixed height, opacity 1, with gradient)
-              //   - Other rows: "hidden" (height 0, opacity 0)
-              
-              let variant = "hidden";
-              if (isExpanded) {
-                variant = "visible";
-              } else {
-                if (isFirst) variant = "visible";
-                else if (isSecond) variant = "partial";
-                else variant = "hidden";
-              }
+            {/* First Row - Always Visible */}
+            <div className="relative">
+              <BentoRow
+                initialExpandedIndex={getPseudoRandomIndex(0)}
+                items={allRows[0].map((service) => {
+                  const tags = service.tags ? service.tags : (service.tagLabel ? [service.tagLabel] : []);
+                  const badges = tags.map(tag => ({
+                    text: tag,
+                    ...getBadgeStyle(tag)
+                  }));
 
-              const variants = {
-                visible: { opacity: 1, height: "auto", marginTop: 0 },
-                partial: { opacity: 1, height: 120, marginTop: 0 },
-                hidden: { opacity: 0, height: 0, marginTop: 0 }
-              };
+                  return {
+                    id: service.id,
+                    title: service.title,
+                    description: service.description || "Coming Soon",
+                    detail: service.detail,
+                    icon: iconMap[service.icon],
+                    badges: badges,
+                    className: "min-h-[200px] h-full"
+                  };
+                })}
+              />
+            </div>
 
-              return (
-                <motion.div 
-                  key={rowIndex}
-                  layout
-                  initial="hidden"
-                  animate={variant}
-                  variants={variants}
-                  transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-                  className={cn(
-                    "relative overflow-hidden", 
-                    // Add a small negative margin to hidden items to prevent layout gaps if any
-                    variant === "hidden" && "m-0 p-0"
-                  )}
-                >
-                  <BentoRow
-                    initialExpandedIndex={getPseudoRandomIndex(rowIndex)}
-                    items={row.map((service) => {
-                      const tags = service.tags ? service.tags : (service.tagLabel ? [service.tagLabel] : []);
-                      const badges = tags.map(tag => ({
-                        text: tag,
-                        ...getBadgeStyle(tag)
-                      }));
+            {/* Collapsible Container for Remaining Rows */}
+            <motion.div
+              animate={{ 
+                // 200px height + 16px gap = 216px per row. 
+                // We want to show visibleRows (excluding first row) + peek.
+                // Since first row is outside, we calculate height for remaining rows.
+                // visibleRows includes the first row. So remaining visible rows = visibleRows - 1.
+                // Height = (visibleRows - 1) * 216 + peek (140px).
+                // If isAllVisible, height is "auto".
+                height: isAllVisible ? "auto" : ((visibleRows - 1) * 216 + 140)
+              }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+              className="relative overflow-hidden"
+            >
+              <div className="flex flex-col gap-4 pt-4">
+                {allRows.slice(1).map((row, index) => {
+                  const actualRowIndex = index + 1;
+                  return (
+                    <BentoRow
+                      key={actualRowIndex}
+                      initialExpandedIndex={getPseudoRandomIndex(actualRowIndex)}
+                      items={row.map((service) => {
+                        const tags = service.tags ? service.tags : (service.tagLabel ? [service.tagLabel] : []);
+                        const badges = tags.map(tag => ({
+                          text: tag,
+                          ...getBadgeStyle(tag)
+                        }));
 
-                      return {
-                        id: service.id,
-                        title: service.title,
-                        description: service.description || "Coming Soon",
-                        detail: service.detail,
-                        icon: iconMap[service.icon],
-                        badges: badges
-                      };
-                    })}
-                  />
-                  
-                  {/* Gradient Overlay Button for the "partial" row */}
-                  <AnimatePresence>
-                    {variant === "partial" && (
-                      <motion.div 
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/90 to-white dark:from-black/0 dark:via-black/90 dark:to-black backdrop-blur-[2px] flex items-end justify-center pb-4 z-20"
-                      >
+                        return {
+                          id: service.id,
+                          title: service.title,
+                          description: service.description || "Coming Soon",
+                          detail: service.detail,
+                          icon: iconMap[service.icon],
+                          badges: badges,
+                          className: "min-h-[200px] h-full"
+                        };
+                      })}
+                    />
+                  );
+                })}
+              </div>
+
+              {/* Gradient Overlay */}
+              <AnimatePresence>
+                {!isAllVisible && (
+                  <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.4 }}
+                    className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-b from-transparent via-white/60 to-white dark:from-transparent dark:via-black/60 dark:to-black flex items-end justify-center pb-8 z-20 pointer-events-none"
+                  >
+                    {/* Blur effect only at the very bottom to allow top of peek to be clear? 
+                        Actually, backdrop-blur on the whole gradient might blur the 'clear' part if it overlaps.
+                        Let's apply blur only to the bottom half or use a mask. 
+                        For now, a simple gradient with backdrop-blur on the button container is safer.
+                    */}
+                    <div className="pointer-events-auto relative group">
+                        <div className="absolute inset-0 bg-white/50 dark:bg-black/50 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                         <Button 
-                          onClick={handleToggleExpand}
-                          variant="outline"
-                          className="bg-white/80 dark:bg-black/80 backdrop-blur-md border-neutral-200 dark:border-neutral-800 hover:bg-white dark:hover:bg-black group text-black dark:text-white shadow-lg"
+                        onClick={handleShowMore}
+                        variant="outline"
+                        className="relative bg-white/90 dark:bg-black/90 backdrop-blur-xl border-neutral-200 dark:border-neutral-800 hover:bg-white dark:hover:bg-black text-black dark:text-white shadow-2xl px-8 py-6 text-lg rounded-full border-2"
                         >
-                          Show More Services
-                          <ChevronDown className="ml-2 h-4 w-4 transition-transform group-hover:translate-y-1" />
+                        Show More Services
+                        <ChevronDown className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
                         </Button>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              );
-            })}
-          </AnimatePresence>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
         </div>
         
-        {/* Collapse Button when all rows are visible */}
-        {isExpanded && (
-          <div className="flex justify-center mt-8">
-             <Button 
-                onClick={handleToggleExpand}
-                variant="outline"
-                className="bg-white/80 dark:bg-black/80 backdrop-blur-sm border-neutral-200 dark:border-neutral-800 hover:bg-white dark:hover:bg-black group text-black dark:text-white"
-              >
-                Collapse Services
-                <ChevronUp className="ml-2 h-4 w-4 transition-transform group-hover:-translate-y-1" />
-              </Button>
-          </div>
-        )}
-
+        {/* Collapse Button */}
+        <AnimatePresence>
+          {isAllVisible && (
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ delay: 0.2 }}
+              className="flex justify-center mt-8"
+            >
+               <Button 
+                  onClick={handleCollapse}
+                  variant="outline"
+                  className="bg-white/80 dark:bg-black/80 backdrop-blur-sm border-neutral-200 dark:border-neutral-800 hover:bg-white dark:hover:bg-black group text-black dark:text-white px-8 py-2 rounded-full"
+                >
+                  Collapse Services
+                  <ChevronUp className="ml-2 h-4 w-4 transition-transform group-hover:-translate-y-1" />
+                </Button>
+            </motion.div>
+          )}
+        </AnimatePresence>
         <div className="mt-16 p-8 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm">
           <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
             <div className="p-3 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
               <Shield className="h-8 w-8" />
             </div>
-                   {/* Security Note - Only show when all rows are visible or at least after some interaction? 
-            User said "button shifts to the bottom... till all rows are displayed". 
-            The security note is separate. I'll keep it at the bottom always. */}
             <div>
               <h3 className="text-xl font-semibold mb-2 text-zinc-900 dark:text-zinc-50">{securityNote.title}</h3>
               <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">

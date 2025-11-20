@@ -19,6 +19,7 @@ export const metadata: Metadata = {
 
 import { ThemeProvider } from "@/components/global/theme-provider";
 import { Navbar } from "@/components/global/navbar";
+import { SmoothScroll } from "@/components/ui/smooth-scroll";
 
 export default function RootLayout({
   children,
@@ -32,12 +33,14 @@ export default function RootLayout({
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="system"
           enableSystem
-          // disableTransitionOnChange
+          disableTransitionOnChange
         >
-          <Navbar/>
-          {children}
+          <SmoothScroll>
+            <Navbar />
+            {children}
+          </SmoothScroll>
         </ThemeProvider>
       </body>
     </html>
