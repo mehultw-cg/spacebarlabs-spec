@@ -6,7 +6,7 @@ import { ContactSection } from "@/components/sections/ContactSection";
 
 export function AboutUsSection() {
   return (
-    <section id="about" className="bg-black text-white">
+    <section id="about" className="bg-white dark:bg-black text-black dark:text-white">
       {/* About Content */}
       <div className="py-20 max-w-7xl mx-auto px-4 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -15,19 +15,19 @@ export function AboutUsSection() {
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               {aboutData.title}
             </h2>
-            <h3 className="text-xl text-blue-400 font-medium mb-6">
+            <h3 className="text-xl text-blue-600 dark:text-blue-400 font-medium mb-6">
               {aboutData.subtitle}
             </h3>
-            <div className="space-y-6 text-neutral-300 leading-relaxed">
+            <div className="space-y-6 text-neutral-600 dark:text-neutral-300 leading-relaxed">
               <p>{aboutData.description}</p>
               <p>{aboutData.mission}</p>
             </div>
 
             <div className="grid grid-cols-2 gap-6 mt-12">
               {aboutData.stats.map((stat, idx) => (
-                <div key={idx} className="p-4 rounded-lg bg-neutral-900/50 border border-neutral-800">
-                  <div className="text-3xl font-bold text-white mb-1">{stat.value}</div>
-                  <div className="text-sm text-neutral-400">{stat.label}</div>
+                <div key={idx} className="p-4 rounded-lg bg-neutral-100 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800">
+                  <div className="text-3xl font-bold text-black dark:text-white mb-1">{stat.value}</div>
+                  <div className="text-sm text-neutral-500 dark:text-neutral-400">{stat.label}</div>
                 </div>
               ))}
             </div>

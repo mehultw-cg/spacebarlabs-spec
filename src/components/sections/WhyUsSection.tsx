@@ -21,17 +21,14 @@ import {
 
 export function WhyUsSection() {
   return (
-    <section id="why-us" className="py-20 bg-black dark:bg-black text-white">
+    <section id="why-us" className="py-20 bg-white dark:bg-black text-black dark:text-white">
       <div className="max-w-[104rem] mx-auto px-4 md:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black dark:text-white">
             Why Us
           </h2>
-          <h3 className="text-2xl md:text-3xl font-semibold mb-4 text-neutral-300">
-            What we Offer
-          </h3>
-          <p className="text-neutral-400 max-w-2xl mx-auto">
-            Bundled services often chosen together.
+          <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
+            We are more than just a dev shop. We are your partners in innovation.
           </p>
         </div>
 

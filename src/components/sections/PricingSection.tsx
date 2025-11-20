@@ -14,17 +14,14 @@ import { Button } from "@/components/ui/button";
 
 export function PricingSection() {
   return (
-    <section id="pricing" className="py-20 bg-black dark:bg-black text-white">
+    <section id="pricing" className="py-20 bg-white dark:bg-black text-black dark:text-white">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black dark:text-white">
             Pricing
           </h2>
-          <h3 className="text-2xl md:text-3xl font-semibold mb-4 text-neutral-300">
-            Choose your adventure
-          </h3>
-          <p className="text-neutral-400 max-w-2xl mx-auto">
-            Bundled services often chosen together. These are curated bundles of services but you can choose what you want from the services above.
+          <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
+            Transparent pricing for every stage of your journey.
           </p>
         </div>
 

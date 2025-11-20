@@ -86,50 +86,73 @@ const getPseudoRandomIndex = (rowIndex: number): 0 | 1 | 2 => {
 
 export function ServicesSection() {
   const rows = chunkArray(validatedServices, 3);
-  const [visibleRows, setVisibleRows] = useState(3);
+  const [isExpanded, setIsExpanded] = useState(false);
 
-  const isAllVisible = visibleRows >= rows.length;
+  // Assuming validatedServices is the source data, and we need to chunk it for BentoRow
+  const servicesData = validatedServices; 
+  const allRows = chunkArray(servicesData, 3);
+  const visibleRows = isExpanded ? allRows : allRows.slice(0, 1); // Show only the first row initially
 
-  const handleShowMore = () => {
-    if (isAllVisible) {
-      setVisibleRows(3); // Collapse to initial state
-    } else {
-      setVisibleRows((prev) => Math.min(prev + 2, rows.length));
-    }
+  const isAllVisible = visibleRows.length >= allRows.length;
+
+  const handleToggleExpand = () => {
+    setIsExpanded(!isExpanded);
   };
 
   return (
-    <section className="py-20 px-4 md:px-8 bg-zinc-50 dark:bg-zinc-950">
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-12 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-zinc-900 dark:text-zinc-50">Our Services</h2>
-          <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
-            Comprehensive technology solutions tailored to your needs. Click on a card to expand details.
+    <section id="services" className="space-y-10 bg-white dark:bg-black text-black dark:text-white">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black dark:text-white">
+            Our Services
+          </h2>
+          <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
+            From ideation to launch, we provide a full spectrum of software
+            development services to help you succeed.
           </p>
         </div>
 
         <div className="flex flex-col gap-4 relative">
           <AnimatePresence initial={false}>
-            {rows.map((row, rowIndex) => {
-              // Determine if this row should be fully visible, partially visible, or hidden
-              const isVisible = rowIndex < visibleRows;
-              const isNext = rowIndex === visibleRows; // The "next" row to be partially shown
+            {allRows.map((row, rowIndex) => {
+              // Determine the state of this row
+              const isFirst = rowIndex === 0;
+              const isSecond = rowIndex === 1;
+              
+              // State logic:
+              // - If expanded: All rows are "visible" (auto height, opacity 1)
+              // - If collapsed:
+              //   - First row: "visible"
+              //   - Second row: "partial" (fixed height, opacity 1, with gradient)
+              //   - Other rows: "hidden" (height 0, opacity 0)
+              
+              let variant = "hidden";
+              if (isExpanded) {
+                variant = "visible";
+              } else {
+                if (isFirst) variant = "visible";
+                else if (isSecond) variant = "partial";
+                else variant = "hidden";
+              }
 
-              if (!isVisible && !isNext) return null;
+              const variants = {
+                visible: { opacity: 1, height: "auto", marginTop: 0 },
+                partial: { opacity: 1, height: 120, marginTop: 0 },
+                hidden: { opacity: 0, height: 0, marginTop: 0 }
+              };
 
               return (
                 <motion.div 
                   key={rowIndex}
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ 
-                    opacity: 1, 
-                    height: isNext ? 120 : "auto",
-                    transition: { duration: 0.5, ease: "easeInOut" }
-                  }}
-                  exit={{ opacity: 0, height: 0, transition: { duration: 0.3 } }}
+                  layout
+                  initial="hidden"
+                  animate={variant}
+                  variants={variants}
+                  transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
                   className={cn(
-                    "relative overflow-hidden", // Ensure overflow hidden for height animation
-                    // isNext && "h-[120px]" // Handled by animate prop
+                    "relative overflow-hidden", 
+                    // Add a small negative margin to hidden items to prevent layout gaps if any
+                    variant === "hidden" && "m-0 p-0"
                   )}
                 >
                   <BentoRow
@@ -147,25 +170,32 @@ export function ServicesSection() {
                         description: service.description || "Coming Soon",
                         detail: service.detail,
                         icon: iconMap[service.icon],
-                        // header: <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 to-neutral-100 dark:from-neutral-900 dark:to-neutral-800" />,
                         badges: badges
                       };
                     })}
                   />
                   
-                  {/* Gradient Overlay Button for the "next" row */}
-                  {isNext && (
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-50/80 to-zinc-50 dark:via-zinc-950/80 dark:to-zinc-950 flex items-end justify-center pb-4 z-10">
-                      <Button 
-                        onClick={handleShowMore}
-                        variant="outline"
-                        className="bg-white/80 dark:bg-black/80 backdrop-blur-sm border-zinc-200 dark:border-zinc-800 hover:bg-white dark:hover:bg-black group"
+                  {/* Gradient Overlay Button for the "partial" row */}
+                  <AnimatePresence>
+                    {variant === "partial" && (
+                      <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/90 to-white dark:from-black/0 dark:via-black/90 dark:to-black backdrop-blur-[2px] flex items-end justify-center pb-4 z-20"
                       >
-                        Show More Services
-                        <ChevronDown className="ml-2 h-4 w-4 transition-transform group-hover:translate-y-1" />
-                      </Button>
-                    </div>
-                  )}
+                        <Button 
+                          onClick={handleToggleExpand}
+                          variant="outline"
+                          className="bg-white/80 dark:bg-black/80 backdrop-blur-md border-neutral-200 dark:border-neutral-800 hover:bg-white dark:hover:bg-black group text-black dark:text-white shadow-lg"
+                        >
+                          Show More Services
+                          <ChevronDown className="ml-2 h-4 w-4 transition-transform group-hover:translate-y-1" />
+                        </Button>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </motion.div>
               );
             })}
@@ -173,12 +203,12 @@ export function ServicesSection() {
         </div>
         
         {/* Collapse Button when all rows are visible */}
-        {isAllVisible && (
+        {isExpanded && (
           <div className="flex justify-center mt-8">
              <Button 
-                onClick={handleShowMore}
+                onClick={handleToggleExpand}
                 variant="outline"
-                className="bg-white/80 dark:bg-black/80 backdrop-blur-sm border-zinc-200 dark:border-zinc-800 hover:bg-white dark:hover:bg-black group"
+                className="bg-white/80 dark:bg-black/80 backdrop-blur-sm border-neutral-200 dark:border-neutral-800 hover:bg-white dark:hover:bg-black group text-black dark:text-white"
               >
                 Collapse Services
                 <ChevronUp className="ml-2 h-4 w-4 transition-transform group-hover:-translate-y-1" />

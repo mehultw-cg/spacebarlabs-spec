@@ -4,6 +4,7 @@ import { PricingSection } from "@/components/sections/PricingSection";
 import { WhyUsSection } from "@/components/sections/WhyUsSection";
 import { TechStackSection } from "@/components/sections/TechStackSection";
 import { AboutUsSection } from "@/components/sections/AboutUsSection";
+import { Footer } from "@/components/global/footer";
 
 export default function Home() {
   return (
@@ -27,11 +28,12 @@ export default function Home() {
       <AboutUsSection />
 
       {/* Footer - Placeholder for now */}
-      <footer className="py-12 px-4 border-t bg-black text-white border-neutral-800">
+      {/* <footer className="py-12 px-4 border-t bg-black text-white border-neutral-800">
         <div className="max-w-7xl mx-auto text-center text-neutral-500">
           <p>&copy; 2025 SpaceBar Labs. All rights reserved.</p>
         </div>
-      </footer>
+      </footer> */}
+      <Footer />
     </main>
   );
 }

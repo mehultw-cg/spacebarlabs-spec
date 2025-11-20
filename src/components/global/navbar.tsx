@@ -30,7 +30,7 @@ export function Navbar({ className }: { className?: string }) {
   return (
     <div className="relative w-full">
       <AceternityNavbar className={className}>
-        <NavBody>
+        <NavBody className="gap-4">
           <div className="flex items-center gap-2">
             <NavbarLogo />
           </div>
