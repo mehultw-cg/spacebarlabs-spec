@@ -45,6 +45,7 @@ export const BentoGridItem = ({
   onClick?: () => void;
 }) => {
   return (
+    <AnimatePresence>
     <motion.div
       layout
       transition={{
@@ -53,12 +54,12 @@ export const BentoGridItem = ({
       }}
       onClick={onClick}
       className={cn(
-        "group/bento shadow-input row-span-1 flex flex-col justify-between space-y-4 rounded-xl border border-neutral-200 bg-white p-4 hover:shadow-xl dark:border-white/[0.2] dark:bg-black dark:shadow-none cursor-pointer",
+        "group/bento shadow-input row-span-1 flex flex-col justify-between space-y-4 rounded-xl border border-neutral-200 bg-white p-4 hover:shadow-xl dark:border-white/[0.2] dark:bg-black dark:hover:shadow-xl dark:hover:shadow-gray-800 cursor-pointer",
         className,
       )}
     >
       {header}
-      <div className="">
+      <div className="height-16">
         <div>{icon}</div>
         <div className="mt-2 mb-2 font-sans font-bold text-neutral-600 dark:text-neutral-200">
           {title}
@@ -67,7 +68,7 @@ export const BentoGridItem = ({
           {description}
         </div>
         
-        <AnimatePresence>
+        
           {isExpanded && detail && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
@@ -78,7 +79,7 @@ export const BentoGridItem = ({
               {detail}
             </motion.div>
           )}
-        </AnimatePresence>
+        
 
         {badges && badges.length > 0 && (
           <div className="flex flex-wrap gap-2 mt-2">
@@ -96,5 +97,6 @@ export const BentoGridItem = ({
         )}
       </div>
     </motion.div>
+    </AnimatePresence>
   );
 };

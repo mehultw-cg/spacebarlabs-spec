@@ -21,7 +21,10 @@ export function Navbar({ className }: { className?: string }) {
   const navItems = [
     { name: "Services", link: "#services" },
     { name: "Pricing", link: "#pricing" },
+    { name: "Why Us", link: "#why-us" },
+    { name: "Tech Stack", link: "#tech-stack" },
     { name: "About", link: "#about" },
+    { name: "Contact", link: "#contact" },
   ];
 
   return (
