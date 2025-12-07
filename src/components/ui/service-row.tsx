@@ -90,6 +90,8 @@ export const ServiceRow = ({ services, rowIndex, className }: ServiceRowProps) =
               isComingSoon={!!isComingSoon}
               isExpanded={isExpanded}
               onToggle={() => handleToggle(index)}
+              rowIndex={rowIndex}
+              cardIndex={index}
             />
           );
         })}

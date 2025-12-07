@@ -18,6 +18,8 @@ interface MagicBentoCardProps {
   className?: string;
   isExpanded?: boolean;
   onToggle?: () => void;
+  rowIndex?: number;   // For neighbor glow detection
+  cardIndex?: number;  // For neighbor glow detection
 }
 
 // Tag color mapping with light and dark shades for gradient
@@ -65,6 +67,8 @@ export const MagicBentoCard = ({
   className,
   isExpanded = false,
   onToggle,
+  rowIndex = 0,
+  cardIndex = 0,
 }: MagicBentoCardProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -106,11 +110,14 @@ export const MagicBentoCard = ({
           "h-full border border-neutral-950/5 dark:border-white/5",
           isExpanded ? "border-neutral-950/5 dark:border-white/5" : ""
         )}
+        cardId={`row-${rowIndex}-card-${cardIndex}`}
+        rowIndex={rowIndex}
+        cardIndex={cardIndex}
       >
         <div className="flex flex-col h-full p-5">
           {/* Coming Soon Badge */}
           {isComingSoon && (
-            <div className="absolute top-4 right-4 flex items-center gap-1.5 px-2 py-1 rounded-full bg-yellow-500/10 border border-yellow-500/20 shadow-md z-10">
+            <div className="absolute top-8 right-4 flex items-center gap-1.5 px-2 py-1 rounded-full bg-yellow-500/10 border border-yellow-500/20 shadow-md z-10">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-500"></span>

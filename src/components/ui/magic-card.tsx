@@ -11,6 +11,9 @@ interface MagicCardProps {
   className?: string
   gradientSize?: number
   gradientVariant?: "radial" | "conic"
+  cardId?: string
+  rowIndex?: number
+  cardIndex?: number
 }
 
 export function MagicCard({
@@ -18,6 +21,7 @@ export function MagicCard({
   className,
   gradientSize = 300,
   gradientVariant = "radial",
+  cardId = "",
 }: MagicCardProps) {
   const cardRef = useRef<HTMLDivElement>(null)
   const mouseX = useMotionValue(-gradientSize)
@@ -27,7 +31,6 @@ export function MagicCard({
   const reset = useCallback(() => {
     mouseX.set(-gradientSize)
     mouseY.set(-gradientSize)
-    // Unregister from section-level shadow
     shadowBleedContext?.unregisterHover()
   }, [gradientSize, mouseX, mouseY, shadowBleedContext])
 
@@ -39,12 +42,11 @@ export function MagicCard({
       mouseX.set(localX)
       mouseY.set(localY)
       
-      // Register hover with section-level shadow
       if (shadowBleedContext && cardRef.current) {
-        shadowBleedContext.registerHover(rect, localX, localY)
+        shadowBleedContext.registerHover(cardId, rect, localX, localY)
       }
     },
-    [mouseX, mouseY, shadowBleedContext]
+    [mouseX, mouseY, shadowBleedContext, cardId]
   )
 
   useEffect(() => {
@@ -68,7 +70,6 @@ export function MagicCard({
     }
   }, [reset])
 
-  // Radial gradient with CSS variable colors
   const radialGradient = useMotionTemplate`
     radial-gradient(
       ${gradientSize}px circle at ${mouseX}px ${mouseY}px,
@@ -78,7 +79,6 @@ export function MagicCard({
     )
   `
 
-  // Conic gradient
   const conicGradient = useMotionTemplate`
     conic-gradient(
       from 0deg at ${mouseX}px ${mouseY}px,
@@ -96,7 +96,6 @@ export function MagicCard({
       ref={cardRef}
       className={cn(
         "group relative rounded-[inherit]",
-        // Default shadow for pop effect
         "shadow-lg shadow-black/10 dark:shadow-black/30 z-10 outline outline-neutral-950/10 dark:outline-white/5",
         className
       )}

@@ -1,17 +1,17 @@
 "use client";
 
-import React, { createContext, useContext, useState, useCallback, useRef, useEffect } from "react";
-import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
+import React, { createContext, useContext, useState, useCallback } from "react";
 
 interface HoverState {
   isHovered: boolean;
+  cardId: string | null;
   cardRect: DOMRect | null;
   mouseX: number;
   mouseY: number;
 }
 
 interface ShadowBleedContextType {
-  registerHover: (cardRect: DOMRect, mouseX: number, mouseY: number) => void;
+  registerHover: (cardId: string, cardRect: DOMRect, mouseX: number, mouseY: number) => void;
   unregisterHover: () => void;
   hoverState: HoverState;
 }
@@ -30,14 +30,16 @@ interface ShadowBleedProviderProps {
 export function ShadowBleedProvider({ children, containerRef }: ShadowBleedProviderProps) {
   const [hoverState, setHoverState] = useState<HoverState>({
     isHovered: false,
+    cardId: null,
     cardRect: null,
     mouseX: 0,
     mouseY: 0,
   });
 
-  const registerHover = useCallback((cardRect: DOMRect, mouseX: number, mouseY: number) => {
+  const registerHover = useCallback((cardId: string, cardRect: DOMRect, mouseX: number, mouseY: number) => {
     setHoverState({
       isHovered: true,
+      cardId,
       cardRect,
       mouseX,
       mouseY,
@@ -47,6 +49,7 @@ export function ShadowBleedProvider({ children, containerRef }: ShadowBleedProvi
   const unregisterHover = useCallback(() => {
     setHoverState({
       isHovered: false,
+      cardId: null,
       cardRect: null,
       mouseX: 0,
       mouseY: 0,
@@ -73,17 +76,14 @@ function ShadowBleedOverlay({ containerRef, hoverState }: ShadowBleedOverlayProp
     return null;
   }
 
-  // Get container position to calculate relative coordinates
   const containerRect = containerRef.current.getBoundingClientRect();
   
-  // Shadow position relative to container
-  const shadowLeft = cardRect.left - containerRect.left - 32; // -32 for bleed
+  const shadowLeft = cardRect.left - containerRect.left - 32;
   const shadowTop = cardRect.top - containerRect.top - 32;
   const shadowWidth = cardRect.width + 64;
   const shadowHeight = cardRect.height + 64;
   
-  // Mouse position relative to shadow element
-  const relativeMouseX = mouseX + 32; // Offset for the -32 bleed
+  const relativeMouseX = mouseX + 32;
   const relativeMouseY = mouseY + 32;
 
   return (
@@ -96,7 +96,7 @@ function ShadowBleedOverlay({ containerRef, hoverState }: ShadowBleedOverlayProp
         height: shadowHeight,
         background: `radial-gradient(300px circle at ${relativeMouseX}px ${relativeMouseY}px, var(--color-2) 20%, var(--color-5) 50%, transparent 70%)`,
         opacity: 0.6,
-        zIndex: -10, // Above section bg but below all rows
+        zIndex: -10,
       }}
     />
   );

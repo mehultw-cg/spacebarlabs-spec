@@ -158,7 +158,8 @@ export const servicesData: Service[] = [
     description: "Identifying potential security weaknesses.",
     detail: "We scan your systems for known vulnerabilities and provide actionable reports to help you prioritize and remediate risks.",
     tags: ["security", "coming-soon"],
-    tagLabel: "Coming Soon"
+    tagLabel: "Coming Soon",
+    defaultExpanded: true
   },
   {
     id: "compliance",
