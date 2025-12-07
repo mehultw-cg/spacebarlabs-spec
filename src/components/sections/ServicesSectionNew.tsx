@@ -98,23 +98,27 @@ export function ServicesSectionNew() {
           {/* Progressive Blur Overlay - positioned lower to show more peek */}
           <AnimatePresence>
             {!isAllVisible && (
+              <>
+               {/* Progressive blur effect */}
+                <ProgressiveBlur 
+                  direction="bottom" 
+                  blurLayers={4}
+                  blurIntensity={1}
+                  className="absolute bottom-2 h-[10%] w-full"
+                >
+                  
+                </ProgressiveBlur>
               <motion.div 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.4 }}
-                className="absolute -bottom-24 left-0 right-0 z-50"
+                className="absolute -bottom-4 left-0 right-0 z-50"
               >
-                {/* Progressive blur effect */}
-                <ProgressiveBlur 
-                  direction="bottom" 
-                  blurLayers={8}
-                  blurIntensity={0.4}
-                  className="mt-16 h-48"
-                />
+               
                 
                 {/* Solid background + button container */}
-                <div className="h-28 backdrop-blur-lg flex items-center justify-center -mt-4">
+                <div className="h-32 flex items-center justify-center -mt-4  bg-gradient-to-b from-transparent from-50%  to-neutral-100 dark:to-[#0a0a0a] to-80%"    >
                   <RainbowButton 
                     onClick={handleShowMore}
                     className="px-8 py-3 text-base font-semibold"
@@ -125,6 +129,7 @@ export function ServicesSectionNew() {
                   </RainbowButton>
                 </div>
               </motion.div>
+            </>
             )}
           </AnimatePresence>
         </div>
