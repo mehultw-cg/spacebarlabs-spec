@@ -41,16 +41,17 @@ const ServiceTagSchema = z.enum([
   "cloud",
   "data",
   "ops",
-]).array(); // Changed to array to allow multiple tags
+]).array();
 
 const ServiceSchema = z.object({
   id: z.string(),
   title: z.string(),
   description: z.string().optional(),
-  detail: z.string().optional(), // New field for expanded view details
+  detail: z.string().optional(),
   icon: ServiceIconSchema,
   tags: ServiceTagSchema.optional(),
-  tagLabel: z.string().optional(), // For custom tag text like "Coming Soon" or primary category
+  tagLabel: z.string().optional(),
+  defaultExpanded: z.boolean().optional(), // If true, this card is expanded by default in its row
 });
 
 export type Service = z.infer<typeof ServiceSchema>;
@@ -63,7 +64,7 @@ export const servicesData: Service[] = [
     icon: "Lightbulb",
     description: "Collaborative sessions to generate innovative ideas.",
     detail: "We facilitate structured brainstorming workshops to help you uncover new opportunities, solve complex problems, and define a clear vision for your project.",
-    tags: ["core"]
+    tags: ["business", "core"]
   },
   {
     id: "business-consulting",
@@ -71,7 +72,7 @@ export const servicesData: Service[] = [
     icon: "Briefcase",
     description: "Strategic advice to optimize your business operations.",
     detail: "Our experts provide tailored strategies to improve efficiency, drive growth, and navigate market challenges, ensuring your business aligns with its long-term goals.",
-    tags: ["core"]
+    tags: ["business", "core"]
   },
   {
     id: "ui-ux-research",
@@ -79,7 +80,8 @@ export const servicesData: Service[] = [
     icon: "Flask",
     description: "User-centric research to inform design decisions.",
     detail: "We conduct in-depth user research, usability testing, and persona development to create intuitive and engaging digital experiences that resonate with your audience.",
-    tags: ["design", "core"]
+    tags: ["design", "core"],
+    defaultExpanded: true
   },
   {
     id: "frontend",
@@ -87,7 +89,8 @@ export const servicesData: Service[] = [
     icon: "Code",
     description: "Building responsive and interactive user interfaces.",
     detail: "Using modern frameworks like React and Next.js, we build pixel-perfect, high-performance frontends that work seamlessly across all devices and screen sizes.",
-    tags: ["dev", "core"]
+    tags: ["dev", "core"],
+    defaultExpanded: true
   },
   {
     id: "backend",
@@ -119,7 +122,8 @@ export const servicesData: Service[] = [
     icon: "Shield",
     description: "Integrating security throughout the DevOps lifecycle.",
     detail: "Security is baked into every step of our process. We automate security checks and compliance validation to protect your application without slowing down development.",
-    tags: ["ops", "security"]
+    tags: ["ops", "security"],
+    defaultExpanded: true
   },
   {
     id: "sysadmin",

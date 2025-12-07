@@ -1,48 +1,56 @@
 "use client"
 
-import React, { useCallback, useEffect } from "react"
+import React, { useCallback, useEffect, useRef } from "react"
 import { motion, useMotionTemplate, useMotionValue } from "motion/react"
 
 import { cn } from "@/lib/utils"
+import { useShadowBleed } from "./shadow-bleed-context"
 
 interface MagicCardProps {
   children?: React.ReactNode
   className?: string
   gradientSize?: number
-  gradientColor?: string
-  gradientOpacity?: number
-  gradientFrom?: string
-  gradientTo?: string
+  gradientVariant?: "radial" | "conic"
 }
 
 export function MagicCard({
   children,
   className,
-  gradientSize = 200,
-  gradientColor = "#262626",
-  gradientOpacity = 0.8,
-  gradientFrom = "#9E7AFF",
-  gradientTo = "#FE8BBB",
+  gradientSize = 300,
+  gradientVariant = "radial",
 }: MagicCardProps) {
+  const cardRef = useRef<HTMLDivElement>(null)
   const mouseX = useMotionValue(-gradientSize)
   const mouseY = useMotionValue(-gradientSize)
+  const shadowBleedContext = useShadowBleed()
+  
   const reset = useCallback(() => {
     mouseX.set(-gradientSize)
     mouseY.set(-gradientSize)
-  }, [gradientSize, mouseX, mouseY])
+    // Unregister from section-level shadow
+    shadowBleedContext?.unregisterHover()
+  }, [gradientSize, mouseX, mouseY, shadowBleedContext])
 
   const handlePointerMove = useCallback(
     (e: React.PointerEvent<HTMLDivElement>) => {
       const rect = e.currentTarget.getBoundingClientRect()
-      mouseX.set(e.clientX - rect.left)
-      mouseY.set(e.clientY - rect.top)
+      const localX = e.clientX - rect.left
+      const localY = e.clientY - rect.top
+      mouseX.set(localX)
+      mouseY.set(localY)
+      
+      // Register hover with section-level shadow
+      if (shadowBleedContext && cardRef.current) {
+        shadowBleedContext.registerHover(rect, localX, localY)
+      }
     },
-    [mouseX, mouseY]
+    [mouseX, mouseY, shadowBleedContext]
   )
 
   useEffect(() => {
-    reset()
-  }, [reset])
+    mouseX.set(-gradientSize)
+    mouseY.set(-gradientSize)
+  }, [gradientSize, mouseX, mouseY])
 
   useEffect(() => {
     const handleGlobalPointerOut = (e: PointerEvent) => {
@@ -51,53 +59,76 @@ export function MagicCard({
       }
     }
 
-    const handleVisibility = () => {
-      if (document.visibilityState !== "visible") {
-        reset()
-      }
-    }
-
     window.addEventListener("pointerout", handleGlobalPointerOut)
     window.addEventListener("blur", reset)
-    document.addEventListener("visibilitychange", handleVisibility)
 
     return () => {
       window.removeEventListener("pointerout", handleGlobalPointerOut)
       window.removeEventListener("blur", reset)
-      document.removeEventListener("visibilitychange", handleVisibility)
     }
   }, [reset])
 
+  // Radial gradient with CSS variable colors
+  const radialGradient = useMotionTemplate`
+    radial-gradient(
+      ${gradientSize}px circle at ${mouseX}px ${mouseY}px,
+      var(--color-2),
+      var(--color-5),
+      transparent 70%
+    )
+  `
+
+  // Conic gradient
+  const conicGradient = useMotionTemplate`
+    conic-gradient(
+      from 0deg at ${mouseX}px ${mouseY}px,
+      var(--color-1),
+      var(--color-3),
+      var(--color-5),
+      var(--color-1)
+    )
+  `
+
+  const borderGradient = gradientVariant === "conic" ? conicGradient : radialGradient
+
   return (
     <div
-      className={cn("group relative rounded-[inherit]", className)}
+      ref={cardRef}
+      className={cn(
+        "group relative rounded-[inherit]",
+        // Default shadow for pop effect
+        "shadow-lg shadow-black/10 dark:shadow-black/30 z-10 outline outline-neutral-950/10 dark:outline-white/5",
+        className
+      )}
       onPointerMove={handlePointerMove}
       onPointerLeave={reset}
-      onPointerEnter={reset}
     >
+      {/* Border gradient layer - visible on hover */}
       <motion.div
-        className="bg-border pointer-events-none absolute inset-0 rounded-[inherit] duration-300 group-hover:opacity-100"
+        className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-100 group-hover:opacity-100 transition-opacity duration-300"
+        style={{
+          background: borderGradient,
+        }}
+      />
+      
+      {/* Inner card background - inset to show border */}
+      <div className="absolute inset-[2px] rounded-[inherit] bg-white/95 dark:bg-black/95 backdrop-blur-sm" />
+      
+      {/* Subtle inner glow */}
+      <motion.div
+        className="pointer-events-none absolute inset-[2px] rounded-[inherit] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         style={{
           background: useMotionTemplate`
-          radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px,
-          ${gradientFrom}, 
-          ${gradientTo}, 
-          var(--border) 100%
-          )
+            radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px, 
+              rgba(0, 206, 201, 0.06), 
+              transparent 50%
+            )
           `,
         }}
       />
-      <div className="bg-background absolute inset-px rounded-[inherit]" />
-      <motion.div
-        className="pointer-events-none absolute inset-px rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-        style={{
-          background: useMotionTemplate`
-            radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px, ${gradientColor}, transparent 100%)
-          `,
-          opacity: gradientOpacity,
-        }}
-      />
-      <div className="relative">{children}</div>
+      
+      {/* Content */}
+      <div className="relative h-full">{children}</div>
     </div>
   )
 }

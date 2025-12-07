@@ -15,8 +15,8 @@ export function HeroSection() {
       {/* Background Effects */}
       <div className="absolute inset-0 w-full h-full bg-white dark:bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-[20%] left-[20%] w-96 h-96 bg-blue-500/20 rounded-full blur-[100px] animate-pulse" />
-        <div className="absolute bottom-[20%] right-[20%] w-96 h-96 bg-purple-500/20 rounded-full blur-[100px] animate-pulse delay-1000" />
+        <div className="absolute top-[20%] left-[20%] w-96 h-96 bg-(--color-6)/20 rounded-full blur-[100px] animate-pulse" />
+        <div className="absolute bottom-[20%] right-[20%] w-96 h-96 bg-(--color-5)/20 rounded-full blur-[100px] animate-pulse delay-1000" />
       </div>
 
       {/* Main Container with Animated Gradient Border */}
@@ -115,7 +115,7 @@ like the stars forged you.
           duration={6}
           borderWidth={2}
           reverse
-          className="from-transparent via-violet-950 to-transparent" />
+          className="from-transparent via-violet-600 to-transparent" />
       </div>
     </section>
   );

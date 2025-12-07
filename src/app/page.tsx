@@ -4,6 +4,7 @@ import { PricingSection } from "@/components/sections/PricingSection";
 import { WhyUsSection } from "@/components/sections/WhyUsSection";
 import { TechStackSection } from "@/components/sections/TechStackSection";
 import { AboutUsSection } from "@/components/sections/AboutUsSection";
+import { ServicesSectionNew } from "@/components/sections/ServicesSectionNew";
 import { Footer } from "@/components/global/footer";
 
 export default function Home() {
@@ -15,6 +16,9 @@ export default function Home() {
       {/* Services Section */}
       <ServicesSection />
       
+      {/* New Services Section */}
+      <ServicesSectionNew />
+
       {/* Pricing Section */}
       <PricingSection />
 
