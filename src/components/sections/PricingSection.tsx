@@ -46,7 +46,7 @@ export function PricingSection() {
                       ))}
                     </ul>
                   )}
-                  <Button variant="secondary" size="sm" className="w-full mt-auto">
+                  <Button variant="glass" size="lg" className="w-full max-w-[200px] my-4 rounded-full group-hover:bg-primary/20 transition-colors mx-auto">
                     {item.cta}
                   </Button>
                 </div>
@@ -87,18 +87,19 @@ const PricingHeader = ({ icon }: { icon: string }) => {
 };
 
 const PricingIcon = ({ icon }: { icon: string }) => {
+  const className = "h-10 w-10 text-neutral-300";
   switch (icon) {
     case "Rocket":
-      return <IconRocket className="h-4 w-4 text-neutral-300" />;
+      return <IconRocket className={className} />;
     case "Zap":
-      return <IconBolt className="h-4 w-4 text-neutral-300" />;
+      return <IconBolt className={className} />;
     case "Anchor":
-      return <IconAnchor className="h-4 w-4 text-neutral-300" />;
+      return <IconAnchor className={className} />;
     case "Telescope":
-      return <IconTelescope className="h-4 w-4 text-neutral-300" />;
+      return <IconTelescope className={className} />;
     case "Globe":
-      return <IconWorld className="h-4 w-4 text-neutral-300" />;
+      return <IconWorld className={className} />;
     default:
-      return <IconRocket className="h-4 w-4 text-neutral-300" />;
+      return <IconRocket className={className} />;
   }
 };

@@ -23,6 +23,8 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import { Badge, BadgeProps } from "@/components/ui/badge";
 
+import { cardVariants } from "@/components/ui/card";
+
 export const BentoGridItem = ({
   className,
   title,
@@ -55,7 +57,8 @@ export const BentoGridItem = ({
       }}
       onClick={onClick}
       className={cn(
-        "group/bento shadow-input row-span-1 flex flex-col justify-between space-y-4 rounded-xl border border-neutral-200 bg-white p-4 hover:shadow-xl dark:border-white/[0.2] dark:bg-black dark:hover:shadow-xl dark:hover:shadow-gray-800 cursor-pointer",
+        cardVariants({ variant: "default" }),
+        "group/bento row-span-1 justify-between p-8 cursor-pointer hover:shadow-xl transition-all duration-300 gap-6",
         className,
       )}
     >

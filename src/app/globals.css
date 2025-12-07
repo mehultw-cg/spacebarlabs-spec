@@ -181,6 +181,15 @@
   --color-6: #2ecc71;
   --color-7: #00cec9;
   --magic-card-gradient: linear-gradient(135deg, var(--color-1), var(--color-2), var(--color-3), var(--color-4), var(--color-5), var(--color-6), var(--color-7));
+
+  /* Gradient presets */
+  --gradient-ocean: linear-gradient(135deg, var(--color-3), var(--color-4));
+  --gradient-mint: linear-gradient(135deg, var(--color-1), var(--color-2));
+  --gradient-lavender: linear-gradient(135deg, var(--color-5), var(--color-3));
+  --gradient-emerald: linear-gradient(135deg, var(--color-6), var(--color-1));
+  --gradient-sunset: linear-gradient(135deg, var(--color-5), var(--color-6));
+  --gradient-aurora: linear-gradient(135deg, var(--color-7), var(--color-2), var(--color-5));
+  --gradient-glass-light: linear-gradient(135deg, rgba(250, 250, 250, 0.8), rgba(255, 255, 255, 0.95));
 }
 
 .dark {
@@ -227,6 +236,7 @@
   --color-5: #9e59b6;
   --color-6: #2ecc71;
   --color-7: #00cec9;
+  --gradient-glass-dark: linear-gradient(75deg, rgba(12, 12, 12, 0.4), rgba(0, 0, 0, 0.95));
 }
 
 @layer utilities {
@@ -241,6 +251,40 @@
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+
+  /* Typography utilities */
+  .text-title {
+    @apply font-bold tracking-tight text-foreground;
+  }
+
+  .text-subtitle {
+    @apply font-semibold tracking-tight text-foreground/90;
+  }
+
+  .text-body {
+    @apply font-normal text-muted-foreground;
+  }
+
+  .text-caption {
+    @apply text-sm font-medium text-muted-foreground;
+  }
+
+  /* Spacing utilities */
+  .container-gap {
+    @apply gap-6 md:gap-8;
+  }
+
+  .card-padding {
+    @apply p-6 md:p-8;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .rounded-glass {
+    @apply rounded-2xl;
   }
 }
 
@@ -271,6 +315,31 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Base heading typography - auto-applied */
+  h1 {
+    @apply text-4xl md:text-5xl font-bold tracking-tight text-foreground;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl font-semibold tracking-tight text-foreground;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl font-semibold tracking-tight text-foreground;
+  }
+
+  h4 {
+    @apply text-xl md:text-2xl font-medium tracking-normal text-foreground;
+  }
+
+  h5 {
+    @apply text-lg font-medium tracking-normal text-muted-foreground;
+  }
+
+  h6 {
+    @apply text-base font-medium tracking-normal text-muted-foreground;
   }
 }
 

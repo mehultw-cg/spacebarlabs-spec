@@ -90,7 +90,7 @@ const WhyUsHeader = ({ icon }: { icon: string }) => {
 };
 
 const WhyUsIcon = ({ icon }: { icon: string }) => {
-  const className = "h-4 w-4 text-neutral-300";
+  const className = "h-8 w-8 text-neutral-300";
   switch (icon) {
     case "ShieldCheck": return <IconShieldCheck className={className} />;
     case "Palette": return <IconPalette className={className} />;
