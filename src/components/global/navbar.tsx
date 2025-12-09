@@ -14,6 +14,7 @@ import {
 import { ThemeToggle } from "@/components/global/theme-toggle";
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler"
 import { Button } from "@/components/ui/button";
+import { RainbowButton } from "../ui/rainbow-button";
 
 export function Navbar({ className }: { className?: string }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -40,9 +41,10 @@ export function Navbar({ className }: { className?: string }) {
           <div className="flex items-center gap-2">
             {/* <ThemeToggle /> */}
             <AnimatedThemeToggler />
-            <Button variant="default" size="sm" className="hidden sm:flex">
+            <RainbowButton variant="outline" size="sm" className="hidden sm:flex">
               Get Started
-            </Button>
+            </RainbowButton>
+           
           </div>
         </NavBody>
 

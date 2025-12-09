@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { ContactFormSchema, ContactFormValues } from "@/lib/data/about";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { RainbowButton } from "@/components/ui/rainbow-button";
 
 export function ContactSection() {
   const {
@@ -45,8 +46,9 @@ export function ContactSection() {
     <section id="contact" className="py-20 bg-white dark:bg-black text-black dark:text-white relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+            <div className="absolute top-1/3 left-1/3 w-56 h-56 bg-(--color-1)/20 rounded-full blur-[3.5rem]" />
+            <div className="absolute top-[70%] left-[25%] w-64 h-64 bg-(--color-5)/20 rounded-full blur-3xl" />
+            <div className="absolute -bottom-[2%] right-1/4 w-96 h-96 bg-(--color-4)/20 rounded-full blur-3xl" />
         </div>
 
       <div className="max-w-4xl mx-auto px-4 relative z-10">
@@ -58,7 +60,7 @@ export function ContactSection() {
         </div>
 
         {/* MacOS Window Card */}
-        <div className="rounded-xl border border-neutral-200 dark:border-white/10 bg-white/50 dark:bg-white/5 backdrop-blur-xl shadow-2xl overflow-hidden">
+        <div className="rounded-xl border border-neutral-200 dark:border-white/10 bg-white/50 dark:bg-white/5 backdrop-blur-xl shadow-2xl dark:shadow-xl dark:shadow-neutral-900/30 overflow-hidden">
           {/* Window Header */}
           <div className="h-10 bg-neutral-100/50 dark:bg-white/5 border-b border-neutral-200 dark:border-white/5 flex items-center px-4 gap-2">
             <div className="w-3 h-3 rounded-full bg-red-500/80" />
@@ -71,14 +73,14 @@ export function ContactSection() {
           <div className="p-8">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium text-neutral-700 dark:text-neutral-300">
+                <div className="space-y-4">
+                  <label htmlFor="name" className="text-sm my-2 font-medium text-neutral-700 dark:text-neutral-300">
                     Name
                   </label>
                   <input
                     {...register("name")}
                     className={cn(
-                      "w-full px-4 py-2 rounded-md bg-white dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/10 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all",
+                      "w-full my-2 px-4 py-2 rounded-md bg-neutral-100/20 dark:bg-black/30 border border-neutral-200 dark:border-white/10 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all",
                       errors.name && "border-red-500 focus:ring-red-500/50"
                     )}
                     placeholder="John Doe"
@@ -94,7 +96,7 @@ export function ContactSection() {
                   <input
                     {...register("email")}
                     className={cn(
-                      "w-full px-4 py-2 rounded-md bg-white dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/10 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all",
+                      "w-full my-2 px-4 py-2 rounded-md bg-neutral-100/20 dark:bg-black/30 border border-neutral-200 dark:border-white/10 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all",
                       errors.email && "border-red-500 focus:ring-red-500/50"
                     )}
                     placeholder="john@example.com"
@@ -112,7 +114,7 @@ export function ContactSection() {
                 <input
                   {...register("subject")}
                   className={cn(
-                    "w-full px-4 py-2 rounded-md bg-white dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/10 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all",
+                    "w-full my-2 px-4 py-2 rounded-md bg-neutral-100/20 dark:bg-black/30 border border-neutral-200 dark:border-white/10 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all",
                     errors.subject && "border-red-500 focus:ring-red-500/50"
                   )}
                   placeholder="Project Inquiry"
@@ -130,7 +132,7 @@ export function ContactSection() {
                   {...register("message")}
                   rows={5}
                   className={cn(
-                    "w-full px-4 py-2 rounded-md bg-white dark:bg-neutral-900/50 border border-neutral-200 dark:border-white/10 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all resize-none",
+                    "w-full my-2 px-4 py-2 rounded-md bg-neutral-100/20 dark:bg-black/30 border border-neutral-200 dark:border-white/10 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all resize-none",
                     errors.message && "border-red-500 focus:ring-red-500/50"
                   )}
                   placeholder="Tell us about your idea..."
@@ -141,13 +143,14 @@ export function ContactSection() {
               </div>
 
               <div className="flex justify-end">
-                <Button
+                <RainbowButton
                   type="submit"
                   disabled={isSubmitting}
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-8"
+                  className="rounded-full"
+                  variant="outline"                
                 >
                   {isSubmitting ? "Sending..." : "Send Message"}
-                </Button>
+                </RainbowButton>
               </div>
             </form>
           </div>

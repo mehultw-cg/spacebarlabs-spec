@@ -46,7 +46,7 @@ export function ServicesSectionNew() {
   };
 
   return (
-    <section ref={sectionRef} id="services-new" className="py-20 bg-neutral-100 dark:bg-[#0a0a0a] relative overflow-hidden">
+    <section ref={sectionRef} id="services-new" className="py-20 bg-neutral-100 dark:bg-gradient-to-br from-black via-[#020502] via-[#020302] to-black relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -118,11 +118,12 @@ export function ServicesSectionNew() {
                
                 
                 {/* Solid background + button container */}
-                <div className="h-32 flex items-center justify-center -mt-4  bg-gradient-to-b from-transparent from-50%  to-neutral-100 dark:to-[#0a0a0a] to-80%"    >
+                <div className="h-32 flex items-center justify-center -mt-4  bg-gradient-to-b from-transparent from-50%  to-neutral-100 dark:to-[#020302] to-80%"    >
                   <RainbowButton 
                     onClick={handleShowMore}
-                    className="px-8 py-3 text-base font-semibold"
+                    className="px-8 py-3 text-base font-semibold rounded-full"
                     size="lg"
+                    variant="outline"
                   >
                     Show More Services
                     <ChevronDown className="ml-2 h-5 w-5" />
@@ -146,8 +147,9 @@ export function ServicesSectionNew() {
             >
               <RainbowButton 
                 onClick={handleCollapse}
-                className="px-8 py-3 text-base font-semibold"
+                className="px-8 py-3 rounded-full text-base font-semibold"
                 size="lg"
+                variant="outline"
               >
                 Collapse Services
                 <ChevronUp className="ml-2 h-4 w-4" />

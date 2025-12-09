@@ -14,7 +14,7 @@ export default function Home() {
       <HeroSection />
 
       {/* Services Section */}
-      <ServicesSection />
+      {/* <ServicesSection /> */}
       
       {/* New Services Section */}
       <ServicesSectionNew />

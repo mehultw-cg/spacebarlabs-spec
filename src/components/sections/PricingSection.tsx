@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
+import { BentoGrid } from "@/components/ui/bento-grid";
 import { pricingData } from "@/lib/data/pricing";
 import {
   IconRocket,
@@ -10,7 +10,18 @@ import {
   IconTelescope,
   IconWorld,
 } from "@tabler/icons-react";
+import { Check, Rocket, Zap, FlaskConical, SatelliteDish, Wrench } from 'lucide-react';
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 
 export function PricingSection() {
   return (
@@ -25,81 +36,89 @@ export function PricingSection() {
           </p>
         </div>
 
-        <BentoGrid className="max-w-6xl mx-auto md:auto-rows-[20rem] md:grid-cols-4">
-          {pricingData.map((item, i) => {
-            const colSpanClass = item.colSpan === 4 ? "md:col-span-4" : 
-                                 item.colSpan === 3 ? "md:col-span-3" : 
-                                 item.colSpan === 2 ? "md:col-span-2" : "";
-            return (
-            <BentoGridItem
-              key={i}
-              title={item.title}
-              description={
-                <div className="flex flex-col gap-4">
-                  <span className="text-sm text-neutral-300">
-                    {item.description}
-                  </span>
-                  {item.features && (
-                    <ul className="list-disc list-inside text-xs text-neutral-400 space-y-1">
-                      {item.features.slice(0, 3).map((feature, idx) => (
-                        <li key={idx}>{feature}</li>
-                      ))}
-                    </ul>
-                  )}
-                  <Button variant="glass" size="lg" className="w-full max-w-[200px] my-4 rounded-full group-hover:bg-primary/20 transition-colors mx-auto">
-                    {item.cta}
-                  </Button>
-                </div>
-              }
-              className={colSpanClass}
-              icon={<PricingIcon icon={item.icon} />}
-            />
-          )})}
+        <BentoGrid className="max-w-7xl lg:w-7xl mx-auto md:grid-cols-5 md:auto-rows-auto">
+          {pricingData.map((item, i) => (
+            <PricingCard key={i} item={item} />
+          ))}
         </BentoGrid>
       </div>
     </section>
   );
 }
 
-const PricingHeader = ({ icon }: { icon: string }) => {
-  const getIcon = (iconName: string) => {
-    switch (iconName) {
-      case "Rocket":
-        return <IconRocket className="h-full w-full text-neutral-300" />;
-      case "Zap":
-        return <IconBolt className="h-full w-full text-neutral-300" />;
-      case "Anchor":
-        return <IconAnchor className="h-full w-full text-neutral-300" />;
-      case "Telescope":
-        return <IconTelescope className="h-full w-full text-neutral-300" />;
-      case "Globe":
-        return <IconWorld className="h-full w-full text-neutral-300" />;
-      default:
-        return <IconRocket className="h-full w-full text-neutral-300" />;
-    }
-  };
+const PricingCard = ({ item }: { item: typeof pricingData[0] }) => {
+  const colSpanClass =
+    item.colSpan === 4
+      ? "md:col-span-4"
+      : item.colSpan === 3
+      ? "md:col-span-3"
+      : item.colSpan === 2
+      ? "md:col-span-2"
+      : item.colSpan === 5
+      ? "md:col-span-5"
+      : ""
 
   return (
-    <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-900 to-neutral-800 items-center justify-center p-4 border border-white/10">
-      <div className="w-16 h-16 opacity-50">{getIcon(icon)}</div>
-    </div>
+    <Card
+      className={cn(colSpanClass, "px-4flex flex-col justify-between transition-all duration-300 hover:shadow-xl border-black/5 dark:border-white/5")}
+    >
+      <CardHeader className="p-6 pb-2">
+        <div className="mb-4 inline-flex p-2.5 rounded-xl w-fit">
+          <PricingIcon icon={item.icon} />
+        </div>
+        <CardTitle className="text-lg md:text-xl font-bold">{item.title}</CardTitle>
+        <p className="text-sm text-neutral-400 dark:text-neutral-500">{item.description}</p>
+        <CardDescription className="text-md text-neutral-500 dark:text-neutral-400 mt-2 leading-relaxed">
+          {item.detail}
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="flex-grow p-6 pt-2">
+        {item.features && (
+          <ul className="space-y-3">
+            {item.features.slice(0, 5).map((feature, idx) => (
+              <motion.li 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              transition={{ duration: 0.4, delay: idx * 0.1 }}
+              whileHover={{ scale: 1.1, x: 50, transition: { duration: 0.3 } }}
+              key={idx} className="flex items-start gap-3 text-md text-neutral-600 dark:text-neutral-300">
+                {/* <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0" /> */}
+                <Check className="mt-1 h-5 w-5 text-emerald-500 shrink-0" />
+                <span>{feature}</span>
+              </motion.li>
+            ))}
+          </ul>
+        )}
+      </CardContent>
+      <CardFooter className="p-6 pt-0 mt-auto">
+        <Button
+          variant="outline-glass"
+          rounded="full"
+          size="default"
+          className="w-full text-sm font-semibold h-10 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-sm hover:shadow-primary/20"
+        >
+          {item.cta}
+        </Button>
+      </CardFooter>
+    </Card>
   );
 };
 
 const PricingIcon = ({ icon }: { icon: string }) => {
-  const className = "h-10 w-10 text-neutral-300";
+  const className = "h-8 w-8 text-emerald-500";
   switch (icon) {
     case "Rocket":
-      return <IconRocket className={className} />;
+      return <Rocket className={className} />;
     case "Zap":
-      return <IconBolt className={className} />;
-    case "Anchor":
-      return <IconAnchor className={className} />;
-    case "Telescope":
-      return <IconTelescope className={className} />;
-    case "Globe":
-      return <IconWorld className={className} />;
+      return <Zap className={className} />;
+    case "Wrench":
+      return <Wrench className={className} />;
+    case "FlaskConical":
+      return <FlaskConical className={className} />;
+    case "SatelliteDish":
+      return <SatelliteDish className={className} />;
     default:
-      return <IconRocket className={className} />;
+      return <Rocket className={className} />;
   }
 };

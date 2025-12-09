@@ -5,8 +5,10 @@ const PricingIconSchema = z.enum([
     "Rocket", // Lift Off
     "Zap", // Accelerate
     "Anchor", // Craft your Ship
-    "Telescope", // Deep Space
-    "Globe", // Maintaining Orbit
+    "FlaskConical", // Deep Space
+    "SatelliteDish", // Maintaining Orbit
+    "Wrench", // Craft your Ship
+    "Check", //Check Mark
 ]);
 
 const PricingTagSchema = z.enum([
@@ -36,55 +38,55 @@ export const pricingData: PricingTier[] = [
     {
         id: "craft-your-ship",
         title: "Craft your Ship",
-        icon: "Anchor",
-        description: "Brainstorming, consulting, UI/UX, frontend prototyping.",
+        icon: "Wrench",
+        description: " UI/UX Research, brainstorming, consulting, and prototyping. All the ingredients to bring things to life.",
         detail: "Perfect for laying the groundwork. We help you conceptualize, design, and prototype your idea before full-scale development.",
         tags: ["starter"],
-        features: ["Brainstorming Sessions", "UI/UX Design", "Frontend Prototyping", "Feasibility Analysis"],
+        features: ["Brainstorming Sessions", "UI/UX Research", "Interactive Prototyping", "Feasibility Analysis", "Initial Frontend Scaffolding", ""],
         colSpan: 3,
         cta: "Get Quote",
     },
     {
         id: "deep-space",
         title: "Deep Space",
-        icon: "Telescope",
-        description: "Research-based long-term projects for novel technology.",
+        icon: "FlaskConical",
+        description: "Research-based long-term projects to break new grounds and develop novel technology.",
         detail: "For ambitious projects requiring deep technical research and innovation. We partner with you to explore the unknown.",
         tags: ["research"],
-        features: ["R&D", "Proof of Concept", "Technical Feasibility", "Innovation Consulting"],
-        colSpan: 1,
+        features: ["Exploratoy R&D", "Proof-of-Concept Buillds", "Feasibility Studies", "Innovation Consulting", "Cutting Edge Tech Integration"],
+        colSpan: 2,
         cta: "Get Quote",
     },
     {
         id: "lift-off",
         title: "Lift Off",
         icon: "Rocket",
-        description: "Startups and early ventures: build and launch your application.",
+        description: "For Startups and early ventures: build and launch your vision.",
         detail: "The complete package to get your MVP off the ground. We handle everything from code to deployment.",
         tags: ["popular"],
-        features: ["MVP Development", "Full Stack Engineering", "Cloud Deployment", "Launch Support"],
-        colSpan: 4,
+        features: ["MVP Development", "Full Stack Engineering", "Cloud Deployment", "Scalable Infrastructure", "Launch Support"],
+        colSpan: 5,
         cta: "Get Quote",
     },
     {
         id: "accelerate",
         title: "Accelerate",
         icon: "Zap",
-        description: "Projects in motion: help you accelerate your plans.",
+        description: "For Projects in motion. We help you accelerate your plans and push beyond your limits.",
         detail: "Need to move faster? We augment your existing team or take over specific modules to speed up delivery.",
         tags: ["enterprise"],
-        features: ["Team Augmentation", "Performance Optimization", "Feature Acceleration", "Code Audits"],
-        colSpan: 2,
+        features: ["Team Augmentation", "Performance Optimization", "Feature Acceleration Sprints", "Codebase Refactoring", "Security Audits"],
+        colSpan: 3,
         cta: "Get Quote",
     },
     {
         id: "maintaining-orbit",
         title: "Maintaining Orbit",
-        icon: "Globe",
-        description: "Ongoing support and maintenance to keep you flying smooth.",
+        icon: "SatelliteDish",
+        description: "Ongoing support and maintenance to keep it performing at its peek and stable in the orbit.",
         detail: "Reliable support and maintenance to ensure your application remains secure, up-to-date, and performant.",
         tags: ["maintenance"],
-        features: ["24/7 Monitoring", "Security Updates", "Bug Fixes", "Performance Tuning"],
+        features: ["24/7 Monitoring & Support", "Security Updates", "Bug Fixes & Patches", "Performance Tuning", "Technical Training"],
         colSpan: 2,
         cta: "Get Quote",
     },

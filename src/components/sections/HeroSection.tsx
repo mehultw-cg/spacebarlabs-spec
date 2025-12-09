@@ -77,6 +77,7 @@ like the stars forged you.
           >
             <RainbowButton
             size="lg"
+            variant="dark"
             className="rounded-full h-12 px-8 font-medium text-md w-full sm:w-auto dark:hover:bg-neutral-300 hover:bg-neutral-800"
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
