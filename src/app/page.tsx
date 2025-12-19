@@ -10,6 +10,7 @@ import { Footer } from "@/components/global/footer";
 export default function Home() {
   return (
     <main className="min-h-screen bg-background">
+      <div className="hero-background">
       {/* Hero Section */}
       <HeroSection />
 
@@ -38,6 +39,7 @@ export default function Home() {
         </div>
       </footer> */}
       <Footer />
+      </div>
     </main>
   );
 }

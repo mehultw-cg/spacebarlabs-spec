@@ -14,36 +14,25 @@ import Image from "next/image";
 export function HeroSection() {
   return (
     
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white dark:bg-black text-black dark:text-white pt-20">
+    <section className="relative hero-background min-h-screen flex items-center justify-center overflow-hidden bg-white dark:bg-black text-black dark:text-white pt-20">
       {/* Background Effects */}
-      <Starfield 
+            <Starfield
               speedFactor={0.0075}
             />
 
       <div className="absolute inset-0 w-full h-full bg-white dark:bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">     
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-[20%] left-[20%] w-96 h-96 bg-(--color-6)/20 rounded-full blur-[100px] animate-pulse" />
         <div className="absolute bottom-[20%] right-[20%] w-96 h-96 bg-(--color-5)/20 rounded-full blur-[100px] animate-pulse delay-1000" />
       </div>
-
-      <div className="absolute inset-0 -z-51 bg-gradient-to-tr from-primary to-indigo-950/20 dark:from-gray-950/80 h-full"> 
-          <Image 
-              src="/assets/horsehead.jpg"
-              alt="Horsehead Nebula Background" 
-              layout="fill" 
-              objectFit="cover" 
-              quality={100}
-              // Optional: Add a subtle overlay for better text readability
-              className="opacity-70 dark:opacity-50"
-          />
-      </div> 
 
       {/* Main Container with Animated Gradient Border */}
       <div className="relative z-10 overflow-hidden rounded-3xl bg-white/20 dark:bg-neutral-950/50 border border-neutral-200 dark:border-white/10 shadow-xl dark:shadow-none">
         
         {/* Glassmorphic Card Content */}
-        <div className="relative z-20 backdrop-blur-xl px-8 py-16 md:px-16 md:py-20 text-center max-w-4xl mx-2 my-2 rounded-5xl tracking-tight">
-          
+        <div className="relative z-20 backdrop-blur-lg px-8 py-16 md:px-16 md:py-20 text-center max-w-4xl mx-2 my-2 rounded-5xl tracking-tight">
+
+
           {/* Badge */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
