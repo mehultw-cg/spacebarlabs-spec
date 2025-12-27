@@ -36,7 +36,7 @@ const buttonVariants = cva(
           "bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-[0_0_20px_rgba(var(--color-3),0.4)] transition-shadow",
         // Combined: outline + glass
         "outline-glass":
-          "backdrop-blur-md bg-white/5 dark:bg-black/10 border border-border text-foreground hover:bg-white/15 dark:hover:bg-black/20",
+          "backdrop-blur-md bg-transparent dark:bg-black/10 border border-border text-foreground hover:bg-white/5 dark:hover:bg-black/5",
         // Combined: ghost + glow
         "ghost-glow":
           "hover:bg-accent/50 hover:text-accent-foreground hover:shadow-[0_0_15px_rgba(var(--color-3),0.3)] transition-shadow",

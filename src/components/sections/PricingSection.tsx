@@ -11,7 +11,7 @@ import {
   IconWorld,
 } from "@tabler/icons-react";
 import { Check, Rocket, Zap, FlaskConical, SatelliteDish, Wrench } from 'lucide-react';
-import { motion } from "framer-motion";
+import { animate, motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -22,16 +22,28 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export function PricingSection() {
   return (
-    <section id="pricing" className="py-20 bg-white dark:bg-black text-black dark:text-white">
+    
+    <section id="pricing" className="bg-white dark:bg-black text-black dark:text-white">
+    <div className="pricing_section_image_bg py-20">  
+        {/* <Image
+          src="/Binary_Black_Holes_Accretion_Disk.webp"
+          alt="Pricing Background"
+          fill
+          content="center"
+          className="object-cover"
+        /> */}
+
+      
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black dark:text-white">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white dark:text-white">
             Pricing
           </h2>
-          <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
+          <p className="text-neutral-400 dark:text-neutral-400 max-w-2xl mx-auto">
             Transparent pricing for every stage of your journey.
           </p>
         </div>
@@ -41,6 +53,7 @@ export function PricingSection() {
             <PricingCard key={i} item={item} />
           ))}
         </BentoGrid>
+      </div>
       </div>
     </section>
   );
@@ -59,54 +72,99 @@ const PricingCard = ({ item }: { item: typeof pricingData[0] }) => {
       : ""
 
   return (
-    <Card
-      className={cn(colSpanClass, "px-4flex flex-col justify-between transition-all duration-300 hover:shadow-xl border-black/5 dark:border-white/5")}
+    <motion.div
+      initial="initial"
+      whileHover="hover"
+      className={cn(colSpanClass, "h-full")}
     >
-      <CardHeader className="p-6 pb-2">
-        <div className="mb-4 inline-flex p-2.5 rounded-xl w-fit">
-          <PricingIcon icon={item.icon} />
-        </div>
-        <CardTitle className="text-lg md:text-xl font-bold">{item.title}</CardTitle>
-        <p className="text-sm text-neutral-400 dark:text-neutral-500">{item.description}</p>
-        <CardDescription className="text-md text-neutral-500 dark:text-neutral-400 mt-2 leading-relaxed">
-          {item.detail}
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="flex-grow p-6 pt-2">
-        {item.features && (
-          <ul className="space-y-3">
-            {item.features.slice(0, 5).map((feature, idx) => (
-              <motion.li 
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 10 }}
-              transition={{ duration: 0.4, delay: idx * 0.1 }}
-              whileHover={{ scale: 1.1, x: 50, transition: { duration: 0.3 } }}
-              key={idx} className="flex items-start gap-3 text-md text-neutral-600 dark:text-neutral-300">
-                {/* <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0" /> */}
-                <Check className="mt-1 h-5 w-5 text-emerald-500 shrink-0" />
-                <span>{feature}</span>
-              </motion.li>
-            ))}
-          </ul>
-        )}
-      </CardContent>
-      <CardFooter className="p-6 pt-0 mt-auto">
-        <Button
-          variant="outline-glass"
-          rounded="full"
-          size="default"
-          className="w-full text-sm font-semibold h-10 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-sm hover:shadow-primary/20"
-        >
-          {item.cta}
-        </Button>
-      </CardFooter>
-    </Card>
+      <Card
+        className="h-full px-4 flex flex-col backdrop-blur-3xl justify-between transition-all duration-300 hover:shadow-xl border-black/5 dark:border-white/5 dark:bg-black/30"
+      >
+        <CardHeader className="p-6 pb-2">
+          <motion.div 
+            variants={{
+              initial: { x: 0, scale: 1 },
+              hover: { x: 10, scale: 1.3 }
+            }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="mb-4 inline-flex p-2.5 rounded-xl w-fit"
+          >
+            <PricingIcon icon={item.icon} />
+          </motion.div>
+          
+          <motion.div
+            variants={{
+              initial: { x: 0 },
+              hover: { x: 10 }
+            }}
+            transition={{ duration: 0.3, delay: 0.05, ease: "easeOut" }}
+          >
+            <CardTitle className="text-lg text-black dark:text-white md:text-xl font-bold">{item.title}</CardTitle>
+          </motion.div>
+
+          <motion.p 
+            variants={{
+              initial: { x: 0 },
+              hover: { x: 10 }
+            }}
+            transition={{ duration: 0.3, delay: 0.1, ease: "easeOut" }}
+            className="text-sm text-neutral-700 dark:text-neutral-500"
+          >
+            {item.description}
+          </motion.p>
+          
+          <motion.div
+            variants={{
+              initial: { x: 0 },
+              hover: { x: 10 }
+            }}
+            transition={{ duration: 0.3, delay: 0.15, ease: "easeOut" }}
+          >
+            <CardDescription className="text-md text-neutral-800 dark:text-neutral-400 mt-2 leading-relaxed">
+              {item.detail}
+            </CardDescription>
+          </motion.div>
+        </CardHeader>
+        
+        <CardContent className="flex-grow p-6 pt-2">
+          {item.features && (
+            <ul className="space-y-3">
+              {item.features.slice(0, 5).map((feature, idx) => (
+                <motion.li 
+                  key={idx}
+                  variants={{
+                    // initial: { opacity: 0, y: 10, x: 0 },
+                    // animate: {opacity: 1, y: 0},
+                    hover: { x: 50, scale: 1.1 },
+                    // exit: { opacity: 0, y: 10},
+                  }}
+                  transition={{ duration: 0.3, delay: 0.2 + (idx * 0.05), ease: "easeOut" }}
+                  className="flex items-start gap-3 text-md text-neutral-800 dark:text-neutral-300"
+                >
+                  <Check className="mt-1 h-5 w-5 text-emerald-600 dark:text-emerald-500 shrink-0" />
+                  <span>{feature}</span>
+                </motion.li>
+              ))}
+            </ul>
+          )}
+        </CardContent>
+        <CardFooter className="p-6 pt-0 mt-auto relative z-10">
+          <Button
+            variant="outline-glass"
+            rounded="full"
+            size="default"
+            className="w-full text-sm font-semibold h-10 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-sm hover:shadow-primary/20"
+          >
+            {item.cta}
+          </Button>
+        </CardFooter>
+      </Card>
+    </motion.div>
   );
 };
 
 const PricingIcon = ({ icon }: { icon: string }) => {
-  const className = "h-8 w-8 text-emerald-500";
+  const className = "h-8 w-8 text-emerald-700 dark:text-emerald-500";
   switch (icon) {
     case "Rocket":
       return <Rocket className={className} />;

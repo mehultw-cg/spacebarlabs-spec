@@ -7,11 +7,19 @@ import { cn } from "@/lib/utils";
 import { BorderBeam } from "@/components/ui/border-beam";
 import { AuroraText } from "../ui/aurora-text";
 import { RainbowButton } from "../ui/rainbow-button";
+import Image from "next/image";
 
 
 export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white dark:bg-black text-black dark:text-white pt-20">
+     <div >
+      {/* <Image
+        src="/BHW_Disk_and_Corona.gif"
+        alt="Hero Background"
+        fill
+        className="object-cover"
+      /> */}
       {/* Background Effects */}
       <div className="absolute inset-0 w-full h-full bg-white dark:bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
@@ -77,7 +85,7 @@ like the stars forged you.
           >
             <RainbowButton
             size="lg"
-            variant="dark"
+            variant="outline"
             className="rounded-full h-12 px-8 font-medium text-md w-full sm:w-auto dark:hover:bg-neutral-300 hover:bg-neutral-800"
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
@@ -117,6 +125,7 @@ like the stars forged you.
           borderWidth={2}
           reverse
           className="from-transparent via-violet-600 to-transparent" />
+      </div>
       </div>
     </section>
   );

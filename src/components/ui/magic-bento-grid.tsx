@@ -92,6 +92,8 @@ export const MagicBentoCard = ({
     <motion.div
       ref={ref}
       layout="position"
+      initial="initial"
+      whileHover="hover"
       className={cn(
         "relative h-[280px] rounded-2xl overflow-visible cursor-pointer",
         isExpanded ? "md:col-span-2" : "md:col-span-1",
@@ -129,7 +131,12 @@ export const MagicBentoCard = ({
           )}
 
           {/* Icon - simple CSS transition */}
-          <div 
+          <motion.div 
+            variants={{
+              initial: { x: 0, scale: 1 },
+              hover: { x: 10, scale: 1.1 }
+            }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
             className={cn(
               "rounded-2xl flex items-center justify-center w-12 h-12 shrink-0",
               "transition-[margin] duration-300 ease-out",
@@ -138,44 +145,72 @@ export const MagicBentoCard = ({
             style={iconGradientStyle}
           >
             <Icon className="w-6 h-6 shrink-0" />
-          </div>
+          </motion.div>
 
           {/* Title */}
-          <h3 className="text-base font-bold text-neutral-800 dark:text-white leading-tight mb-2 shrink-0">
+          <motion.h3 
+            variants={{
+              initial: { x: 0 },
+              hover: { x: 10 }
+            }}
+            transition={{ duration: 0.3, delay: 0.05, ease: "easeOut" }}
+            className="text-base font-bold text-neutral-800 dark:text-white leading-tight mb-2 shrink-0"
+          >
             {title}
-          </h3>
+          </motion.h3>
 
           {/* Content area */}
           <div className="flex-1 min-h-0 overflow-hidden">
             {/* Description */}
-            <p className={cn(
-              "text-sm dark:text-neutral-300 text-neutral-700 font-semibold leading-relaxed",
-              isExpanded ? "line-clamp-2" : "line-clamp-3"
-            )}>
+            <motion.p 
+              variants={{
+                initial: { x: 0 },
+                hover: { x: 10 }
+              }}
+              transition={{ duration: 0.3, delay: 0.1, ease: "easeOut" }}
+              className={cn(
+                "text-sm dark:text-neutral-300 text-neutral-700 font-semibold leading-relaxed",
+                isExpanded ? "line-clamp-2" : "line-clamp-3"
+              )}
+            >
               {description}
-            </p>
+            </motion.p>
 
             {/* Detail - only Framer Motion animation here */}
             <AnimatePresence mode="wait">
               {isExpanded && detail && (
                 <motion.div
                   key={`detail-${id}`}
-                  initial={{ opacity: 0, filter: "blur(4px)" }}
-                  animate={{ opacity: 1, filter: "blur(0px)" }}
-                  exit={{ opacity: 0, filter: "blur(4px)" }}
-                  transition={{ duration: 0.15 }}
+                  initial={{ opacity: 0, filter: "blur(4px)", x: 0 }}
+                  animate={{ opacity: 1, filter: "blur(0px)", x: 0 }}
+                  exit={{ opacity: 0, filter: "blur(4px)", x: 0 }}
+                  transition={{ duration: 0.15 }} // Short duration for expansion
                   className="mt-2 overflow-hidden"
                 >
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed">
+                   {/* Nested motion div for the hover effect delay to separate from expand effect */}
+                   <motion.p
+                     variants={{
+                       hover: { x: 10 }
+                     }}
+                     transition={{ duration: 0.3, delay: 0.15, ease: "easeOut" }}
+                     className="text-sm text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed"
+                   >
                     {detail}
-                  </p>
+                   </motion.p>
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
 
           {/* Badges */}
-          <div className="shrink-0 pt-3 flex flex-wrap gap-1.5">
+          <motion.div 
+            variants={{
+              initial: { x: 0 },
+              hover: { x: 10 }
+            }}
+            transition={{ duration: 0.3, delay: 0.2, ease: "easeOut" }}
+            className="shrink-0 pt-3 flex flex-wrap gap-1.5"
+          >
             {badges.map((badge, index) => {
               const style = getTagStyle(badge);
               return (
@@ -193,7 +228,7 @@ export const MagicBentoCard = ({
                 </Badge>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </MagicCard>
     </motion.div>
