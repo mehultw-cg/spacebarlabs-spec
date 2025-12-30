@@ -40,7 +40,7 @@ export default function Starfield(props: Props) {
                             x: Math.random() * 1600 - 800,
                             y: Math.random() * 900 - 450,
                             z: Math.random() * 1000,
-                            size: Math.random()*1.07 + 0.75
+                            size: Math.random() * 1.07 + 0.75
                         };
                         out.push(s);
                     }
@@ -50,8 +50,11 @@ export default function Starfield(props: Props) {
                 let stars = makeStars(starCount);
 
                 const clear = () => {
-                    c.fillStyle = backgroundColor;
-                    c.fillRect(0, 0, canvas.width, canvas.height);
+                    c.clearRect(0, 0, canvas.width, canvas.height);
+                    if (backgroundColor !== 'transparent') {
+                        c.fillStyle = backgroundColor;
+                        c.fillRect(0, 0, canvas.width, canvas.height);
+                    }
                 };
 
                 const putPixel = (x: number, y: number, size: number, brightness: number) => {

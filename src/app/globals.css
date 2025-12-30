@@ -348,10 +348,3 @@
   animation: none;
   mix-blend-mode: normal;
 }
-
-.hero-background {
-  background-image: url("/horsehead.webp");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}

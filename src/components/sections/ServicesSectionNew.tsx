@@ -46,7 +46,7 @@ export function ServicesSectionNew() {
   };
 
   return (
-    <section ref={sectionRef} id="services-new" className="py-20 bg-neutral-100 dark:bg-gradient-to-br from-black via-[#020502] via-[#020302] to-black relative overflow-hidden">
+    <section ref={sectionRef} id="services-new" className="py-20 bg-transparent relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -63,31 +63,31 @@ export function ServicesSectionNew() {
           <ShadowBleedProvider containerRef={gridContainerRef as React.RefObject<HTMLDivElement>}>
             {/* First Row - Always Visible */}
             {allRows[0] && (
-              <ServiceRow 
-                services={allRows[0]} 
-                rowIndex={0} 
+              <ServiceRow
+                services={allRows[0]}
+                rowIndex={0}
                 className="w-full mb-4"
               />
             )}
 
             {/* Collapsible Container for Remaining Rows */}
             <motion.div
-              animate={{ 
+              animate={{
                 height: isAllVisible ? "auto" : ((visibleRows - 1) * ROW_HEIGHT + PEEK_HEIGHT)
               }}
               transition={{ duration: 0.6, ease: "easeInOut" }}
               className="relative"
-              style={{ 
+              style={{
                 // Use clip with custom inset to allow horizontal overflow but clip vertical
                 clipPath: isAllVisible ? 'none' : 'inset(-300px -300px 0 -300px)'
               }}
             >
               <div className="flex flex-col gap-4">
                 {allRows.slice(1).map((rowServices, index) => (
-                  <ServiceRow 
-                    key={index + 1} 
-                    services={rowServices} 
-                    rowIndex={index + 1} 
+                  <ServiceRow
+                    key={index + 1}
+                    services={rowServices}
+                    rowIndex={index + 1}
                     className="w-full"
                   />
                 ))}
@@ -99,53 +99,53 @@ export function ServicesSectionNew() {
           <AnimatePresence>
             {!isAllVisible && (
               <>
-               {/* Progressive blur effect */}
-                <ProgressiveBlur 
-                  direction="bottom" 
+                {/* Progressive blur effect */}
+                <ProgressiveBlur
+                  direction="bottom"
                   blurLayers={4}
                   blurIntensity={1}
                   className="absolute bottom-2 h-[10%] w-full"
                 >
-                  
+
                 </ProgressiveBlur>
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.4 }}
-                className="absolute -bottom-4 left-0 right-0 z-50"
-              >
-               
-                
-                {/* Solid background + button container */}
-                <div className="h-32 flex items-center justify-center -mt-4  bg-gradient-to-b from-transparent from-50%  to-neutral-100 dark:to-[#020302] to-80%"    >
-                  <RainbowButton 
-                    onClick={handleShowMore}
-                    className="px-8 py-3 text-base font-semibold rounded-full"
-                    size="lg"
-                    variant="outline"
-                  >
-                    Show More Services
-                    <ChevronDown className="ml-2 h-5 w-5" />
-                  </RainbowButton>
-                </div>
-              </motion.div>
-            </>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="absolute -bottom-4 left-0 right-0 z-50"
+                >
+
+
+                  {/* Solid background + button container */}
+                  <div className="h-32 flex items-center justify-center -mt-4  bg-gradient-to-b from-transparent from-50%  to-neutral-100 dark:to-[#020302] to-80%"    >
+                    <RainbowButton
+                      onClick={handleShowMore}
+                      className="px-8 py-3 text-base font-semibold rounded-full"
+                      size="lg"
+                      variant="outline"
+                    >
+                      Show More Services
+                      <ChevronDown className="ml-2 h-5 w-5" />
+                    </RainbowButton>
+                  </div>
+                </motion.div>
+              </>
             )}
           </AnimatePresence>
         </div>
-        
+
         {/* Collapse Button */}
         <AnimatePresence>
           {isAllVisible && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 20 }}
               transition={{ delay: 0.2 }}
               className="flex justify-center mt-8"
             >
-              <RainbowButton 
+              <RainbowButton
                 onClick={handleCollapse}
                 className="px-8 py-3 rounded-full text-base font-semibold"
                 size="lg"
@@ -159,13 +159,13 @@ export function ServicesSectionNew() {
         </AnimatePresence>
 
         {/* Security Commitment Section - Dark glassmorphic with gradient */}
-        <div className="mt-36 mb-24 p-8 rounded-3xl relative overflow-hidden backdrop-blur-xl border border-neutral-950/10 dark:border-white/10 shadow-2xl shadow-purple-500/10">
+        <div className="mt-36 mb-24 p-8 rounded-3xl relative overflow-hidden backdrop-blur-xl border border-neutral-950/10 dark:border-white/10 shadow-2xl shadow-purple-500/10 dark:bg-gradient-to-br from-neutral-950/70 via-neutral-950/40 to-black/80">
           {/* Dark gradient background */}
           <div className="absolute inset-0 bg-gradient-to-br from-neutral-100/70 via-neutral-100/70 to-neutral-100/5 dark:from-neutral-950/70 dark:via-neutral-950/40 dark:to-black/80" />
-          
+
           {/* Subtle gradient accent */}
           <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/5 via-transparent to-emerald-500/5" />
-          
+
           {/* Content */}
           <div className="relative flex flex-col md:flex-row items-start md:items-center gap-6">
             {/* Icon with gradient background */}

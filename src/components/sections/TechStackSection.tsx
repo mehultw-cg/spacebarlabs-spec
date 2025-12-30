@@ -13,7 +13,7 @@ export function TechStackSection() {
   );
 
   return (
-    <section id="tech-stack" className="py-20 bg-white dark:bg-neutral-950 text-black dark:text-white overflow-hidden">
+    <section id="tech-stack" className="py-20 bg-transparent text-black dark:text-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black dark:text-white">
@@ -47,7 +47,7 @@ export function TechStackSection() {
                     >
                       <item.icon className={cn(
                         "w-5 h-5 transition-colors",
-                         selectedTech.id === item.id ? "text-emerald-700/70 dark:text-emerald-500" : "text-neutral-500 dark:text-neutral-400 group-hover:text-neutral-700 dark:group-hover:text-neutral-200"
+                        selectedTech.id === item.id ? "text-emerald-700/70 dark:text-emerald-500" : "text-neutral-500 dark:text-neutral-400 group-hover:text-neutral-700 dark:group-hover:text-neutral-200"
                       )} />
                       <span className={cn(
                         "text-sm font-medium",
@@ -61,22 +61,22 @@ export function TechStackSection() {
           </div>
 
 
-{/* // ... (rest of imports remain the same, ensuring this is at the top)
+          {/* // ... (rest of imports remain the same, ensuring this is at the top)
 
 // Inside TechStackSection component, replacing the right side div: */}
 
           {/* Right Side: Detail Card */}
           <div className="lg:col-span-1 relative h-full min-h-[500px] lg:min-h-auto">
             <div className="sticky top-24 h-full">
-              
-                         {/* Background Gradient Blob */}
-                      <div className="absolute -z-20 -top-20 -right-20 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
-                      <div className="absolute -z-20 -bottom-20 -left-20 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
 
-                     
-<AnimatePresence>
-              <CardContainer containerClassName="py-0 h-full w-full" className="h-full w-full">
-                
+              {/* Background Gradient Blob */}
+              <div className="absolute -z-20 -top-20 -right-20 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute -z-20 -bottom-20 -left-20 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
+
+
+              <AnimatePresence>
+                <CardContainer containerClassName="py-0 h-full w-full" className="h-full w-full">
+
                   <motion.div
                     key={selectedTech.id}
                     initial={{ opacity: 0, scale: 0.98, x: 20 }}
@@ -88,62 +88,62 @@ export function TechStackSection() {
                     <CardBody className="h-full w-full bg-white/80 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden group/card text-left">
                       <div className="w-full h-full flex flex-col justify-between">
                         <div>
-                        <div className="flex items-start justify-between mb-6">
+                          <div className="flex items-start justify-between mb-6">
                             <CardItem translateZ={50} className="w-16 h-16 rounded-2xl bg-neutral-100 dark:bg-neutral-800/80 flex items-center justify-center border border-neutral-200 dark:border-neutral-700 shadow-inner">
-                                <selectedTech.icon className="w-8 h-8 text-emerald-700/70 dark:text-emerald-500" />
+                              <selectedTech.icon className="w-8 h-8 text-emerald-700/70 dark:text-emerald-500" />
                             </CardItem>
                             <CardItem translateZ={50} className="px-3 py-1 rounded-full backdrop-blur-lg bg-neutral-100/40 dark:bg-neutral-800/40 text-xs font-medium text-emerald-600 dark:text-emerald-500 border border-emerald-200 dark:border-emerald-700">
-                                {selectedTech.category}
+                              {selectedTech.category}
                             </CardItem>
-                        </div>
-                        
-                        <CardItem translateZ={60} className="text-3xl font-bold text-black dark:text-white mb-2 w-full">
+                          </div>
+
+                          <CardItem translateZ={60} className="text-3xl font-bold text-black dark:text-white mb-2 w-full">
                             {selectedTech.name}
-                        </CardItem>
-                        <CardItem translateZ={40} className="text-lg text-neutral-600 dark:text-neutral-300 mb-6 leading-relaxed w-full">
+                          </CardItem>
+                          <CardItem translateZ={40} className="text-lg text-neutral-600 dark:text-neutral-300 mb-6 leading-relaxed w-full">
                             {selectedTech.description}
-                        </CardItem>
+                          </CardItem>
 
-                        <div className="space-y-6 w-full">
+                          <div className="space-y-6 w-full">
                             <div>
-                                <CardItem translateZ={30} className="text-sm font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-2">
-                                    Why we use it
-                                </CardItem>
-                                <CardItem translateZ={30} className="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed w-full">
-                                    {selectedTech.whyWeUseIt}
-                                </CardItem>
+                              <CardItem translateZ={30} className="text-sm font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-2">
+                                Why we use it
+                              </CardItem>
+                              <CardItem translateZ={30} className="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed w-full">
+                                {selectedTech.whyWeUseIt}
+                              </CardItem>
                             </div>
 
                             <div>
-                                <CardItem translateZ={30} className="text-sm font-semibold text-purple-600 dark:text-purple-400 uppercase tracking-wider mb-3">
-                                    Key Features
-                                </CardItem>
-                                <CardItem translateZ={30} className="flex flex-wrap gap-2 w-full">
-                                    {selectedTech.features.map((feature, idx) => (
-                                        <span key={idx} className="px-2 py-1 rounded-md bg-neutral-100 dark:bg-neutral-800/50 border border-neutral-200 dark:border-neutral-700 text-xs text-neutral-600 dark:text-neutral-300">
-                                            {feature}
-                                        </span>
-                                    ))}
-                                </CardItem>
+                              <CardItem translateZ={30} className="text-sm font-semibold text-purple-600 dark:text-purple-400 uppercase tracking-wider mb-3">
+                                Key Features
+                              </CardItem>
+                              <CardItem translateZ={30} className="flex flex-wrap gap-2 w-full">
+                                {selectedTech.features.map((feature, idx) => (
+                                  <span key={idx} className="px-2 py-1 rounded-md bg-neutral-100 dark:bg-neutral-800/50 border border-neutral-200 dark:border-neutral-700 text-xs text-neutral-600 dark:text-neutral-300">
+                                    {feature}
+                                  </span>
+                                ))}
+                              </CardItem>
                             </div>
 
                             <div>
-                                <CardItem translateZ={30} className="text-sm font-semibold text-green-600 dark:text-green-400 uppercase tracking-wider mb-3">
-                                    Code Snippet
-                                </CardItem>
-                                <CardItem translateZ={40} className="w-full rounded-lg bg-neutral-50 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 p-4 overflow-x-auto">
-                                    <pre className="text-xs text-neutral-700 dark:text-neutral-300 font-mono">
-                                        <code>{selectedTech.codeSnippet}</code>
-                                    </pre>
-                                </CardItem>
+                              <CardItem translateZ={30} className="text-sm font-semibold text-green-600 dark:text-green-400 uppercase tracking-wider mb-3">
+                                Code Snippet
+                              </CardItem>
+                              <CardItem translateZ={40} className="w-full rounded-lg bg-neutral-50 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 p-4 overflow-x-auto">
+                                <pre className="text-xs text-neutral-700 dark:text-neutral-300 font-mono">
+                                  <code>{selectedTech.codeSnippet}</code>
+                                </pre>
+                              </CardItem>
                             </div>
+                          </div>
                         </div>
-                      </div>
                       </div>
                     </CardBody>
                   </motion.div>
-              </CardContainer>
-                </AnimatePresence>
+                </CardContainer>
+              </AnimatePresence>
             </div>
           </div>
         </div>

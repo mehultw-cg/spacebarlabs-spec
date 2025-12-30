@@ -25,7 +25,7 @@ import { cn } from "@/lib/utils";
 
 export function PricingSection() {
   return (
-    <section id="pricing" className="py-20 bg-white dark:bg-black text-black dark:text-white">
+    <section id="pricing" className="py-20 bg-transparent text-black dark:text-white">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black dark:text-white">
@@ -51,12 +51,12 @@ const PricingCard = ({ item }: { item: typeof pricingData[0] }) => {
     item.colSpan === 4
       ? "md:col-span-4"
       : item.colSpan === 3
-      ? "md:col-span-3"
-      : item.colSpan === 2
-      ? "md:col-span-2"
-      : item.colSpan === 5
-      ? "md:col-span-5"
-      : ""
+        ? "md:col-span-3"
+        : item.colSpan === 2
+          ? "md:col-span-2"
+          : item.colSpan === 5
+            ? "md:col-span-5"
+            : ""
 
   return (
     <Card
@@ -76,13 +76,13 @@ const PricingCard = ({ item }: { item: typeof pricingData[0] }) => {
         {item.features && (
           <ul className="space-y-3">
             {item.features.slice(0, 5).map((feature, idx) => (
-              <motion.li 
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 10 }}
-              transition={{ duration: 0.4, delay: idx * 0.1 }}
-              whileHover={{ scale: 1.1, x: 50, transition: { duration: 0.3 } }}
-              key={idx} className="flex items-start gap-3 text-md text-neutral-600 dark:text-neutral-300">
+              <motion.li
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.4, delay: idx * 0.1 }}
+                whileHover={{ scale: 1.1, x: 50, transition: { duration: 0.3 } }}
+                key={idx} className="flex items-start gap-3 text-md text-neutral-600 dark:text-neutral-300">
                 {/* <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0" /> */}
                 <Check className="mt-1 h-5 w-5 text-emerald-500 shrink-0" />
                 <span>{feature}</span>

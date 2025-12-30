@@ -6,7 +6,7 @@ import { ContactSection } from "@/components/sections/ContactSection";
 
 export function AboutUsSection() {
   return (
-    <section id="about" className="bg-white dark:bg-black text-black dark:text-white">
+    <section id="about" className="bg-transparent text-black dark:text-white">
       {/* About Content */}
       <div className="py-20 max-w-7xl mx-auto px-4 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -41,16 +41,16 @@ export function AboutUsSection() {
                   I will use a generic placeholder for now as the image path is dynamic and I should copy it to public first to use it properly, but for now I will use a placeholder or just the structure. 
                   Actually, I should use the generated image. I'll assume it's available in the public folder or I'll just use a placeholder for now to be safe and robust.
               */}
-               <img 
-                src="/about-team-placeholder.png" 
-                alt="SpaceBar Labs Team" 
+              <img
+                src="/about-team-placeholder.png"
+                alt="SpaceBar Labs Team"
                 className="w-full h-full object-cover"
                 // In a real scenario, I would move the generated image to public/ and reference it here.
                 // For this demo, I'll use a placeholder color/text if image is missing, or a generic URL.
                 onError={(e) => {
-                    e.currentTarget.src = "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80";
+                  e.currentTarget.src = "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80";
                 }}
-               />
+              />
             </div>
           </div>
         </div>
