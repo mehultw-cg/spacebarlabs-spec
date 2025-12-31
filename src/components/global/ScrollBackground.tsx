@@ -9,9 +9,9 @@ interface ScrollBackgroundProps {
 
 const BACKGROUND_IMAGES = [
   '/horsehead.webp',    // 0%
-  '/weic2519a.webp',    // 25%
-  '/horsehead.jpg',     // 50%
-  '/weic2519a.webp',    // 75%
+  '/webp/Tarantula_nebula_sm.webp',    // 25%
+  '/webp/L1572_protostar_sm.webp',     // 50%
+  '/webp/RhoOphiuchi_newStars_sm_bot_cr.webp',    // 75%
   '/horsehead.webp',    // 100%
 ];
 
@@ -70,9 +70,8 @@ export function ScrollBackground({ children }: ScrollBackgroundProps) {
         {BACKGROUND_IMAGES.map((src, index) => (
           <motion.div
             key={`${index}-${src}`}
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            className="absolute inset-0"
             style={{
-              backgroundImage: `url(${src})`,
               zIndex: index === activeIndex ? 1 : 0
             }}
             initial={false}
@@ -83,7 +82,22 @@ export function ScrollBackground({ children }: ScrollBackgroundProps) {
               duration: 1.5,
               ease: "easeInOut"
             }}
-          />
+          >
+            <motion.div
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{
+                backgroundImage: `url(${src})`,
+              }}
+              animate={{
+                scale: [1, 1.1, 1]
+              }}
+              transition={{
+                duration: 30,
+                ease: "easeInOut",
+                repeat: Infinity,
+              }}
+            />
+          </motion.div>
         ))}
       </div>
 

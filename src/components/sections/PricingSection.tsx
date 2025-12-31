@@ -26,9 +26,9 @@ import Image from "next/image";
 
 export function PricingSection() {
   return (
-    
-    <section id="pricing" className="bg-white dark:bg-black text-black dark:text-white">
-    <div className="pricing_section_image_bg py-20">  
+
+    <section id="pricing" className="bg-transparent text-black dark:text-white">
+      <div className="py-20">
         {/* <Image
           src="/Binary_Black_Holes_Accretion_Disk.webp"
           alt="Pricing Background"
@@ -37,23 +37,23 @@ export function PricingSection() {
           className="object-cover"
         /> */}
 
-      
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white dark:text-white">
-            Pricing
-          </h2>
-          <p className="text-neutral-400 dark:text-neutral-400 max-w-2xl mx-auto">
-            Transparent pricing for every stage of your journey.
-          </p>
-        </div>
 
-        <BentoGrid className="max-w-7xl lg:w-7xl mx-auto md:grid-cols-5 md:auto-rows-auto">
-          {pricingData.map((item, i) => (
-            <PricingCard key={i} item={item} />
-          ))}
-        </BentoGrid>
-      </div>
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white dark:text-white">
+              Pricing
+            </h2>
+            <p className="text-neutral-400 dark:text-neutral-400 max-w-2xl mx-auto">
+              Transparent pricing for every stage of your journey.
+            </p>
+          </div>
+
+          <BentoGrid className="max-w-7xl lg:w-7xl mx-auto md:grid-cols-5 md:auto-rows-auto">
+            {pricingData.map((item, i) => (
+              <PricingCard key={i} item={item} />
+            ))}
+          </BentoGrid>
+        </div>
       </div>
     </section>
   );
@@ -64,12 +64,12 @@ const PricingCard = ({ item }: { item: typeof pricingData[0] }) => {
     item.colSpan === 4
       ? "md:col-span-4"
       : item.colSpan === 3
-      ? "md:col-span-3"
-      : item.colSpan === 2
-      ? "md:col-span-2"
-      : item.colSpan === 5
-      ? "md:col-span-5"
-      : ""
+        ? "md:col-span-3"
+        : item.colSpan === 2
+          ? "md:col-span-2"
+          : item.colSpan === 5
+            ? "md:col-span-5"
+            : ""
 
   return (
     <motion.div
@@ -81,7 +81,7 @@ const PricingCard = ({ item }: { item: typeof pricingData[0] }) => {
         className="h-full px-4 flex flex-col backdrop-blur-3xl justify-between transition-all duration-300 hover:shadow-xl border-black/5 dark:border-white/5 dark:bg-black/30"
       >
         <CardHeader className="p-6 pb-2">
-          <motion.div 
+          <motion.div
             variants={{
               initial: { x: 0, scale: 1 },
               hover: { x: 10, scale: 1.3 }
@@ -91,7 +91,7 @@ const PricingCard = ({ item }: { item: typeof pricingData[0] }) => {
           >
             <PricingIcon icon={item.icon} />
           </motion.div>
-          
+
           <motion.div
             variants={{
               initial: { x: 0 },
@@ -102,7 +102,7 @@ const PricingCard = ({ item }: { item: typeof pricingData[0] }) => {
             <CardTitle className="text-lg text-black dark:text-white md:text-xl font-bold">{item.title}</CardTitle>
           </motion.div>
 
-          <motion.p 
+          <motion.p
             variants={{
               initial: { x: 0 },
               hover: { x: 10 }
@@ -112,7 +112,7 @@ const PricingCard = ({ item }: { item: typeof pricingData[0] }) => {
           >
             {item.description}
           </motion.p>
-          
+
           <motion.div
             variants={{
               initial: { x: 0 },
@@ -125,12 +125,12 @@ const PricingCard = ({ item }: { item: typeof pricingData[0] }) => {
             </CardDescription>
           </motion.div>
         </CardHeader>
-        
+
         <CardContent className="flex-grow p-6 pt-2">
           {item.features && (
             <ul className="space-y-3">
               {item.features.slice(0, 5).map((feature, idx) => (
-                <motion.li 
+                <motion.li
                   key={idx}
                   variants={{
                     // initial: { opacity: 0, y: 10, x: 0 },
