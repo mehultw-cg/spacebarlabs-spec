@@ -9,7 +9,6 @@ import { AuroraText } from "../ui/aurora-text";
 import { RainbowButton } from "../ui/rainbow-button";
 import Starfield from "../vfx/Starfield";
 import Image from "next/image";
-import Image from "next/image";
 
 
 export function HeroSection() {
