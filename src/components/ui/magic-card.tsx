@@ -27,7 +27,7 @@ export function MagicCard({
   const mouseX = useMotionValue(-gradientSize)
   const mouseY = useMotionValue(-gradientSize)
   const shadowBleedContext = useShadowBleed()
-  
+
   const reset = useCallback(() => {
     mouseX.set(-gradientSize)
     mouseY.set(-gradientSize)
@@ -41,7 +41,7 @@ export function MagicCard({
       const localY = e.clientY - rect.top
       mouseX.set(localX)
       mouseY.set(localY)
-      
+
       if (shadowBleedContext && cardRef.current) {
         shadowBleedContext.registerHover(cardId, rect, localX, localY)
       }
@@ -109,10 +109,10 @@ export function MagicCard({
           background: borderGradient,
         }}
       />
-      
+
       {/* Inner card background - inset to show border */}
       <div className="absolute inset-[2px] rounded-[inherit] bg-white/95 dark:bg-black/95 backdrop-blur-sm" />
-      
+
       {/* Subtle inner glow */}
       <motion.div
         className="pointer-events-none absolute inset-[2px] rounded-[inherit] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -125,7 +125,7 @@ export function MagicCard({
           `,
         }}
       />
-      
+
       {/* Content */}
       <div className="relative h-full">{children}</div>
     </div>

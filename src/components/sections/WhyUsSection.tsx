@@ -21,7 +21,7 @@ import {
 
 export function WhyUsSection() {
   return (
-    <section id="why-us" className="py-20 bg-white dark:bg-black text-black dark:text-white">
+    <section id="why-us" className="py-20 bg-transparent text-black dark:text-white">
       <div className="max-w-[104rem] mx-auto px-4 md:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black dark:text-white">
@@ -34,27 +34,28 @@ export function WhyUsSection() {
 
         <BentoGrid className="max-w-full mx-auto md:auto-rows-[10rem] md:grid-cols-7">
           {whyUsData.map((item, i) => {
-             let className = "";
-             if (item.colSpan === 2) className += "md:col-span-2 ";
-             else if (item.colSpan === 3) className += "md:col-span-3 ";
-             else if (item.colSpan === 4) className += "md:col-span-4 ";
-             else if (item.colSpan === 5) className += "md:col-span-5 ";
-             else if (item.colSpan === 6) className += "md:col-span-6 ";
-             else if (item.colSpan === 7) className += "md:col-span-7 ";
+            let className = "";
+            if (item.colSpan === 2) className += "md:col-span-2 ";
+            else if (item.colSpan === 3) className += "md:col-span-3 ";
+            else if (item.colSpan === 4) className += "md:col-span-4 ";
+            else if (item.colSpan === 5) className += "md:col-span-5 ";
+            else if (item.colSpan === 6) className += "md:col-span-6 ";
+            else if (item.colSpan === 7) className += "md:col-span-7 ";
 
-             if (item.rowSpan === 2) className += "md:row-span-2 ";
-             else if (item.rowSpan === 3) className += "md:row-span-3 ";
-             else if (item.rowSpan === 4) className += "md:row-span-4 ";
-             
-             return (
-            <BentoGridItem
-              key={i}
-              title={item.title}
-              description={item.description}
-              className={className.trim()}
-              icon={item.icon === "Placeholder" ? null : <WhyUsIcon icon={item.icon} />}
-            />
-          )})}
+            if (item.rowSpan === 2) className += "md:row-span-2 ";
+            else if (item.rowSpan === 3) className += "md:row-span-3 ";
+            else if (item.rowSpan === 4) className += "md:row-span-4 ";
+
+            return (
+              <BentoGridItem
+                key={i}
+                title={item.title}
+                description={item.description}
+                className={className.trim()}
+                icon={item.icon === "Placeholder" ? null : <WhyUsIcon icon={item.icon} />}
+              />
+            )
+          })}
         </BentoGrid>
       </div>
     </section>

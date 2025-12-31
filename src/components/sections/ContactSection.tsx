@@ -43,13 +43,13 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-white dark:bg-black text-black dark:text-white relative overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-            <div className="absolute top-1/3 left-1/3 w-56 h-56 bg-(--color-1)/20 rounded-full blur-[3.5rem]" />
-            <div className="absolute top-[70%] left-[25%] w-64 h-64 bg-(--color-5)/20 rounded-full blur-3xl" />
-            <div className="absolute -bottom-[2%] right-1/4 w-96 h-96 bg-(--color-4)/20 rounded-full blur-3xl" />
-        </div>
+    <section id="contact" className="py-20 bg-transparent text-black dark:text-white relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-1/3 left-1/3 w-56 h-56 bg-(--color-1)/20 rounded-full blur-[3.5rem]" />
+        <div className="absolute top-[70%] left-[25%] w-64 h-64 bg-(--color-5)/20 rounded-full blur-3xl" />
+        <div className="absolute -bottom-[2%] right-1/4 w-96 h-96 bg-(--color-4)/20 rounded-full blur-3xl" />
+      </div>
 
       <div className="max-w-4xl mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
@@ -147,7 +147,7 @@ export function ContactSection() {
                   type="submit"
                   disabled={isSubmitting}
                   className="rounded-full"
-                  variant="outline"                
+                  variant="outline"
                 >
                   {isSubmitting ? "Sending..." : "Send Message"}
                 </RainbowButton>

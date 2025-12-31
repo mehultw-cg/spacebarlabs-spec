@@ -7,6 +7,8 @@ import { cn } from "@/lib/utils";
 import { BorderBeam } from "@/components/ui/border-beam";
 import { AuroraText } from "../ui/aurora-text";
 import { RainbowButton } from "../ui/rainbow-button";
+import Starfield from "../vfx/Starfield";
+import Image from "next/image";
 import Image from "next/image";
 
 
@@ -21,6 +23,11 @@ export function HeroSection() {
         className="object-cover"
       /> */}
       {/* Background Effects */}
+      <Starfield
+        speedFactor={0.0075}
+        backgroundColor="transparent"
+      />
+
       <div className="absolute inset-0 w-full h-full bg-white dark:bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-[20%] left-[20%] w-96 h-96 bg-(--color-6)/20 rounded-full blur-[100px] animate-pulse" />
@@ -29,12 +36,13 @@ export function HeroSection() {
 
       {/* Main Container with Animated Gradient Border */}
       <div className="relative z-10 overflow-hidden rounded-3xl bg-white/20 dark:bg-neutral-950/50 border border-neutral-200 dark:border-white/10 shadow-xl dark:shadow-none">
-        
+
         {/* Glassmorphic Card Content */}
-        <div className="relative z-20 backdrop-blur-xl px-8 py-16 md:px-16 md:py-20 text-center max-w-4xl mx-2 my-2 rounded-5xl tracking-tight">
-          
+        <div className="relative z-20 backdrop-blur-lg px-8 py-16 md:px-16 md:py-20 text-center max-w-4xl mx-2 my-2 rounded-5xl tracking-tight">
+
+
           {/* Badge */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -48,7 +56,7 @@ export function HeroSection() {
           </motion.div>
 
           {/* Headline */}
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
@@ -56,10 +64,10 @@ export function HeroSection() {
           >
             Forge your digital legacy <br className="hidden md:block" />
             <AuroraText
-            colors={["#27ae60","#16a085","#3498db","#2980b9","#9e59b6","#2ecc71","#00cec9"]}
-            speed={0.78}
+              colors={["#27ae60", "#16a085", "#3498db", "#2980b9", "#9e59b6", "#2ecc71", "#00cec9"]}
+              speed={0.78}
             >
-like the stars forged you.
+              like the stars forged you.
             </AuroraText>
             {/* <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-600">
               ds
@@ -67,7 +75,7 @@ like the stars forged you.
           </motion.h1>
 
           {/* Subtext */}
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -77,7 +85,7 @@ like the stars forged you.
           </motion.p>
 
           {/* Buttons */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
@@ -98,9 +106,9 @@ like the stars forged you.
             >
               Let's start your project
             </Button> */}
-            <Button 
-              size="lg" 
-              variant="outline" 
+            <Button
+              size="lg"
+              variant="outline"
               className="w-full sm:w-auto border-neutral-200 dark:border-white/20 text-black dark:text-white dark:hover:shadow-emerald-500/50 dark:hover:shadow-xl/30 hover:bg-neutral-100 dark:hover:bg-white/10 rounded-full px-8 h-12 font-medium backdrop-blur-lg"
               onClick={() => document.getElementById('why-us')?.scrollIntoView({ behavior: 'smooth' })}
             >
@@ -109,17 +117,17 @@ like the stars forged you.
           </motion.div>
         </div>
         <BorderBeam
-         size={350}
-         duration={12}
-         borderWidth={2}
-         className="from-transparent via-emerald-500 to-transparent" />
+          size={350}
+          duration={12}
+          borderWidth={2}
+          className="from-transparent via-emerald-500 to-transparent" />
         <BorderBeam
-         size={350}
-         duration={12}
-         delay={6}
-         borderWidth={2}
-         className="from-transparent via-sky-500 to-transparent" />
-         <BorderBeam
+          size={350}
+          duration={12}
+          delay={6}
+          borderWidth={2}
+          className="from-transparent via-sky-500 to-transparent" />
+        <BorderBeam
           size={350}
           duration={6}
           borderWidth={2}

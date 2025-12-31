@@ -29,7 +29,7 @@ export function Navbar({ className }: { className?: string }) {
   ];
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full bg-gradient-to-b from-transparent to-black">
       <AceternityNavbar className={className}>
         <NavBody className="gap-4">
           <div className="flex items-center gap-2">

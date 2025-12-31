@@ -6,38 +6,41 @@ import { TechStackSection } from "@/components/sections/TechStackSection";
 import { AboutUsSection } from "@/components/sections/AboutUsSection";
 import { ServicesSectionNew } from "@/components/sections/ServicesSectionNew";
 import { Footer } from "@/components/global/footer";
+import { ScrollBackground } from "@/components/globals/ScrollBackground";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <HeroSection />
+    <main className="min-h-screen bg-transparent">
+      <ScrollBackground>
+        {/* Hero Section */}
+        <HeroSection />
 
-      {/* Services Section */}
-      {/* <ServicesSection /> */}
-      
-      {/* New Services Section */}
-      <ServicesSectionNew />
+        {/* Services Section */}
+        {/* <ServicesSection /> */}
 
-      {/* Pricing Section */}
-      <PricingSection />
+        {/* New Services Section */}
+        <ServicesSectionNew />
 
-      {/* Why Us Section */}
-      <WhyUsSection />
+        {/* Pricing Section */}
+        <PricingSection />
 
-      {/* Tech Stack Section */}
-      <TechStackSection />
+        {/* Why Us Section */}
+        <WhyUsSection />
 
-      {/* About Us Section (includes Contact) */}
-      <AboutUsSection />
+        {/* Tech Stack Section */}
+        <TechStackSection />
 
-      {/* Footer - Placeholder for now */}
-      {/* <footer className="py-12 px-4 border-t bg-black text-white border-neutral-800">
-        <div className="max-w-7xl mx-auto text-center text-neutral-500">
-          <p>&copy; 2025 SpaceBar Labs. All rights reserved.</p>
-        </div>
-      </footer> */}
-      <Footer />
+        {/* About Us Section (includes Contact) */}
+        <AboutUsSection />
+
+        {/* Footer - Placeholder for now */}
+        {/* <footer className="py-12 px-4 border-t bg-black text-white border-neutral-800">
+          <div className="max-w-7xl mx-auto text-center text-neutral-500">
+            <p>&copy; 2025 SpaceBar Labs. All rights reserved.</p>
+          </div>
+        </footer> */}
+        <Footer />
+      </ScrollBackground>
     </main>
   );
 }
