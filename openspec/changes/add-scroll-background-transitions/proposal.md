@@ -10,6 +10,6 @@ The current static background image provides no dynamic visual interest as users
 ## Impact
 - **Affected Specs**: `scroll-background-transitions` (new capability)
 - **Affected Code**: 
-  - `src/components/globals/ScrollBackground.tsx` (new component)
+  - `src/components/global/ScrollBackground.tsx` (new component)
   - `src/app/page.tsx` (integration)
   - `src/app/globals.css` (background styling updates)

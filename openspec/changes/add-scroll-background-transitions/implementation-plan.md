@@ -1,4 +1,4 @@
-# Implementation Plan - Scroll Background Transitions
+not # Implementation Plan - Scroll Background Transitions
 
 The goal is to implement scroll-triggered background transitions as defined in the `add-scroll-background-transitions` spec. The `ScrollBackground` component exists but is not integrated.
 
@@ -23,7 +23,7 @@ The goal is to implement scroll-triggered background transitions as defined in t
 - **Keep inner containers (background effects, content cards) unmodified.**
 - Update `Starfield` usage to pass `backgroundColor="transparent"`.
 
-#### [MODIFY] [ScrollBackground.tsx](file:///Users/nandhusridhar/workspaces/spacebarlabs-spec/src/components/globals/ScrollBackground.tsx)
+#### [MODIFY] [ScrollBackground.tsx](file:///Users/nandhusridhar/workspaces/spacebarlabs-spec/src/components/global/ScrollBackground.tsx)
 - Verify logic and ensure it renders children correctly.
 
 #### [MODIFY] [Starfield.tsx](file:///Users/nandhusridhar/workspaces/spacebarlabs-spec/src/components/vfx/Starfield.tsx)

@@ -1,5 +1,5 @@
 ## 1. Implementation
-- [x] 1.1 Create ScrollBackground component in `src/components/globals/ScrollBackground.tsx`
+- [x] 1.1 Create ScrollBackground component in `src/components/global/ScrollBackground.tsx`
 - [x] 1.2 Implement scroll position tracking logic using framer-motion
 - [x] 1.3 Define background image transition points (0%, 25%, 50%, 75%, 100%)
 - [x] 1.4 Create smooth opacity transitions with framer-motion

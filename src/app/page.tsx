@@ -6,7 +6,7 @@ import { TechStackSection } from "@/components/sections/TechStackSection";
 import { AboutUsSection } from "@/components/sections/AboutUsSection";
 import { ServicesSectionNew } from "@/components/sections/ServicesSectionNew";
 import { Footer } from "@/components/global/footer";
-import { ScrollBackground } from "@/components/globals/ScrollBackground";
+import { ScrollBackground } from "@/components/global/ScrollBackground";
 
 export default function Home() {
   return (
