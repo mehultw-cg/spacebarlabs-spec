@@ -9,8 +9,14 @@ interface Props {
     starCount?: number;
 }
 
-export default function Starfield(props: Props) {
-    const { speedFactor = 0.05, backgroundColor = 'black', starColor = [255, 255, 255], starCount = 5000 } = props;
+const DEFAULT_STAR_COLOR: [number, number, number] = [255, 255, 255];
+
+const Starfield = React.memo(function Starfield({
+    speedFactor = 0.02,
+    backgroundColor = 'transparent',
+    starColor = DEFAULT_STAR_COLOR,
+    starCount = 3000
+}: Props) {
 
     useEffect(() => {
         const canvas = document.getElementById('starfield') as HTMLCanvasElement;
@@ -21,6 +27,7 @@ export default function Starfield(props: Props) {
             if (c) {
                 let w = window.innerWidth;
                 let h = window.innerHeight;
+                let animationFrameId: number;
 
                 const setCanvasExtents = () => {
                     canvas.width = w;
@@ -28,10 +35,6 @@ export default function Starfield(props: Props) {
                 };
 
                 setCanvasExtents();
-
-                window.onresize = () => {
-                    setCanvasExtents();
-                };
 
                 const makeStars = (count: number) => {
                     const out = [];
@@ -47,7 +50,7 @@ export default function Starfield(props: Props) {
                     return out;
                 };
 
-                let stars = makeStars(starCount);
+                const stars = makeStars(starCount);
 
                 const clear = () => {
                     c.clearRect(0, 0, canvas.width, canvas.height);
@@ -78,7 +81,7 @@ export default function Starfield(props: Props) {
                 let prevTime: number;
                 const init = (time: number) => {
                     prevTime = time;
-                    requestAnimationFrame(tick);
+                    animationFrameId = requestAnimationFrame(tick);
                 };
 
                 const tick = (time: number) => {
@@ -109,27 +112,27 @@ export default function Starfield(props: Props) {
                         putPixel(x, y, star.size, b);
                     }
 
-                    requestAnimationFrame(tick);
+                    animationFrameId = requestAnimationFrame(tick);
                 };
 
-                requestAnimationFrame(init);
+                animationFrameId = requestAnimationFrame(init);
 
-                // add window resize listener:
-                window.addEventListener('resize', function () {
-                    w = window.innerWidth;
-                    h = window.innerHeight;
+                const handleResize = () => {
                     setCanvasExtents();
-                });
+                };
+
+                window.addEventListener('resize', handleResize);
+
+                return () => {
+                    window.removeEventListener('resize', handleResize);
+                    cancelAnimationFrame(animationFrameId);
+                };
             } else {
                 console.error('Could not get 2d context from canvas element');
             }
         } else {
             console.error('Could not find canvas element with id "starfield"');
         }
-
-        return () => {
-            window.onresize = null;
-        };
     }, [starColor, backgroundColor, speedFactor, starCount]);
 
     return (
@@ -138,16 +141,18 @@ export default function Starfield(props: Props) {
             style={{
                 padding: 0,
                 margin: 0,
-                position: 'fixed',
+                position: 'absolute',
                 top: 0,
                 right: 0,
                 bottom: 0,
                 left: 0,
-                zIndex: 10,
+                zIndex: 0,
                 opacity: 1,
                 pointerEvents: 'none',
                 mixBlendMode: 'screen',
             }}
         ></canvas>
     );
-}
+});
+
+export default Starfield;

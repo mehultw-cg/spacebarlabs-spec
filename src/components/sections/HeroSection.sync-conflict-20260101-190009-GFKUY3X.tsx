@@ -22,19 +22,22 @@ export function HeroSection() {
         className="object-cover"
       /> */}
         {/* Background Effects */}
-        {/* Starfield moved to global ScrollBackground */}
+        <Starfield
+          speedFactor={0.0075}
+          backgroundColor="transparent"
+        />
 
-        <div className="absolute inset-0 w-full h-full"></div>
+        {/* <div className="absolute inset-0 w-full h-full bg-white dark:bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div> */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
           <div className="absolute top-[20%] left-[20%] w-96 h-96 bg-(--color-6)/20 rounded-full blur-[100px] animate-pulse" />
           <div className="absolute bottom-[20%] right-[20%] w-96 h-96 bg-(--color-5)/20 rounded-full blur-[100px] animate-pulse delay-1000" />
         </div>
 
         {/* Main Container with Animated Gradient Border */}
-        <div className="relative z-10 overflow-hidden rounded-3xl bg-white/20 dark:bg-neutral-950/50 backdrop-blur-lg border border-neutral-200 dark:border-white/10 shadow-xl dark:shadow-none">
+        <div className="relative z-10 overflow-hidden rounded-3xl bg-white/20 dark:bg-neutral-950/50 border border-neutral-200 dark:border-white/10 shadow-xl dark:shadow-none">
 
           {/* Glassmorphic Card Content */}
-          <div className="relative z-20 rounded-3xl px-8 py-16 md:px-16 md:py-20 text-center max-w-4xl mx-1.5 my-1.5 rounded-5xl tracking-tight">
+          <div className="relative z-20 backdrop-blur-lg px-8 py-16 md:px-16 md:py-20 text-center max-w-4xl mx-2 my-2 rounded-5xl tracking-tight">
 
 
             {/* Badge */}
@@ -74,7 +77,7 @@ export function HeroSection() {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.25, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 mb-10 max-w-2xl mx-auto leading-relaxed"
             >
               We weave code into constellations, crafting digital experiences that defy gravity and illuminate the void. Your vision is our universe; let's explore the infinite possibilities together.
@@ -116,19 +119,19 @@ export function HeroSection() {
             size={350}
             duration={12}
             borderWidth={2}
-            className="from-transparent via-emerald-500 to-transparent z-30" />
+            className="from-transparent via-emerald-500 to-transparent" />
           <BorderBeam
             size={350}
             duration={12}
             delay={6}
             borderWidth={2}
-            className="from-transparent via-sky-500 to-transparent z-30" />
+            className="from-transparent via-sky-500 to-transparent" />
           <BorderBeam
             size={350}
             duration={6}
             borderWidth={2}
             reverse
-            className="from-transparent via-violet-600 to-transparent z-30" />
+            className="from-transparent via-violet-600 to-transparent" />
         </div>
       </div>
     </section>

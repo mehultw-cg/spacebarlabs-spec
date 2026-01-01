@@ -12,6 +12,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-transparent">
       <ScrollBackground>
+        <div className="dark:bg-black/20">
         {/* Hero Section */}
         <HeroSection />
 
@@ -40,6 +41,7 @@ export default function Home() {
           </div>
         </footer> */}
         <Footer />
+        </div>
       </ScrollBackground>
     </main>
   );

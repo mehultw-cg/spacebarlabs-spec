@@ -96,7 +96,7 @@ export function MagicCard({
       ref={cardRef}
       className={cn(
         "group relative rounded-[inherit]",
-        "shadow-lg shadow-black/10 dark:shadow-black/30 z-10 outline outline-neutral-950/10 dark:outline-white/5",
+        "shadow-lg shadow-black/10 backdrop-blur-xl dark:shadow-black/30 z-20 outline outline-neutral-950/10 dark:outline-white/5",
         className
       )}
       onPointerMove={handlePointerMove}
@@ -104,14 +104,14 @@ export function MagicCard({
     >
       {/* Border gradient layer - visible on hover */}
       <motion.div
-        className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-100 group-hover:opacity-100 transition-opacity duration-300"
+        className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
         style={{
           background: borderGradient,
         }}
       />
 
       {/* Inner card background - inset to show border */}
-      <div className="absolute inset-[2px] rounded-[inherit] bg-white/95 dark:bg-black/95 backdrop-blur-sm" />
+      <div className="absolute inset-[2px] rounded-[inherit] bg-white/50 dark:bg-black/80 backdrop-blur-xl" />
 
       {/* Subtle inner glow */}
       <motion.div

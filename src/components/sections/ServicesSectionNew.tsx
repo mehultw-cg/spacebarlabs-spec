@@ -46,7 +46,7 @@ export function ServicesSectionNew() {
   };
 
   return (
-    <section ref={sectionRef} id="services-new" className="py-20 bg-transparent relative overflow-hidden">
+    <section ref={sectionRef} id="services-new" className="py-20 bg-[radial-gradient(circle at 50% 50%, transparent 0%, #020302 100%)] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -76,11 +76,7 @@ export function ServicesSectionNew() {
                 height: isAllVisible ? "auto" : ((visibleRows - 1) * ROW_HEIGHT + PEEK_HEIGHT)
               }}
               transition={{ duration: 0.6, ease: "easeInOut" }}
-              className="relative"
-              style={{
-                // Use clip with custom inset to allow horizontal overflow but clip vertical
-                clipPath: isAllVisible ? 'none' : 'inset(-300px -300px 0 -300px)'
-              }}
+              className="relative overflow-hidden"
             >
               <div className="flex flex-col gap-4">
                 {allRows.slice(1).map((rowServices, index) => (
@@ -102,9 +98,9 @@ export function ServicesSectionNew() {
                 {/* Progressive blur effect */}
                 <ProgressiveBlur
                   direction="bottom"
-                  blurLayers={4}
-                  blurIntensity={1}
-                  className="absolute bottom-2 h-[10%] w-full"
+                  blurLayers={6}
+                 blurIntensity={2}
+                  className="absolute bottom-0 h-[10%] w-full z-20"
                 >
 
                 </ProgressiveBlur>
@@ -118,7 +114,7 @@ export function ServicesSectionNew() {
 
 
                   {/* Solid background + button container */}
-                  <div className="h-32 flex items-center justify-center -mt-4  bg-gradient-to-b from-transparent from-50%  to-neutral-100 dark:to-[#020302] to-80%"    >
+                  <div className="h-32 flex items-center justify-center -mt-4  "    >
                     <RainbowButton
                       onClick={handleShowMore}
                       className="px-8 py-3 text-base font-semibold rounded-full"
@@ -159,7 +155,7 @@ export function ServicesSectionNew() {
         </AnimatePresence>
 
         {/* Security Commitment Section - Dark glassmorphic with gradient */}
-        <div className="mt-36 mb-24 p-8 rounded-3xl relative overflow-hidden backdrop-blur-xl border border-neutral-950/10 dark:border-white/10 shadow-2xl shadow-purple-500/10 dark:bg-gradient-to-br from-neutral-950/70 via-neutral-950/40 to-black/80">
+        <div className="mt-36 mb-24 p-8 rounded-3xl relative overflow-hidden backdrop-blur-xl border border-neutral-950/10 dark:border-white/10 shadow-2xl shadow-purple-500/10 dark:bg-gradient-to-br from-neutral-950/70 via-neutral-950/40 to-black/80 dark:backdrop-blur-xl">
           {/* Dark gradient background */}
           <div className="absolute inset-0 bg-gradient-to-br from-neutral-100/70 via-neutral-100/70 to-neutral-100/5 dark:from-neutral-950/70 dark:via-neutral-950/40 dark:to-black/80" />
 

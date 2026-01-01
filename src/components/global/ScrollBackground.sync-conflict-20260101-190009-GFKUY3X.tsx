@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import Starfield from '../vfx/Starfield';
 
 interface ScrollBackgroundProps {
   children: React.ReactNode;
@@ -12,11 +11,11 @@ const BACKGROUND_IMAGES = [
   '/horsehead.webp',    // 0%
   '/webp/Tarantula_nebula_sm.webp',    // 25%
   '/webp/L1572_protostar_sm.webp',     // 50%
-  '/webp/RhoOphiuchi_newStars_sm_mid_cr.webp',    // 75%
-  '/webp/Stephans_Quintet_composite_sm.webp',    // 85%
+  '/webp/RhoOphiuchi_newStars_sm_bot_cr.webp',    // 75%
+  '/horsehead.webp',    // 100%
 ];
 
-const SCROLL_THRESHOLDS = [0, 0.25, 0.55, 0.7, 0.8];
+const SCROLL_THRESHOLDS = [0, 0.25, 0.5, 0.75, 1];
 
 export function ScrollBackground({ children }: ScrollBackgroundProps) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -100,9 +99,6 @@ export function ScrollBackground({ children }: ScrollBackgroundProps) {
             />
           </motion.div>
         ))}
-        <div className="absolute bg-transparent inset-0 z-20">
-          <Starfield speedFactor={0.01} backgroundColor="transparent" />
-        </div>
       </div>
 
       {/* Content */}
@@ -111,14 +107,12 @@ export function ScrollBackground({ children }: ScrollBackgroundProps) {
       </div>
 
       {/* Debug indicator (remove in production) */}
-      {/*}
       {process.env.NODE_ENV === 'development' && (
         <div className="fixed top-4 right-4 z-50 bg-black/80 text-white p-2 rounded text-sm pointer-events-none font-mono">
           Scroll: {Math.round(scrollProgress * 100)}% |
           Bg: {activeIndex + 1}/{BACKGROUND_IMAGES.length}
         </div>
       )}
-      */}
     </div>
   );
 }

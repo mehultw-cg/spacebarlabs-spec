@@ -60,9 +60,9 @@ export function ContactSection() {
         </div>
 
         {/* MacOS Window Card */}
-        <div className="rounded-xl border border-neutral-200 dark:border-white/10 bg-white/50 dark:bg-white/5 backdrop-blur-xl shadow-2xl dark:shadow-xl dark:shadow-neutral-900/30 overflow-hidden">
+        <div className="rounded-xl border border-neutral-200 dark:border-white/10 bg-white/50 dark:bg-black/50 backdrop-blur-xl shadow-2xl dark:shadow-xl dark:shadow-neutral-900/30 overflow-hidden">
           {/* Window Header */}
-          <div className="h-10 bg-neutral-100/50 dark:bg-white/5 border-b border-neutral-200 dark:border-white/5 flex items-center px-4 gap-2">
+          <div className="h-10 bg-neutral-100/50 dark:bg-black/60 border-b border-neutral-200 dark:border-white/5 flex items-center px-4 gap-2">
             <div className="w-3 h-3 rounded-full bg-red-500/80" />
             <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
             <div className="w-3 h-3 rounded-full bg-green-500/80" />

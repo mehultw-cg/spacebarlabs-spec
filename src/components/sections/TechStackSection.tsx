@@ -39,19 +39,19 @@ export function TechStackSection() {
                       key={item.id}
                       onClick={() => setSelectedTech(item)}
                       className={cn(
-                        "flex items-center gap-2 px-4 py-3 rounded-xl border transition-all duration-200 group",
+                        "flex items-center gap-2 px-4 py-3 rounded-xl backdrop-blur-md border transition-all ease-out duration-200 shadow shadow-2xlπ group",
                         selectedTech.id === item.id
-                          ? "bg-emerald-100/50 dark:bg-emerald-800/20 border-emerald-300/50 dark:border-emerald-600/50 shadow-lg shadow-emerald-200/50 dark:shadow-emerald-900/50"
-                          : "bg-white dark:bg-neutral-900/50 border-neutral-200 dark:border-neutral-800 hover:bg-emerald-100/30 dark:hover:bg-emerald-600/5 hover:border-emerald-300/50 dark:hover:border-emerald-600/30"
+                          ? "bg-emerald-100/50 dark:bg-emerald-900/40 border-emerald-300/50 dark:border-emerald-600/50 shadow-lg shadow-emerald-200/50 dark:shadow-emerald-900/50"
+                          : "bg-white/60 dark:bg-neutral-900/50 border-neutral-200 dark:border-neutral-800 hover:bg-emerald-100/30 dark:hover:bg-emerald-800/30 hover:border-emerald-300/50 dark:hover:border-emerald-600/30"
                       )}
                     >
                       <item.icon className={cn(
                         "w-5 h-5 transition-colors",
-                        selectedTech.id === item.id ? "text-emerald-700/70 dark:text-emerald-500" : "text-neutral-500 dark:text-neutral-400 group-hover:text-neutral-700 dark:group-hover:text-neutral-200"
+                        selectedTech.id === item.id ? "text-emerald-700 dark:text-emerald-500" : "text-neutral-700 dark:text-neutral-400 group-hover:text-neutral-700 dark:group-hover:text-neutral-200"
                       )} />
                       <span className={cn(
                         "text-sm font-medium",
-                        selectedTech.id === item.id ? "text-black dark:text-white" : "text-neutral-600 dark:text-neutral-400 group-hover:text-black dark:group-hover:text-neutral-200"
+                        selectedTech.id === item.id ? "text-black dark:text-white" : "text-neutral-800 dark:text-neutral-400 group-hover:text-black dark:group-hover:text-neutral-200"
                       )}>{item.name}</span>
                     </button>
                   ))}
@@ -83,9 +83,9 @@ export function TechStackSection() {
                     animate={{ opacity: 1, scale: 1, x: 0 }}
                     exit={{ opacity: 0, scale: 0.98, x: 20 }}
                     transition={{ duration: 0.4, ease: "easeInOut" }}
-                    className="absolute inset-0 h-full w-full"
+                    className="backdrop-blur-xl bg-[image:var(--gradient-glass-light)] dark:bg-[image:var(--gradient-glass-dark)] shadow shadow-2xl rounded-3xl absolute inset-0 h-full w-full"
                   >
-                    <CardBody className="h-full w-full bg-white/80 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8 shadow-2xl backdrop-blur-sm relative overflow-hidden group/card text-left">
+                    <CardBody className="h-full w-full border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8 shadow-2xl relative overflow-hidden group/card text-left">
                       <div className="w-full h-full flex flex-col justify-between">
                         <div>
                           <div className="flex items-start justify-between mb-6">

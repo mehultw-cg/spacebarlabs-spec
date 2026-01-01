@@ -42,7 +42,7 @@ export function AboutUsSection() {
                   Actually, I should use the generated image. I'll assume it's available in the public folder or I'll just use a placeholder for now to be safe and robust.
               */}
               <img
-                src="/about-team-placeholder.png"
+                src="/webp/CrabNebula_lg.webp"
                 alt="SpaceBar Labs Team"
                 className="w-full h-full object-cover"
                 // In a real scenario, I would move the generated image to public/ and reference it here.
