@@ -24,6 +24,22 @@ import {
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
+//USPs
+  // - Secure by default
+  // - privacy first
+  // - escape cloud tax
+  // - ethical practices
+  // - Human first products
+  // - founder led engineering
+  // - scientific method design/UX
+// things to add:
+// - add most chosen or similar badge to liftoff. 
+// - add other pricing options like
+  // - migrating to vps - choosing your orbit
+  // - 
+
+
+
 export function PricingSection() {
   return (
 

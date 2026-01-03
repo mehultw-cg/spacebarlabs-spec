@@ -1,0 +1,19 @@
+## 1. Implementation
+- [ ] 1.1 Update `TechItemSchema` in `src/lib/data/tech-stack.ts`:
+    - Make `codeSnippet` optional.
+    - Add `images` (optional string array).
+    - Add `metadata` (optional Record<string, string>).
+- [ ] 1.2 Refactor `techStackData`:
+    - Remove irrelevant code snippets.
+    - Add images/screenshots for key tools.
+    - Populate metadata (License, Version, etc.).
+- [ ] 1.3 Refactor `TechStackSection.tsx`:
+    - Implement sticky/floating behavior for right card.
+    - Integrate 3D card effects.
+    - Implement conditional rendering for snippets and images.
+    - Render metadata badges/list.
+    - **[NEW] Implement Scrollable Category "Window"**:
+        - Limit visible categories (e.g., 3-4 at a time).
+        - Add Glassmorphic Up/Down navigation buttons with blur.
+        - Implement smooth scrolling with 1-category overlap logic.
+- [ ] 1.4 Verify responsiveness and interactions.

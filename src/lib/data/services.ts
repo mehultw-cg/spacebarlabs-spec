@@ -1,5 +1,15 @@
 import { z } from "zod";
 
+
+// Add new services here
+// - Automation
+//   - Business Automation
+//   - Process Automation
+//   - DevOps Automation
+//   - Security Automation
+//   - System Automation
+//   - 
+
 // Define Zod schemas for data validation
 const ServiceIconSchema = z.enum([
   "Lightbulb", // Brainstorming
