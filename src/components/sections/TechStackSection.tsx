@@ -11,6 +11,7 @@ import { ChevronUp, ChevronDown } from "lucide-react";
 
 
 // in futre, for mobile, the scrolling on the categories could be horizontal instead per category. 
+// add search bar and badge category selection on top
 
 export function TechStackSection() {
   // Default to the first item of the first category
@@ -93,10 +94,10 @@ export function TechStackSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 max-w-7xl lg:w-7xl">
           
           {/* Left Side: Categories and Tech Cards */}
-          <div className="lg:col-span-2 flex flex-col gap-8 pr-2 relative h-[35vh] lg:h-[900px] overflow-hidden rounded-3xl bg-neutral-50/50 dark:bg-neutral-900/10 border border-neutral-200/50 dark:border-neutral-800/50 backdrop-blur-sm order-2 lg:order-1">
+          <div className="lg:col-span-7 flex flex-col gap-8 pr-2 relative h-[35vh] lg:h-[900px] overflow-hidden rounded-3xl bg-neutral-50/50 dark:bg-neutral-900/10 border border-neutral-200/50 dark:border-neutral-800/50 backdrop-blur-sm order-2 lg:order-1">
             {/* Top Control Overlay */}
             <div className="absolute top-0 left-0 right-0 z-10 h-14 lg:h-36 pointer-events-none flex justify-center pt-2 lg:pt-6">
                 <div className="absolute inset-0 z-0">
@@ -227,7 +228,7 @@ export function TechStackSection() {
 
 
           {/* Right Side: Detail Card */}
-          <div className="lg:col-span-1 relative h-[50vh] min-h-0 lg:h-auto lg:min-h-auto order-1 lg:order-2">
+          <div className="lg:col-span-4 lg:col-start-9 relative h-[50vh] min-h-0 lg:h-auto lg:min-h-auto order-1 lg:order-2">
             <div className="relative w-full h-full lg:sticky lg:top-[15vh] lg:h-auto">
 
               {/* Background Gradient Blob */}

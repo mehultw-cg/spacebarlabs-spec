@@ -94,7 +94,7 @@ const PricingCard = ({ item }: { item: typeof pricingData[0] }) => {
       className={cn(colSpanClass, "h-full")}
     >
       <Card
-        className="h-full px-4 flex flex-col backdrop-blur-3xl justify-between transition-all duration-300 hover:shadow-xl border-black/5 dark:border-white/5 dark:bg-black/30"
+        className="h-full px-4 flex flex-col backdrop-blur-sm justify-between transition-all duration-300 hover:shadow-xl border-black/5 dark:border-white/5 dark:bg-gradient-to-tr from-black/10 via-black/20 to-black/10"
       >
         <CardHeader className="p-6 pb-2">
           <motion.div

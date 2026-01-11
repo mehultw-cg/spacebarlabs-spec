@@ -4,6 +4,9 @@ FROM oven/bun:1.1-alpine
 ENV NODE_ENV=development
 WORKDIR /app
 
+# Install system dependencies required for VS Code Dev Containers
+RUN apk add --no-cache bash curl
+
 # Install deps via bun for best dev perf
 COPY bun.lockb* package.json ./
 RUN if [ -f bun.lockb ]; then bun install; else bun install; fi
