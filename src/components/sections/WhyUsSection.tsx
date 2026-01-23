@@ -2,6 +2,18 @@
 
 import React from "react";
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
+import { WhyUsCard } from "@/components/ui/why-us-card";
+import ServerSafeAnimation from "@/components/vfx/why-us-graphics/server-constellation-safe";
+import BoxedFingerprint from "@/components/vfx/why-us-graphics/boxed-fingerprint";
+import ShieldNetwork from "@/components/vfx/why-us-graphics/shield-network";
+import AnalyticalLock from "@/components/vfx/why-us-graphics/analytical-lock";
+import OpenLock from "@/components/vfx/why-us-graphics/open-lock";
+import ClosedLockFingerprint from "@/components/vfx/why-us-graphics/closed-lock-fingerprint";
+import UiBrain from "@/components/vfx/why-us-graphics/ui-brain";
+import Founders from "@/components/vfx/why-us-graphics/founders";
+import LineUp from "@/components/vfx/why-us-graphics/line-up";
+import GenericGlobe from "@/components/vfx/why-us-graphics/generic-globe";
+import CloudMigration from "@/components/vfx/why-us-graphics/cloud-migration";
 import { whyUsData } from "@/lib/data/why-us";
 import {
   IconShieldCheck,
@@ -18,6 +30,30 @@ import {
   IconHeart,
   IconStack2,
 } from "@tabler/icons-react";
+
+const GRAPHIC_STROKE_WIDTHS = {
+  main: 4,
+  detail: 2,
+  outerShield: 4,
+  middleShield: 2,
+  innerShield: 4,
+  networkLines: 2,
+  networkNodes: 4,
+  rectangles: 4,
+  keyhole: 4,
+  outerLock: 4,
+  lockTop: 2,
+  lockMain: 4,
+  triangle: 2,
+  xAxis: 4,
+  yAxis: 4,
+  graphLines: 4,
+  bigLine: 4,
+  fingerprint: 2,
+  outer: 4,
+  constellationLines: 2,
+  constellationNodes: 4,
+} as const;
 
 export function WhyUsSection() {
   return (
@@ -46,13 +82,82 @@ export function WhyUsSection() {
             else if (item.rowSpan === 3) className += "md:row-span-3 ";
             else if (item.rowSpan === 4) className += "md:row-span-4 ";
 
+            // Graphic Mapping - Select appropriate SVG for each card type
+            let GraphicComponent = null;
+
+            switch (item.id) {
+              case "cloud-deployments":
+                GraphicComponent = <CloudMigration strokeWidths={{ main: GRAPHIC_STROKE_WIDTHS.main }} />;
+                break;
+              case "stunning-design":
+                GraphicComponent = <ServerSafeAnimation />;
+                break;
+              case "security-first":
+                GraphicComponent = <ShieldNetwork strokeWidths={{
+                  outerShield: GRAPHIC_STROKE_WIDTHS.outerShield,
+                  middleShield: GRAPHIC_STROKE_WIDTHS.middleShield,
+                  innerShield: GRAPHIC_STROKE_WIDTHS.innerShield,
+                  networkLines: GRAPHIC_STROKE_WIDTHS.networkLines,
+                  networkNodes: GRAPHIC_STROKE_WIDTHS.networkNodes,
+                }} />;
+                break;
+              case "access-to-founders":
+                GraphicComponent = <Founders strokeWidths={{
+                  outerShield: GRAPHIC_STROKE_WIDTHS.outerShield,
+                  middleShield: GRAPHIC_STROKE_WIDTHS.middleShield,
+                  innerShield: GRAPHIC_STROKE_WIDTHS.innerShield,
+                  networkLines: GRAPHIC_STROKE_WIDTHS.networkLines,
+                  networkNodes: GRAPHIC_STROKE_WIDTHS.networkNodes,
+                }} />;
+                break;
+              case "research-capabilities":
+                GraphicComponent = <AnalyticalLock strokeWidths={{
+                  rectangles: GRAPHIC_STROKE_WIDTHS.rectangles,
+                  keyhole: GRAPHIC_STROKE_WIDTHS.keyhole,
+                  outerLock: GRAPHIC_STROKE_WIDTHS.outerLock,
+                  innerLockTop: GRAPHIC_STROKE_WIDTHS.lockTop,
+                }} />;
+                break;
+              case "privacy-first":
+                GraphicComponent = <ClosedLockFingerprint strokeWidths={{
+                  fingerprint: GRAPHIC_STROKE_WIDTHS.fingerprint,
+                  outerLock: GRAPHIC_STROKE_WIDTHS.outerLock,
+                  lockTop: GRAPHIC_STROKE_WIDTHS.lockTop,
+                }} />;
+                break;
+              case "continuous-monitoring":
+                GraphicComponent = <OpenLock strokeWidths={{ lockMain: GRAPHIC_STROKE_WIDTHS.lockMain }} />;
+                break;
+              case "immersive-ui":
+                GraphicComponent = <BoxedFingerprint strokeWidths={{
+                  outer: GRAPHIC_STROKE_WIDTHS.outer,
+                  fingerprint: GRAPHIC_STROKE_WIDTHS.fingerprint,
+                }} />;
+                break;
+              case "lightning-fast":
+                GraphicComponent = <LineUp strokeWidths={{
+                  constellationLines: GRAPHIC_STROKE_WIDTHS.constellationLines,
+                  constellationNodes: GRAPHIC_STROKE_WIDTHS.constellationNodes,
+                  triangle: GRAPHIC_STROKE_WIDTHS.triangle,
+                  xAxis: GRAPHIC_STROKE_WIDTHS.xAxis,
+                  yAxis: GRAPHIC_STROKE_WIDTHS.yAxis,
+                  graphLines: GRAPHIC_STROKE_WIDTHS.graphLines,
+                  rectangles: GRAPHIC_STROKE_WIDTHS.rectangles,
+                }} />;
+                break;
+              case "full-suite":
+                GraphicComponent = <GenericGlobe strokeWidths={{ main: GRAPHIC_STROKE_WIDTHS.main }} />;
+                break;
+            }
+            
             return (
-              <BentoGridItem
+              <WhyUsCard
                 key={i}
                 title={item.title}
                 description={item.description}
-                className={className.trim()}
-                icon={item.icon === "Placeholder" ? null : <WhyUsIcon icon={item.icon} />}
+                detail={item.detail}
+                graphic={GraphicComponent}
+                className={className.trim() + " p-0 bg-neutral-100 dark:bg-neutral-900/50"} // Reset padding and ensure bg is set if needed, though WhyUsCard has defaults
               />
             )
           })}
@@ -64,7 +169,7 @@ export function WhyUsSection() {
 
 const WhyUsHeader = ({ icon }: { icon: string }) => {
   const getIcon = (iconName: string) => {
-    const className = "h-full w-full text-neutral-300";
+    const className = "h-full w-full";
     switch (iconName) {
       case "ShieldCheck": return <IconShieldCheck className={className} />;
       case "Palette": return <IconPalette className={className} />;

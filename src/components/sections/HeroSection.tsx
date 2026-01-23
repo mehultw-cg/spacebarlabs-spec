@@ -9,14 +9,13 @@ import { AuroraText } from "../ui/aurora-text";
 import { RainbowButton } from "../ui/rainbow-button";
 import Starfield from "../vfx/Starfield";
 import Image from "next/image";
-import HeroAnimation from "../vfx/HeroAnimation";
 import HeroConstellation from "../vfx/HeroConstellations";
 
 
 export function HeroSection() {
   return (
     <section className="relative min-h-screen w-screen flex items-center justify-center overflow-hidden bg-transparent text-black dark:text-white pt-20">
-      <div className="relative w-full mx-auto px-16 grid grid-cols-1 lg:grid-cols-5 gap-16 items-center text-left">
+      <div >
         {/* <Image
         src="/BHW_Disk_and_Corona.gif"
         alt="Hero Background"
@@ -33,7 +32,7 @@ export function HeroSection() {
         </div>
 
         {/* Main Container with Animated Gradient Border */}
-        <div className="lg:col-span-2 relative z-10 overflow-hidden rounded-3xl bg-white/20 dark:bg-neutral-950/50 backdrop-blur-lg border border-neutral-200 dark:border-white/10 shadow-xl dark:shadow-none">
+        <div className="relative z-10 overflow-hidden rounded-3xl bg-white/20 dark:bg-neutral-950/50 backdrop-blur-lg border border-neutral-200 dark:border-white/10 shadow-xl dark:shadow-none">
 
           {/* Glassmorphic Card Content */}
           <div className="relative z-20 rounded-3xl px-8 py-16 md:px-16 md:py-20 text-center max-w-4xl mx-1.5 my-1.5 rounded-5xl tracking-tight">
@@ -131,14 +130,6 @@ export function HeroSection() {
             borderWidth={2}
             reverse
             className="from-transparent via-violet-600 to-transparent z-30" />
-        </div>
-
-        {/* Middle Spacer */}
-        <div className="hidden lg:block lg:col-span-1" />
-
-        {/* Right Animation */}
-        <div className="lg:col-span-1 h-[400px] lg:h-[600px] w-full relative flex items-center justify-center">
-            <HeroAnimation />
         </div>
       </div>
     </section>

@@ -97,16 +97,16 @@ export function TechStackSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 max-w-7xl lg:w-7xl">
           
           {/* Left Side: Categories and Tech Cards */}
-          <div className="lg:col-span-7 flex flex-col gap-8 pr-2 relative h-[35vh] lg:h-[900px] overflow-hidden rounded-3xl bg-neutral-50/50 dark:bg-neutral-900/10 border border-neutral-200/50 dark:border-neutral-800/50 backdrop-blur-sm order-2 lg:order-1">
+          <div className="lg:col-span-7 flex flex-col gap-8 pr-2 relative h-[35vh] lg:h-[900px] overflow-hidden rounded-3xl bg-neutral-50/10 dark:bg-neutral-900/10 border border-neutral-200/50 dark:border-neutral-800/50 backdrop-blur-sm order-2 lg:order-1">
             {/* Top Control Overlay */}
             <div className="absolute top-0 left-0 right-0 z-10 h-14 lg:h-36 pointer-events-none flex justify-center pt-2 lg:pt-6">
                 <div className="absolute inset-0 z-0">
-                    <ProgressiveBlur direction="top" className="h-full w-full" blurIntensity={1} blurLayers={6} />
+                    <ProgressiveBlur direction="top" className="h-full w-full bg-gradient-to-b from-white/5 to-transparent dark:from-black/5" blurIntensity={5} blurLayers={4} />
                 </div>
                <button
                   onClick={handleScrollUp}
                   className={cn(
-                    "pointer-events-auto relative z-10 p-2 w-48 h-10 flex items-center justify-center rounded-full dark:bg-black/5 hover:bg-neutral-200/20 backdrop-blur-[4px] dark:hover:bg-neutral-900/10 transition-all group border border-white/10 dark:border-black/10",
+                    "pointer-events-auto relative z-10 p-2 w-48 h-10 flex items-center justify-center rounded-full bg-white/30 dark:bg-black/20 hover:bg-white/50 backdrop-blur-[4px] dark:hover:bg-black/40 transition-all group border border-white/10 dark:border-white/20",
                     currentCategoryIndex === 0 ? "opacity-0 pointer-events-none" : "opacity-100"
                   )}
                   aria-label="Scroll Up"
@@ -211,12 +211,12 @@ export function TechStackSection() {
             {/* Bottom Control Overlay */}
             <div className="absolute bottom-0 left-0 right-0 z-10 h-14 lg:h-36 pointer-events-none flex justify-center pb-2 lg:pb-6 items-end">
                 <div className="absolute inset-0 z-0">
-                    <ProgressiveBlur direction="bottom" className="h-full w-full" blurIntensity={1} blurLayers={6} />
+                    <ProgressiveBlur direction="bottom" className="h-full w-full bg-gradient-to-t from-white/5 to-transparent dark:from-black/5" blurIntensity={5} blurLayers={4} />
                 </div>
                <button
                   onClick={handleScrollDown}
                   className={cn(
-                    "pointer-events-auto relative z-10 p-2 w-48 h-10 flex items-center justify-center rounded-full hover:bg-neutral-200/20 dark:bg-black/5 backdrop-blur-[4px] dark:hover:bg-neutral-900/10 transition-all group border border-white/10 dark:border-black/10",
+                    "pointer-events-auto relative z-10 p-2 w-48 h-10 flex items-center justify-center rounded-full bg-white/30 dark:bg-black/20 hover:bg-white/50 backdrop-blur-[4px] dark:hover:bg-black/40 transition-all group border border-white/10 dark:border-white/20",
                     currentCategoryIndex === techStackData.length - 1 ? "opacity-0 pointer-events-none" : "opacity-100"
                   )}
                   aria-label="Scroll Down"
