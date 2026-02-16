@@ -15,11 +15,11 @@ interface ShieldNetworkProps extends SVGProps<SVGSVGElement> {
 }
 
 const ShieldNetwork = ({ className, strokeWidths, strokeColor, fillColor, style, ...props }: ShieldNetworkProps) => {
-  const outerShieldStroke = strokeWidths?.outerShield;
-  const middleShieldStroke = strokeWidths?.middleShield;
-  const innerShieldStroke = strokeWidths?.innerShield;
-  const networkLinesStroke = strokeWidths?.networkLines;
-  const networkNodesStroke = strokeWidths?.networkNodes;
+  const outerShieldStroke = strokeWidths?.outerShield ?? 4;
+  const middleShieldStroke = strokeWidths?.middleShield ?? 4;
+  const innerShieldStroke = strokeWidths?.innerShield ?? 4;
+  const networkLinesStroke = strokeWidths?.networkLines ?? 3;
+  const networkNodesStroke = strokeWidths?.networkNodes ?? 3;
 
   return (
     <svg
@@ -414,4 +414,5 @@ const ShieldNetwork = ({ className, strokeWidths, strokeColor, fillColor, style,
   )
 }
 
+export { ShieldNetwork as ReactComponent };
 export default ShieldNetwork;

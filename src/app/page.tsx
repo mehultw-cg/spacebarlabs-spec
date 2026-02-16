@@ -1,4 +1,4 @@
-import { HeroSection } from "@/components/sections/HeroSection";
+import { HeroSectionNew } from "@/components/sections/HeroSectionNew";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { PricingSection } from "@/components/sections/PricingSection";
 import { WhyUsSection } from "@/components/sections/WhyUsSection";
@@ -14,7 +14,7 @@ export default function Home() {
       <ScrollBackground>
         <div className="dark:bg-black/20">
         {/* Hero Section */}
-        <HeroSection />
+        <HeroSectionNew />
 
         {/* Services Section */}
         {/* <ServicesSection /> */}

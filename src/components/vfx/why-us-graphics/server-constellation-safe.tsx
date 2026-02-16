@@ -88,7 +88,7 @@ const constellationPaths = [
   "M1023,1323l-92,-139l94,-126l112,6l97,-223l136,-7l-1,86l175,-194"
 ];
 
-const ServerSafeAnimation = (props: React.SVGProps<SVGSVGElement>) => {
+const ServerSafeAnimation = ({ className, style, ...props }: React.SVGProps<SVGSVGElement>) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -109,9 +109,9 @@ const ServerSafeAnimation = (props: React.SVGProps<SVGSVGElement>) => {
       strokeLinejoin: "round",
       strokeMiterlimit: 1.5,
       cursor: 'pointer',
-      ...props.style
+      ...style
     }}
-    className="h-full w-full stroke-neutral-900 dark:stroke-cyan-100/50" // Base colors: dark in light mode, light cyan in dark mode
+    className={className || "h-full w-full stroke-neutral-900 dark:stroke-cyan-100/50"} // Base colors: dark in light mode, light cyan in dark mode
     onMouseEnter={() => setIsHovered(true)}
     onMouseLeave={() => setIsHovered(false)}
     {...props}
@@ -3980,4 +3980,5 @@ const ServerSafeAnimation = (props: React.SVGProps<SVGSVGElement>) => {
   </svg>
 )
 }
-export default ServerSafeAnimation
+export { ServerSafeAnimation as ReactComponent };
+export default ServerSafeAnimation;
