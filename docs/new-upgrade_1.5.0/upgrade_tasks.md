@@ -25,15 +25,15 @@ This task list tracks the progress of the 1.5.0 upgrade as defined in `Changes t
     - [x] **Responsiveness**: Adjust text sizes (larger on desktop, smaller on mobile).
     - [x] Verify & Merge to `feature/update-1.5.0`
 
-- [ ] **Services Section**
-    - [ ] Create OpenSpec proposal for Services update
-    - [ ] Create branch `feature/update-1.5.0-services`
-    - [ ] Data: Create `src/lib/data/services-updated.ts`
-    - [ ] Layout: 6 cards, 2 rows. Taller cards.
-    - [ ] Components: Implement card behavior (hover, expand details on click; keep behavior same as now)
-    - [ ] Icons: Lucide-react (shield-plus, workflow, server, radar, shield-check, activity)
-    - [ ] **Responsiveness**: Stack cards on mobile.
-    - [ ] Verify & Merge to `feature/update-1.5.0`
+- [x] **Services Section**
+    - [x] Create OpenSpec proposal for Services update
+    - [x] Create branch `feature/update-1.5.0-services`
+    - [x] Data: Create `src/lib/data/services-updated.ts`
+    - [x] Layout: 6 cards, 2 rows. Taller cards.
+    - [x] Components: Implement card behavior (hover, expand details on click; keep behavior same as now)
+    - [x] Icons: Lucide-react (shield-plus, workflow, server, radar, shield-check, activity)
+    - [x] **Responsiveness**: Stack cards on mobile.
+    - [x] Verify & Merge to `feature/update-1.5.0`
 
 - [ ] **Pricing Section**
     - [ ] Create OpenSpec proposal for Pricing update
