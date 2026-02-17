@@ -8,15 +8,28 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { RainbowButton } from "@/components/ui/rainbow-button";
 
+import { useSearchParams } from "next/navigation";
+import { useEffect } from "react";
+// ... imports
+
 export function ContactSection() {
+  const searchParams = useSearchParams();
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors, isSubmitting },
     reset,
   } = useForm<ContactFormValues>({
     resolver: zodResolver(ContactFormSchema),
   });
+
+  useEffect(() => {
+    const subject = searchParams.get("subject");
+    if (subject) {
+      setValue("subject", subject);
+    }
+  }, [searchParams, setValue]);
 
   const onSubmit = async (data: ContactFormValues) => {
     try {

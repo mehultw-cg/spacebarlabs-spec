@@ -8,6 +8,7 @@ import { ServicesSectionNew } from "@/components/sections/ServicesSectionNew";
 import { Footer } from "@/components/global/footer";
 import { ScrollBackground } from "@/components/global/ScrollBackground";
 import { ServiceSectionNewUpdated } from "@/components/sections/ServicesSectionUpdated";
+import { PricingSectionUpdated } from "@/components/sections/PricingSectionUpdated";
 
 export default function Home() {
   return (
@@ -25,7 +26,8 @@ export default function Home() {
         {/* <ServicesSectionNew /> */}
 
         {/* Pricing Section */}
-        <PricingSection />
+        <PricingSectionUpdated />
+        {/* <PricingSection /> */}
 
         {/* Why Us Section */}
         <WhyUsSection />

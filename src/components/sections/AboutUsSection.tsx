@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import { aboutData } from "@/lib/data/about";
 import { ContactSection } from "@/components/sections/ContactSection";
 
@@ -57,7 +57,9 @@ export function AboutUsSection() {
       </div>
 
       {/* Contact Section */}
-      <ContactSection />
+      <Suspense fallback={<div className="py-20 text-center">Loading contact form...</div>}>
+        <ContactSection />
+      </Suspense>
     </section>
   );
 }
