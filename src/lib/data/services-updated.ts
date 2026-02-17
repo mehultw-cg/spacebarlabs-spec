@@ -1,9 +1,28 @@
-import { Shield, Hammer, Server, Radar, ShieldCheck, Activity } from "lucide-react";
+import { Shield, Workflow, Server, Radar, ShieldCheck, Activity } from "lucide-react";
+import { z } from "zod";
 
-export const servicesData = [
+
+
+
+
+
+// Define Zod schemas for data validation
+const ServiceSchema = z.object({
+  icon: z.custom<React.ElementType>(),
+  tags: z.string().array(),
+  title: z.string(),
+  description: z.string(),
+  detail: z.string(),
+  bullets: z.string().array(),
+  defaultExpanded: z.boolean().optional(),
+});
+
+export type ServiceItem = z.infer<typeof ServiceSchema>;
+
+export const servicesData: ServiceItem[] = [
   {
     icon: Shield, // 'shield-plus' -> Shield (lucide fallback/closest)
-    tags: ['security', 'core', 'architecture', 'infrastructure', 'policy'],
+    tags: ['architecture', 'security', 'core', 'infrastructure', 'policy'],
     title: "Secure Architecture & System Design",
     description: "Designing secure foundations for modern digital systems.",
     detail: "We help organizations build architectures that remain secure, resilient, and adaptable over time.",
@@ -16,8 +35,8 @@ export const servicesData = [
     ]
   },
   {
-    icon: Hammer, // 'workflow' -> Hammer/Wrench (closest metaphor until user specifies exact Lucide name if varied)
-    tags: ['security', 'devsecops', 'cloud', 'appsec', 'automation', 'engineering' ],
+    icon: Workflow, // 'workflow' -> Hammer/Wrench (closest metaphor until user specifies exact Lucide name if varied)
+    tags: ['devsecops', 'security', 'cloud', 'appsec', 'automation', 'engineering' ],
     title: "DevSecOps & Secure Development",
     description: "Integrating security throughout the software development lifecycle.",
     detail: "We implement practical DevSecOps processes that protect systems without slowing development, ensuring security is built-in, not added as an afterthought.",
@@ -41,11 +60,12 @@ export const servicesData = [
       "Secure, encrypted Cloud-to-VPS/Cloud-to-Cloud/Cloud-to-Hybrid migration strategies (and Vice versa)",
       "Network security architecture and Zero-trust controls.",
       "Cloud security configuration and compliance"
-    ]
+    ],
+    defaultExpanded: true
   },
   {
     icon: Radar,
-    tags: ['security', 'audit', 'architecture', 'risk', 'policy'],
+    tags: ['audit', 'security', 'architecture', 'risk', 'policy'],
     title: "Security Assessment & Testing",
     description: "Identifying risks before they become incidents.",
     detail: "We assess systems to uncover vulnerabilities and provide clear remediation guidance.",
@@ -60,9 +80,9 @@ export const servicesData = [
   },
   {
     icon: ShieldCheck,
-    tags: ['security', 'compliance', 'risk', 'governance', 'policy', 'audit'],
+    tags: ['governance','security', 'compliance', 'risk', 'policy', 'audit'],
     title: "Compliance & Risk Readiness",
-    description: "Preparing organizations for regulatory and security expectations..",
+    description: "Preparing organizations for regulatory and security expectations.",
     detail: "We help organizations align systems with global data protection and risk management requirements.",
     bullets: [
       "GDPR, DPDP, HIPAA, CCPA readiness guidance",
@@ -70,7 +90,8 @@ export const servicesData = [
       "Security policy, process and control framework design",
       "Compliance gap analysis",
       "NIST, SOC2, PCI DSS alignment"
-    ]
+    ],
+    defaultExpanded: true
   },
   {
     icon: Activity,
@@ -87,3 +108,18 @@ export const servicesData = [
     ]
   }
 ];
+
+export const securityNote = {
+  title: "Our Commitment to Security",
+  content: "At SpaceBar Labs, we are committed to secure coding practices. Every application and piece of work we deliver is developed with security at its core, adhering to best practices from renowned frameworks such as NIST, OWASP, and MITRE ATT&CK. We believe in delivering modern, stunning web creations that are secure by default.",
+};
+
+// Validate the data
+if (process.env.NODE_ENV === "development") {
+    try {
+        ServiceSchema.array().parse(servicesData);
+        console.log("Services updated data validated successfully.");
+    } catch (error) {
+        console.error("Services updated data validation failed:", error);
+    }
+}

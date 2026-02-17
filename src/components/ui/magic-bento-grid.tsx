@@ -6,11 +6,14 @@ import { MagicCard } from "@/components/ui/magic-card";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
+import { Box } from "lucide-react";
+
 interface MagicBentoCardProps {
   id: string;
   title: string;
   description: string;
   detail?: string;
+  bullets?: string[];
   icon: React.ElementType;
   badges: string[];
   colSpan?: number;
@@ -36,12 +39,27 @@ const tagColors: Record<string, {
   dev: { bg: "bg-emerald-500/10", text: "text-emerald-500", border: "border-emerald-500/20", colorHex: "#10b981", lightHex: "#6ee7b7", darkHex: "#047857" },
   data: { bg: "bg-lime-500/10", text: "text-lime-500", border: "border-lime-500/20", colorHex: "#84cc16", lightHex: "#bef264", darkHex: "#4d7c0f" },
   ops: { bg: "bg-sky-500/10", text: "text-sky-500", border: "border-sky-500/20", colorHex: "#0ea5e9", lightHex: "#7dd3fc", darkHex: "#0369a1" },
-  security: { bg: "bg-red-500/10", text: "text-red-500", border: "border-red-500/20", colorHex: "#ef4444", lightHex: "#fca5a5", darkHex: "#b91c1c" },
+  security: { bg: "bg-purple-600/10", text: "text-purple-600", border: "border-purple-600/20", colorHex: "#9333ea", lightHex: "#d8b4fe", darkHex: "#7e22ce" },
   cloud: { bg: "bg-blue-600/10", text: "text-blue-600", border: "border-blue-600/20", colorHex: "#2563eb", lightHex: "#93c5fd", darkHex: "#1d4ed8" },
   studio: { bg: "bg-green-700/10", text: "text-green-700", border: "border-green-700/20", colorHex: "#15803d", lightHex: "#86efac", darkHex: "#14532d" },
   marketing: { bg: "bg-amber-500/10", text: "text-amber-500", border: "border-amber-500/20", colorHex: "#f59e0b", lightHex: "#fcd34d", darkHex: "#b45309" },
   design: { bg: "bg-pink-500/10", text: "text-pink-500", border: "border-pink-500/20", colorHex: "#ec4899", lightHex: "#f9a8d4", darkHex: "#be185d" },
   "coming-soon": { bg: "bg-yellow-500/10", text: "text-yellow-500", border: "border-yellow-500/20", colorHex: "#eab308", lightHex: "#fde047", darkHex: "#a16207" },
+  // New Tags
+  architecture: { bg: "bg-cyan-500/10", text: "text-cyan-500", border: "border-cyan-500/20", colorHex: "#06b6d4", lightHex: "#67e8f9", darkHex: "#0e7490" },
+  infrastructure: { bg: "bg-slate-500/10", text: "text-slate-500", border: "border-slate-500/20", colorHex: "#64748b", lightHex: "#94a3b8", darkHex: "#475569" },
+  policy: { bg: "bg-teal-500/10", text: "text-teal-500", border: "border-teal-500/20", colorHex: "#14b8a6", lightHex: "#5eead4", darkHex: "#0f766e" },
+  devsecops: { bg: "bg-red-500/10", text: "text-red-500", border: "border-red-500/20", colorHex: "#ef4444", lightHex: "#fca5a5", darkHex: "#b91c1c" },
+  appsec: { bg: "bg-rose-500/10", text: "text-rose-500", border: "border-rose-500/20", colorHex: "#f43f5e", lightHex: "#fda4af", darkHex: "#be123c" },
+  automation: { bg: "bg-indigo-500/10", text: "text-indigo-500", border: "border-indigo-500/20", colorHex: "#6366f1", lightHex: "#a5b4fc", darkHex: "#4338ca" },
+  engineering: { bg: "bg-violet-500/10", text: "text-violet-500", border: "border-violet-500/20", colorHex: "#8b5cf6", lightHex: "#c4b5fd", darkHex: "#6d28d9" },
+  migration: { bg: "bg-teal-600/10", text: "text-teal-600", border: "border-teal-600/20", colorHex: "#0d9488", lightHex: "#5eead4", darkHex: "#0f766e" },
+  audit: { bg: "bg-orange-600/10", text: "text-orange-600", border: "border-orange-600/20", colorHex: "#ea580c", lightHex: "#fdba74", darkHex: "#c2410c" },
+  risk: { bg: "bg-red-600/10", text: "text-red-600", border: "border-red-600/20", colorHex: "#dc2626", lightHex: "#fca5a5", darkHex: "#b91c1c" },
+  compliance: { bg: "bg-blue-500/10", text: "text-blue-500", border: "border-blue-500/20", colorHex: "#3b82f6", lightHex: "#93c5fd", darkHex: "#1d4ed8" },
+  governance: { bg: "bg-emerald-600/10", text: "text-emerald-600", border: "border-emerald-600/20", colorHex: "#059669", lightHex: "#6ee7b7", darkHex: "#047857" },
+  advisory: { bg: "bg-purple-500/10", text: "text-purple-500", border: "border-purple-500/20", colorHex: "#a855f7", lightHex: "#d8b4fe", darkHex: "#7e22ce" },
+  strategy: { bg: "bg-pink-600/10", text: "text-pink-600", border: "border-pink-600/20", colorHex: "#db2777", lightHex: "#f9a8d4", darkHex: "#be185d" },
 };
 
 const getTagStyle = (tag: string) => {
@@ -60,6 +78,7 @@ export const MagicBentoCard = ({
   title,
   description,
   detail,
+  bullets,
   icon: Icon,
   badges,
   colSpan = 1,
@@ -95,7 +114,7 @@ export const MagicBentoCard = ({
       initial="initial"
       whileHover="hover"
       className={cn(
-        "relative h-[280px] rounded-2xl overflow-visible cursor-pointer",
+        "relative h-[450px] rounded-2xl overflow-visible cursor-pointer",
         isExpanded ? "md:col-span-2" : "md:col-span-1",
         className
       )}
@@ -140,7 +159,7 @@ export const MagicBentoCard = ({
             className={cn(
               "rounded-2xl flex items-center justify-center w-12 h-12 shrink-0",
               "transition-[margin] duration-300 ease-out",
-              isExpanded ? "mb-8" : "mb-16"
+              isExpanded ? "mb-8" : "mb-24"
             )}
             style={iconGradientStyle}
           >
@@ -197,6 +216,35 @@ export const MagicBentoCard = ({
                    >
                     {detail}
                    </motion.p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* Bullets - only Framer Motion animation here */}
+            <AnimatePresence mode="wait">
+              {isExpanded && bullets && bullets.length > 0 && (
+                <motion.div
+                  key={`bullets-${id}`}
+                  initial={{ opacity: 0, filter: "blur(4px)", x: 0 }}
+                  animate={{ opacity: 1, filter: "blur(0px)", x: 0 }}
+                  exit={{ opacity: 0, filter: "blur(4px)", x: 0 }}
+                  transition={{ duration: 0.15, delay: 0.05 }}
+                  className="mt-4 pt-4"
+                >
+                  <ul className="space-y-2">
+                    {bullets.map((bullet, i) => (
+                      <motion.li
+                        key={i}
+                        initial={{ opacity: 0, x: -5 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.2, delay: 0.2 + (i * 0.05) }}
+                        className="flex items-start gap-2 text-sm text-neutral-600 dark:text-neutral-400"
+                      >
+                         <Box className="w-4 h-4 mt-0.5 shrink-0 text-emerald-400 dark:text-emerald-500" />
+                         <span>{bullet}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
                 </motion.div>
               )}
             </AnimatePresence>
