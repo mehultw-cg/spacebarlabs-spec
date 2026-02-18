@@ -26,6 +26,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+
+import { spacebarFont } from "@/app/page";
+
 import { cn } from "@/lib/utils";
 
 export function PricingSectionUpdated() {
@@ -34,35 +37,35 @@ export function PricingSectionUpdated() {
       <div className="py-20">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-16 space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold text-white dark:text-white tracking-tight">
+            <h2 className={`text-4xl md:text-5xl font-bold text-white text-shadow-lg/30 dark:text-white tracking-tight ${spacebarFont.className}`}>
               Pricing
             </h2>
-            <div className="max-w-3xl mx-auto space-y-6">
-              <p className="text-lg text-neutral-600 dark:text-neutral-300 font-medium">
+            <div className="max-w-3xl mx-auto space-y-6 ">
+              <p className="text-lg text-neutral-100 dark:text-neutral-100 text-shadow-lg/40 font-medium">
                 Flexible ways to work together, based on your needs and goals. Bundled services for easy access.
               </p>
               
               <div className="bg-neutral-100/50 dark:bg-black/50 rounded-2xl p-6 backdrop-blur-sm border border-black/5 dark:border-white/10 inline-block text-left">
-                <p className="text-sm font-semibold text-neutral-900 dark:text-neutral-200 mb-3 text-center">
+                <p className="text-sm font-semibold text-neutral-900 text-shadow-lg/5 dark:text-neutral-200 mb-3 text-center">
                   Clients can engage with us through:
                 </p>
-                <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-neutral-600 dark:text-neutral-300">
+                <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-shadow-sm/5 text-sm text-neutral-700 dark:text-neutral-300">
                   <span className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                     Fixed-scope projects
                   </span>
-                  <span className="flex items-center gap-2">
+                  <span className="flex items-center  gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
                     Milestone-based work
                   </span>
-                  <span className="flex items-center gap-2">
+                  <span className="flex items-center  gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-purple-500" />
                     Ongoing advisory partnership
                   </span>
                 </div>
               </div>
 
-              <p className="text-slate-200 dark:text-slate-200 italic">
+              <p className="text-slate-200 dark:text-slate-200 text-shadow-lg/50 italic">
                 Our goal is to empower teams to operate independently, not create dependency.
               </p>
             </div>

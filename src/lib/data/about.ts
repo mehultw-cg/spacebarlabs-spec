@@ -1,33 +1,29 @@
 import { z } from "zod";
 
-export const AboutStatSchema = z.object({
-    label: z.string(),
-    value: z.string(),
-});
+
 
 export const AboutContentSchema = z.object({
     title: z.string(),
-    subtitle: z.string(),
-    description: z.string(),
-    stats: z.array(AboutStatSchema),
-    mission: z.string(),
+    description: z.array(z.string()), // Changed to array for multiple paragraphs
+    valueCards: z.array(z.string()),
 });
 
 export type AboutContent = z.infer<typeof AboutContentSchema>;
 
 export const aboutData: AboutContent = {
-    title: "About SpaceBar Labs",
-    subtitle: "We are a collective of dreamers, engineers, and artists.",
-    description:
-        "Founded in 2024, SpaceBar Labs was born from a simple idea: that software shouldn't just function, it should inspire. We bridge the gap between complex engineering and intuitive design, creating digital experiences that feel like magic.",
-    mission:
-        "Our mission is to empower visionaries to build the future. We provide the technical expertise and creative direction needed to turn ambitious ideas into reality.",
-    stats: [
-        { label: "Projects Launched", value: "50+" },
-        { label: "Happy Clients", value: "100%" },
-        { label: "Lines of Code", value: "1M+" },
-        { label: "Coffee Consumed", value: "∞" },
+    title: "About Spacebar Labs",
+    description: [
+        "Spacebar Labs is a security-focused engineering firm dedicated to building resilient digital infrastructure.",
+        "We believe technology should empower individuals and organizations while respecting privacy, ownership, and long-term sustainability.",
+        "Our work combines practical engineering discipline with a deep commitment to human-centric system design.",
+        "We partner with clients to create secure foundations that can evolve confidently over time."
     ],
+    valueCards: [
+        "Security-First Engineering",
+        "Privacy-Respecting Architecture",
+        "Independent Infrastructure Philosophy",
+        "Global Standards Alignment"
+    ]
 };
 
 export const ContactFormSchema = z.object({

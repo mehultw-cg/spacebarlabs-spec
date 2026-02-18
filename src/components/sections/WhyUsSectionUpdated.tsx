@@ -20,6 +20,7 @@ import ServerConstellationSafe from "@/components/vfx/why-us-graphics/server-con
 import ShieldNetwork from "@/components/vfx/why-us-graphics/shield-network";
 import UiBrain from "@/components/vfx/why-us-graphics/ui-brain";
 import { Asterisk } from "lucide-react";
+import { spacebarFont } from "@/app/page";
 
 // Card colors from global css vars
 const CARD_COLORS = [
@@ -37,10 +38,10 @@ export function WhyUsSectionUpdated() {
     <section id="why-us" className="py-20 bg-transparent text-black dark:text-white">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-neutral-900 dark:text-white">
+          <h2 className={`text-4xl md:text-5xl font-bold mb-4 text-neutral-200 dark:text-white text-shadow-lg/30 ${spacebarFont.className}`}>
             Why Us?
           </h2>
-          <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
+          <p className="text-neutral-200 dark:text-neutral-400 max-w-2xl mx-auto text-shadow-sm/30">
             We don't just build software. We build trust, security, and independence.
           </p>
         </div>

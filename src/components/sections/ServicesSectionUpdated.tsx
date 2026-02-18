@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import { ServiceRowUpdated } from "@/components/ui/ServiceRowUpdated";
 import { servicesData, securityNote } from "@/lib/data/services-updated";
 import { Shield } from "lucide-react";
+import { spacebarFont } from "@/app/page";
 
 // Helper to chunk array into groups of 3
 const chunkArray = <T,>(array: T[], size: number): T[][] => {
@@ -24,10 +25,10 @@ export function ServiceSectionNewUpdated() {
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-neutral-950 dark:text-white">
+          <h2 className={`text-4xl md:text-5xl font-bold mb-4 text-neutral-300 text-shadow-lg/30 dark:text-white ${spacebarFont.className}`}>
             Our Services
           </h2>
-          <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
+          <p className="text-neutral-300 text-shadow-lg/30 max-w-2xl mx-auto">
             Comprehensive solutions tailored to your digital needs.
           </p>
         </div>

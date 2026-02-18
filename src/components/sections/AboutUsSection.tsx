@@ -3,6 +3,9 @@
 import React, { Suspense } from "react";
 import { aboutData } from "@/lib/data/about";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { spacebarFont } from "@/app/page";
+import { cn } from "@/lib/utils";
+import { BorderBeam } from "@/components/ui/border-beam";
 
 export function AboutUsSection() {
   return (
@@ -12,45 +15,49 @@ export function AboutUsSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className={cn("text-4xl md:text-5xl text-neutral-100 font-bold mb-6", spacebarFont.className)}>
               {aboutData.title}
             </h2>
-            <h3 className="text-xl text-blue-600 dark:text-blue-400 font-medium mb-6">
-              {aboutData.subtitle}
-            </h3>
-            <div className="space-y-6 text-neutral-600 dark:text-neutral-300 leading-relaxed">
-              <p>{aboutData.description}</p>
-              <p>{aboutData.mission}</p>
+            <div className="space-y-6 text-neutral-100 text-shadow-lg/60 dark:text-neutral-300 leading-relaxed text-lg">
+              {aboutData.description.map((paragraph, idx) => (
+                <p key={idx}>{paragraph}</p>
+              ))}
             </div>
 
-            <div className="grid grid-cols-2 gap-6 mt-12">
-              {aboutData.stats.map((stat, idx) => (
-                <div key={idx} className="p-4 rounded-lg bg-neutral-100 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800">
-                  <div className="text-3xl font-bold text-black dark:text-white mb-1">{stat.value}</div>
-                  <div className="text-sm text-neutral-500 dark:text-neutral-400">{stat.label}</div>
+
+
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-12">
+              {aboutData.valueCards.map((card, idx) => (
+                <div key={idx} className="group relative p-6 rounded-xl bg-neutral-100/80 dark:bg-neutral-900/20 border backdrop-blur-lg border-neutral-200 dark:border-neutral-800 flex items-center justify-center text-center overflow-hidden transition-all duration-300 hover:border-blue-500/30 hover:shadow-xl hover:shadow-blue-500/10 dark:hover:shadow-blue-900/20">
+                  <div className="relative z-10 text-lg font-semibold text-neutral-800 dark:text-neutral-200">{card}</div>
+                  <BorderBeam
+                    duration={8}
+                    size={150}
+                    colorFrom="#2B7FFF"
+                    delay={idx*0.75}
+                    colorTo="#AD46FF"
+                    borderWidth={2}
+                  />
                 </div>
               ))}
             </div>
           </div>
 
           {/* Image Content */}
-          <div className="relative">
-            <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl blur-lg opacity-30" />
-            <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-              {/* Use the generated image here. Since I cannot know the exact path in this context without reading it from the previous step's output which I have, I will use a placeholder or the path if I can infer it. 
-                  I will use a generic placeholder for now as the image path is dynamic and I should copy it to public first to use it properly, but for now I will use a placeholder or just the structure. 
-                  Actually, I should use the generated image. I'll assume it's available in the public folder or I'll just use a placeholder for now to be safe and robust.
-              */}
-              <img
-                src="/webp/CrabNebula_lg.webp"
-                alt="SpaceBar Labs Team"
-                className="w-full h-full object-cover"
-                // In a real scenario, I would move the generated image to public/ and reference it here.
-                // For this demo, I'll use a placeholder color/text if image is missing, or a generic URL.
-                onError={(e) => {
-                  e.currentTarget.src = "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80";
-                }}
-              />
+          <div className="relative flex justify-center items-center">
+            <div className="relative w-auto sm:w-[30rem]">
+               <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl blur-lg opacity-30" />
+               <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                 <img
+                    src="/webp/secure-cosmic-server.webp"
+                    alt="SpaceBar Labs Team"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.src = "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80";
+                    }}
+                  />
+               </div>
             </div>
           </div>
         </div>

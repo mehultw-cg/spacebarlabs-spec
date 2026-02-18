@@ -10,29 +10,24 @@ interface SpacebarLabsLogoProps {
   textClassName?: string;
 }
 
+import { spacebarFont } from "@/app/page";
+
+// ...
+
 export function SpacebarLabsLogo({ className, iconClassName, textClassName }: SpacebarLabsLogoProps) {
   return (
     <div className={cn("flex items-center gap-3", className)}>
-      <div className={cn("w-8 h-8", iconClassName)}>
+      <div className={cn("w-14 h-14", iconClassName)}>
         <RocketLogo 
-          className="w-full h-full text-cyan-400 fill-current" 
+          className="w-full h-full text-blue-900 dark:text-sky-400 fill-current" 
           fillColor="currentColor"
           strokeColor="currentColor"
+          strokeWidth="35px"
         />
       </div>
-      <span className={cn("text-xl font-bold tracking-wide text-foreground", textClassName)} style={{ fontFamily: 'Nasalization, sans-serif' }}>
+      <span className={cn("text-xl font-bold tracking-wide text-foreground", spacebarFont.className, textClassName)}>
         Spacebar Labs
       </span>
-      {/* Styles for font loading if not globally loaded yet */}
-      <style jsx global>{`
-        @font-face {
-          font-family: 'Nasalization';
-          src: url('/fonts/nasalization-rg.ttf') format('truetype');
-          font-weight: normal;
-          font-style: normal;
-          font-display: swap;
-        }
-      `}</style>
     </div>
   );
 }

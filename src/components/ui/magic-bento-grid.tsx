@@ -46,10 +46,10 @@ const tagColors: Record<string, {
   design: { bg: "bg-pink-500/10", text: "text-pink-500", border: "border-pink-500/20", colorHex: "#ec4899", lightHex: "#f9a8d4", darkHex: "#be185d" },
   "coming-soon": { bg: "bg-yellow-500/10", text: "text-yellow-500", border: "border-yellow-500/20", colorHex: "#eab308", lightHex: "#fde047", darkHex: "#a16207" },
   // New Tags
-  architecture: { bg: "bg-cyan-500/10", text: "text-cyan-500", border: "border-cyan-500/20", colorHex: "#06b6d4", lightHex: "#67e8f9", darkHex: "#0e7490" },
-  infrastructure: { bg: "bg-slate-500/10", text: "text-slate-500", border: "border-slate-500/20", colorHex: "#64748b", lightHex: "#94a3b8", darkHex: "#475569" },
+  architecture: { bg: "bg-teal-500/10", text: "text-teal-500", border: "border-teal-500/20", colorHex: "#14b8a6", lightHex: "#72e2f0", darkHex: "#08a290" },
+  infrastructure: { bg: "bg-sky-500/10", text: "text-sky-500", border: "border-sky-500/20", colorHex: "#0ea5e9", lightHex: "#56c1f3ff", darkHex: "#0883bcff" },
   policy: { bg: "bg-teal-500/10", text: "text-teal-500", border: "border-teal-500/20", colorHex: "#14b8a6", lightHex: "#5eead4", darkHex: "#0f766e" },
-  devsecops: { bg: "bg-red-500/10", text: "text-red-500", border: "border-red-500/20", colorHex: "#ef4444", lightHex: "#fca5a5", darkHex: "#b91c1c" },
+  devsecops: { bg: "bg-indigo-600/10", text: "text-indigo-600", border: "border-indigo-600/20", colorHex: "#4f46e5", lightHex: "#a5b4fc", darkHex: "#4338ca" },
   appsec: { bg: "bg-rose-500/10", text: "text-rose-500", border: "border-rose-500/20", colorHex: "#f43f5e", lightHex: "#fda4af", darkHex: "#be123c" },
   automation: { bg: "bg-indigo-500/10", text: "text-indigo-500", border: "border-indigo-500/20", colorHex: "#6366f1", lightHex: "#a5b4fc", darkHex: "#4338ca" },
   engineering: { bg: "bg-violet-500/10", text: "text-violet-500", border: "border-violet-500/20", colorHex: "#8b5cf6", lightHex: "#c4b5fd", darkHex: "#6d28d9" },
@@ -212,7 +212,7 @@ export const MagicBentoCard = ({
                        hover: { x: 10 }
                      }}
                      transition={{ duration: 0.3, delay: 0.15, ease: "easeOut" }}
-                     className="text-sm text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed"
+                     className="text-sm text-neutral-700 dark:text-neutral-400 font-medium leading-relaxed"
                    >
                     {detail}
                    </motion.p>
@@ -238,9 +238,9 @@ export const MagicBentoCard = ({
                         initial={{ opacity: 0, x: -5 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.2, delay: 0.2 + (i * 0.05) }}
-                        className="flex items-start gap-2 text-sm text-neutral-600 dark:text-neutral-400"
+                        className="flex items-start gap-2 text-sm text-neutral-700 dark:text-neutral-400"
                       >
-                         <Box className="w-4 h-4 mt-0.5 shrink-0 text-emerald-400 dark:text-emerald-500" />
+                         <Box className="w-4 h-4 mt-0.5 shrink-0 text-emerald-500 dark:text-emerald-500" />
                          <span>{bullet}</span>
                       </motion.li>
                     ))}
@@ -266,7 +266,7 @@ export const MagicBentoCard = ({
                   key={index}
                   variant="outline"
                   className={cn(
-                    "text-[9px] px-1.5 py-0.5 h-auto",
+                    "text-[12px] px-1.5 py-0.5 h-auto",
                     style.border,
                     style.text,
                     style.bg

@@ -111,7 +111,7 @@ export function MagicCard({
       />
 
       {/* Inner card background - inset to show border */}
-      <div className="absolute inset-[2px] rounded-[inherit] bg-white/50 dark:bg-black/80 backdrop-blur-xl" />
+      <div className="absolute inset-[2px] rounded-[inherit] bg-white/70 dark:bg-black/80 backdrop-blur-xl" />
 
       {/* Subtle inner glow */}
       <motion.div

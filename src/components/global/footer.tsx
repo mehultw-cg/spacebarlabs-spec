@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { NavbarLogo } from "@/components/ui/resizable-navbar";
+import Link from "next/link";
+import { SpacebarLabsLogo } from "@/components/ui/SpacebarLabsLogo";
 import { IconBrandTwitter, IconBrandGithub, IconBrandLinkedin, IconBrandInstagram } from "@tabler/icons-react";
 
 export function Footer() {
@@ -48,7 +49,9 @@ export function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-1 space-y-6">
             <div className="flex items-center gap-2">
-              <NavbarLogo />
+              <Link href="/">
+                <SpacebarLabsLogo textClassName="text-white dark:text-white" />
+              </Link>
             </div>
             <p className="text-neutral-300 dark:text-neutral-400 text-sm leading-relaxed max-w-xs">
               Forging digital legacies with code and creativity. We build the future, one pixel at a time.

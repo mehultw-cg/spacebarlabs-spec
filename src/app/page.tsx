@@ -10,6 +10,14 @@ import { ScrollBackground } from "@/components/global/ScrollBackground";
 import { ServiceSectionNewUpdated } from "@/components/sections/ServicesSectionUpdated";
 import { PricingSectionUpdated } from "@/components/sections/PricingSectionUpdated";
 import { WhyUsSectionUpdated } from "@/components/sections/WhyUsSectionUpdated";
+import localFont from "next/font/local";
+
+export const spacebarFont = localFont({
+  src: [
+    { path: "../lib/fonts/nasalization-rg.ttf" },
+  ],
+  variable: "--font-spacebar",
+});
 
 export default function Home() {
   return (

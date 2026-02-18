@@ -9,6 +9,8 @@ import { RainbowButton } from "@/components/ui/rainbow-button";
 import { AuroraText } from "@/components/ui/aurora-text";
 import { Badge } from "@/components/ui/badge";
 
+import { spacebarFont } from "@/app/page";
+
 // Import graphics
 import { ReactComponent as RocketLogo } from "@/components/vfx/why-us-graphics/rocket-logo-only";
 import { ReactComponent as ServerConstellation } from "@/components/vfx/why-us-graphics/server-constellation-safe"; 
@@ -107,17 +109,17 @@ export function HeroSectionNew() {
                      className="space-y-8 flex flex-col items-center"
                    >
                      {/* Gradient Header - Green/Purple/Blue hues */}
-                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight" style={{ fontFamily: 'Nasalization, sans-serif' }}>
+                     <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold leading-tight ${spacebarFont.className}`}>
                        <AuroraText 
-                          className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-cyan-400 to-purple-500"
-                          colors={["#34d399", "#22d3ee", "#a855f7", "#34d399"]} // Green, Cyan, Purple loop
-                          speed={1.5} // Slower animation
+                          className="text-shadow-sm/5"
+                          colors={["#11b579ff", "#1fc1ccff", "#e523dbff", "#3279f4ff"]} // Green, Cyan, Purple loop
+                          speed={0.75} // Slower animation
                        >
                          {content.heading}
                        </AuroraText>
                      </h1>
                      
-                     <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-300 leading-relaxed max-w-2xl">
+                     <p className="text-lg md:text-xl text-neutral-200 dark:text-neutral-300 leading-relaxed max-w-2xl">
                        {content.subheading}
                      </p>
                      
@@ -133,8 +135,8 @@ export function HeroSectionNew() {
                        
                        <Button 
                          size="lg" 
-                         variant="outline" 
-                         className="text-neutral-900 dark:text-white hover:bg-black/5 dark:hover:bg-white/10 backdrop-blur-sm rounded-full h-12 px-8 border border-neutral-200 dark:border-white/20"
+                         variant="ghost" 
+                         className="text-neutral-200 dark:text-white hover:bg-transparent hover:text-white dark:hover:bg-white/10 backdrop-blur-sm rounded-full h-12 px-8 border border-neutral-200 dark:border-white/20"
                          asChild
                        >
                          <a href={content.cta2.link}>{content.cta2.text}</a>
@@ -235,7 +237,7 @@ export function HeroSectionNew() {
                   Core Mission
                 </AuroraText>
              </h3>
-             <p className="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed mx-auto font-medium">
+             <p className="text-neutral-300 dark:text-neutral-300 text-shadow-lg/30 text-sm leading-relaxed mx-auto font-medium">
                Spacebar Labs aims to reduce dependency through resilient, private, and secure systems. Education, knowledge transfer, and training are in our DNA.
              </p>
            </div>

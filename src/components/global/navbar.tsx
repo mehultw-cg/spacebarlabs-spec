@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import React, { useState } from "react";
 import {
   Navbar as AceternityNavbar,
@@ -15,22 +16,22 @@ import { ThemeToggle } from "@/components/global/theme-toggle";
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler"
 import { Button } from "@/components/ui/button";
 import { RainbowButton } from "../ui/rainbow-button";
+import { Sparkles, CreditCard, Rocket, Info, Mail } from "lucide-react";
 
 export function Navbar({ className }: { className?: string }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { name: "Services", link: "#services" },
-    { name: "Pricing", link: "#pricing" },
-    { name: "Why Us", link: "#why-us" },
-    { name: "Tech Stack", link: "#tech-stack" },
-    { name: "About", link: "#about" },
-    { name: "Contact", link: "#contact" },
+    { name: "Services", link: "#services", icon: <Sparkles className="w-4 h-4" /> },
+    { name: "Pricing", link: "#pricing", icon: <CreditCard className="w-4 h-4" /> },
+    { name: "Why Us", link: "#why-us", icon: <Rocket className="w-4 h-4" /> },
+    { name: "About", link: "#about", icon: <Info className="w-4 h-4" /> },
+    { name: "Contact", link: "#contact", icon: <Mail className="w-4 h-4" /> },
   ];
 
   return (
     <div className="relative w-full bg-gradient-to-b from-transparent to-black">
-      <AceternityNavbar className={className}>
+      <AceternityNavbar className={cn(className, "top-auto bottom-0 sm:top-2 sm:bottom-auto")}>
         <NavBody className="gap-4">
           <div className="flex items-center gap-2">
             <NavbarLogo />
@@ -48,7 +49,7 @@ export function Navbar({ className }: { className?: string }) {
           </div>
         </NavBody>
 
-        <MobileNav>
+        <MobileNav className="bottom-4">
           <MobileNavHeader>
             <NavbarLogo />
             <div className="flex items-center gap-2">
@@ -63,19 +64,21 @@ export function Navbar({ className }: { className?: string }) {
           <MobileNavMenu
             isOpen={isMobileMenuOpen}
             onClose={() => setIsMobileMenuOpen(false)}
+            className="bottom-20 top-auto origin-bottom"
           >
              <div className="flex flex-col gap-4 w-full">
                 {navItems.map((item, idx) => (
                   <a
                     key={idx}
                     href={item.link}
-                    className="text-lg font-medium text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white transition-colors"
+                    className="flex items-center gap-3 text-lg font-medium text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white transition-colors"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
+                    {item.icon}
                     {item.name}
                   </a>
                 ))}
-                <Button className="w-full mt-4">Get Started</Button>
+                <RainbowButton variant="outline" className="w-full mt-4">Get Started</RainbowButton>
              </div>
           </MobileNavMenu>
         </MobileNav>
