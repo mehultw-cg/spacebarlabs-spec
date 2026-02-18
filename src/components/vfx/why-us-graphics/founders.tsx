@@ -15,10 +15,10 @@ interface FoundersProps extends SVGProps<SVGSVGElement> {
 }
 
 const Founders = ({ className, strokeWidths, strokeColor, fillColor, style, ...props }: FoundersProps) => {
-  const outerShieldStroke = strokeWidths?.outerShield;
-  const innerShieldStroke = strokeWidths?.innerShield;
-  const networkLinesStroke = strokeWidths?.networkLines;
-  const networkNodesStroke = strokeWidths?.networkNodes;
+  const outerShieldStroke = strokeWidths?.outerShield ?? 2;
+  const innerShieldStroke = strokeWidths?.innerShield ?? 2;
+  const networkLinesStroke = strokeWidths?.networkLines ?? 2;
+  const networkNodesStroke = strokeWidths?.networkNodes ?? 3;
 
    return (
    <svg

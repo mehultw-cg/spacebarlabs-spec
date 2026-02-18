@@ -9,6 +9,7 @@ import { Footer } from "@/components/global/footer";
 import { ScrollBackground } from "@/components/global/ScrollBackground";
 import { ServiceSectionNewUpdated } from "@/components/sections/ServicesSectionUpdated";
 import { PricingSectionUpdated } from "@/components/sections/PricingSectionUpdated";
+import { WhyUsSectionUpdated } from "@/components/sections/WhyUsSectionUpdated";
 
 export default function Home() {
   return (
@@ -30,10 +31,11 @@ export default function Home() {
         {/* <PricingSection /> */}
 
         {/* Why Us Section */}
-        <WhyUsSection />
+        <WhyUsSectionUpdated />
+        {/* <WhyUsSection /> */}
 
         {/* Tech Stack Section */}
-        <TechStackSection />
+        {/* <TechStackSection /> */}
 
         {/* About Us Section (includes Contact) */}
         <AboutUsSection />

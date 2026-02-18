@@ -37,7 +37,7 @@ export const WhyUsCard = ({
         "bg-[image:var(--gradient-glass-light)] dark:bg-[image:var(--gradient-glass-dark)]",
         "backdrop-blur-xl",
         "border border-black/5 dark:border-white/10",
-        "shadow-lg shadow-black/5 dark:shadow-xl dark:shadow-neutral-800/20",
+        "shadow-lg shadow-black/5 dark:shadow-xl",
         "flex flex-col justify-end", 
         className
       )}

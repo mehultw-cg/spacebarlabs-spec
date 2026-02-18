@@ -563,3 +563,4 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 export { SvgComponent as ReactComponent }
+export default SvgComponent;

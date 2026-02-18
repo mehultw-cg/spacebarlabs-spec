@@ -37,8 +37,9 @@ const BgNetwork = ({ className, strokeWidths, strokeColor, fillColor, style, ...
       <g id="bg-network">
         <path
           d="M344.088,23.403c14.395,-19.909 42.245,-24.385 62.154,-9.989c19.909,14.395 24.385,42.245 9.989,62.154c-14.395,19.909 -42.245,24.385 -62.154,9.989c-19.909,-14.395 -24.385,-42.245 -9.989,-62.154Z"
+          className={!fillColor ? "fill-black/60 dark:fill-cyan-500/20" : undefined}
           style={{
-            fill: fillColor || "rgba(0,0,0,0.6)",
+            fill: fillColor,
             stroke: "currentColor",
             strokeOpacity: 0.77,
             strokeWidth: `${starsStroke}px`,
@@ -46,8 +47,9 @@ const BgNetwork = ({ className, strokeWidths, strokeColor, fillColor, style, ...
         />
         <path
           d="M28.416,142.03c6.131,-8.48 17.993,-10.386 26.473,-4.255c8.48,6.131 10.386,17.993 4.255,26.473c-6.131,8.48 -17.993,10.386 -26.473,4.255c-8.48,-6.131 -10.386,-17.993 -4.255,-26.473Z"
+          className={!fillColor ? "fill-black/60 dark:fill-cyan-500/20" : undefined}
           style={{
-            fill: fillColor || "rgba(0,0,0,0.6)",
+            fill: fillColor,
             stroke: "currentColor",
             strokeOpacity: 0.77,
             strokeWidth: `${starsStroke}px`,
@@ -55,8 +57,9 @@ const BgNetwork = ({ className, strokeWidths, strokeColor, fillColor, style, ...
         />
         <path
           d="M176.722,297.075c10.13,-14.01 29.728,-17.16 43.738,-7.03c14.01,10.13 17.16,29.728 7.03,43.738c-10.13,14.01 -29.728,17.16 -43.738,7.03c-14.01,-10.13 -17.16,-29.728 -7.03,-43.738Z"
+          className={!fillColor ? "fill-black/60 dark:fill-cyan-500/20" : undefined}
           style={{
-            fill: fillColor || "rgba(0,0,0,0.6)",
+            fill: fillColor,
             stroke: "currentColor",
             strokeOpacity: 0.77,
             strokeWidth: `${starsStroke}px`,
@@ -64,8 +67,9 @@ const BgNetwork = ({ className, strokeWidths, strokeColor, fillColor, style, ...
         />
         <path
           d="M13.034,498.131c14.928,-20.646 43.81,-25.288 64.456,-10.359c20.646,14.928 25.288,43.81 10.359,64.456c-14.928,20.646 -43.81,25.288 -64.456,10.359c-20.646,-14.928 -25.288,-43.81 -10.359,-64.456Z"
+          className={!fillColor ? "fill-black/60 dark:fill-cyan-500/20" : undefined}
           style={{
-            fill: fillColor || "rgba(0,0,0,0.6)",
+            fill: fillColor,
             stroke: "currentColor",
             strokeOpacity: 0.77,
             strokeWidth: `${starsStroke}px`,
@@ -136,8 +140,9 @@ const BgNetwork = ({ className, strokeWidths, strokeColor, fillColor, style, ...
         />
         <path
           d="M234.316,743.581c10.13,-14.01 29.728,-17.16 43.738,-7.03c14.01,10.13 17.16,29.728 7.03,43.738c-10.13,14.01 -29.728,17.16 -43.738,7.03c-14.01,-10.13 -17.16,-29.728 -7.03,-43.738Z"
+          className={!fillColor ? "fill-black/60 dark:fill-cyan-500/20" : undefined}
           style={{
-            fill: fillColor || "rgba(0,0,0,0.6)",
+            fill: fillColor,
             stroke: "currentColor",
             strokeOpacity: 0.77,
             strokeWidth: `${starsStroke}px`,
@@ -262,8 +267,9 @@ const BgNetwork = ({ className, strokeWidths, strokeColor, fillColor, style, ...
         />
         <path
           d="M411.115,330.247c20.793,-28.757 61.021,-35.222 89.778,-14.429c28.757,20.793 35.222,61.021 14.429,89.778c-20.793,28.757 -61.021,35.222 -89.778,14.429c-28.757,-20.793 -35.222,-61.021 -14.429,-89.778Z"
+          className={!fillColor ? "fill-black/60 dark:fill-cyan-500/20" : undefined}
           style={{
-            fill: fillColor || "rgba(0,0,0,0.6)",
+            fill: fillColor,
             stroke: "currentColor",
             strokeOpacity: 0.77,
             strokeWidth: `${starsStroke}px`,
@@ -271,8 +277,9 @@ const BgNetwork = ({ className, strokeWidths, strokeColor, fillColor, style, ...
         />
         <path
           d="M579.139,75.361c9.597,-13.272 28.164,-16.256 41.436,-6.66c13.272,9.597 16.256,28.164 6.66,41.436c-9.597,13.272 -28.164,16.256 -41.436,6.66c-13.272,-9.597 -16.256,-28.164 -6.66,-41.436Z"
+          className={!fillColor ? "fill-black/60 dark:fill-cyan-500/20" : undefined}
           style={{
-            fill: fillColor || "rgba(0,0,0,0.6)",
+            fill: fillColor,
             stroke: "currentColor",
             strokeOpacity: 0.77,
             strokeWidth: `${starsStroke}px`,
@@ -280,8 +287,9 @@ const BgNetwork = ({ className, strokeWidths, strokeColor, fillColor, style, ...
         />
         <path
           d="M712.379,349.719c14.129,-19.54 41.463,-23.933 61.003,-9.804c19.54,14.129 23.933,41.463 9.804,61.003c-14.129,19.54 -41.463,23.933 -61.003,9.804c-19.54,-14.129 -23.933,-41.463 -9.804,-61.003Z"
+          className={!fillColor ? "fill-black/60 dark:fill-cyan-500/20" : undefined}
           style={{
-            fill: fillColor || "rgba(0,0,0,0.6)",
+            fill: fillColor,
             stroke: "currentColor",
             strokeOpacity: 0.77,
             strokeWidth: `${starsStroke}px`,
@@ -289,8 +297,9 @@ const BgNetwork = ({ className, strokeWidths, strokeColor, fillColor, style, ...
         />
         <path
           d="M527.173,659.319c13.595,-18.802 39.898,-23.03 58.701,-9.434c18.802,13.595 23.03,39.898 9.434,58.701c-13.595,18.802 -39.898,23.03 -58.701,9.434c-18.802,-13.595 -39.898,23.03 -58.701,9.434Z"
+          className={!fillColor ? "fill-black/60 dark:fill-cyan-500/20" : undefined}
           style={{
-            fill: fillColor || "rgba(0,0,0,0.6)",
+            fill: fillColor,
             stroke: "currentColor",
             strokeOpacity: 0.77,
             strokeWidth: `${starsStroke}px`,

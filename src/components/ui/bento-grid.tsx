@@ -35,6 +35,7 @@ export const BentoGridItem = ({
   badges,
   isExpanded,
   onClick,
+  style,
 }: {
   className?: string;
   title?: string | React.ReactNode;
@@ -45,11 +46,13 @@ export const BentoGridItem = ({
   badges?: { text: string; variant: BadgeProps["variant"]; className?: string }[];
   isExpanded?: boolean;
   onClick?: () => void;
+  style?: React.CSSProperties;
 }) => {
   return (
     <AnimatePresence>
     <motion.div
       layout
+      style={style}
       transition={{
         type: "spring",
         stiffness: 300,
@@ -58,7 +61,7 @@ export const BentoGridItem = ({
       onClick={onClick}
       className={cn(
         cardVariants({ variant: "default" }),
-        "group/bento row-span-1 justify-between p-8 cursor-pointer hover:shadow-xl transition-all duration-300 gap-6",
+        "group/bento row-span-1 justify-between p-2 cursor-pointer hover:shadow-xl transition-all duration-300 gap-6",
         className,
       )}
     >

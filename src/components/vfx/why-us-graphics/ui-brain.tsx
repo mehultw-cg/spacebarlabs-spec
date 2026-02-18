@@ -10,7 +10,7 @@ interface UiBrainProps extends SVGProps<SVGSVGElement> {
   fillColor?: string;
 }
 
-const UiBrain = ({ className, strokeWidths, strokeColor, fillColor, style, ...props }: UiBrainProps) => {
+const UiBrain = ({ className, strokeWidths, strokeColor, fillColor, style, width = "100%", height = "100%", ...props }: UiBrainProps) => {
   const mainStroke = strokeWidths?.main;
   const detailStroke = 2;
 
