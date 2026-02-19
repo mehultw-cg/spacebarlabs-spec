@@ -2,7 +2,8 @@
 
 import React, { useRef } from "react";
 import { ServiceRowUpdated } from "@/components/ui/ServiceRowUpdated";
-import { servicesData, securityNote } from "@/lib/data/services-updated";
+import { servicesData } from "@/lib/data/services-updated";
+import { securityCommitment } from "../../lib/data/policies";
 import { Shield } from "lucide-react";
 import { spacebarFont } from "@/app/page";
 
@@ -21,15 +22,15 @@ export function ServiceSectionNewUpdated() {
   const allRows = chunkArray(servicesData, 3);
 
   return (
-    <section ref={sectionRef} id="services-new" className="py-20 bg-[radial-gradient(circle at 50% 50%, transparent 0%, #020302 100%)] overflow-hidden">
+    <section ref={sectionRef} id="services" className="py-20 bg-[radial-gradient(circle at 50% 50%, transparent 0%, #020302 100%)] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className={`text-4xl md:text-5xl font-bold mb-4 text-neutral-300 text-shadow-lg/30 dark:text-white ${spacebarFont.className}`}>
+          <h2 className={`text-4xl md:text-5xl font-bold mb-4 text-neutral-200 text-shadow-lg/30 dark:text-white ${spacebarFont.className}`}>
             Our Services
           </h2>
-          <p className="text-neutral-300 text-shadow-lg/30 max-w-2xl mx-auto">
-            Comprehensive solutions tailored to your digital needs.
+          <p className="text-neutral-200 dark:text-neutral-300 italic text-shadow-lg/30 max-w-2xl mx-auto">
+            Capabilities across security, infrastructure, and system engineering.
           </p>
         </div>
 
@@ -60,10 +61,18 @@ export function ServiceSectionNewUpdated() {
               <Shield className="h-8 w-8 text-blue-400" />
             </div>
             <div>
-              <h3 className="text-xl font-bold mb-2 dark:text-white text-neutral-700">{securityNote.title}</h3>
-              <p className="dark:text-neutral-400 text-neutral-600 leading-relaxed">
-                {securityNote.content}
-              </p>
+              <h3 className="text-xl font-bold mb-2 dark:text-white text-neutral-700">{securityCommitment.title}</h3>
+              <div className="dark:text-neutral-400 text-neutral-600 leading-relaxed mb-6">
+                {securityCommitment.content}
+              </div>
+              
+              <div className="flex flex-wrap gap-2">
+                {securityCommitment.tags.map((tag, idx) => (
+                  <span key={idx} className="px-3 py-1 rounded-full text-xs font-medium bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>

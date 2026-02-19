@@ -94,7 +94,28 @@ const PricingCard = ({ item }: { item: typeof pricingData[0] }) => {
             ? "md:col-span-5"
             : ""
   
-  const contactLink = `/#contact?subject=${encodeURIComponent(`Interested in ${item.title}`)}`;
+  let subject = "PING_HELLO";
+  const t = item.title.toLowerCase();
+  let message = `Hi Spacebar, I'm interested in the ${item.title} plan. Open to hearing more about how you can help us achieve _______.`;
+
+  if (t.includes("architecture")) {
+      subject = "START_BUILD";
+      message = "Hi Spacebar, I'm interested in the Secure Architecture plan. I'm building a system for _______ and want to ensure it's secure by design. Can we discuss the implementation details?";
+  } else if (t.includes("devsecops")) {
+      subject = "START_BUILD";
+      message = "Hi Spacebar, I'm interested in the DevSecOps plan. Our deployment pipeline needs some work, specifically regarding _______. Can you help us automate the security checks?";
+  } else if (t.includes("infrastructure")) {
+      subject = "INIT_MIGRATION";
+      message = "Hi Spacebar, I'm interested in the Infrastructure Migration plan. We are currently on _______ and want to move to a more sovereign setup. Can you help us plan the migration?";
+  } else if (t.includes("migration")) {
+      subject = "INIT_MIGRATION";
+      message = "Hi Spacebar, I'm interested in the Migration plan. We are currently on _______ and looking to switch providers. Can you help us with zero-downtime migration?";
+  } else if (t.includes("assessment")) {
+      subject = "REQ_AUDIT";
+      message = "Hi Spacebar, I'm interested in the Security Assessment plan. We have a system that needs auditing, specifically regarding _______. When can you take a look?";
+  }
+  
+  const contactLink = `?subject=${subject}&message=${encodeURIComponent(message)}#contact`;
 
   return (
     <motion.div

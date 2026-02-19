@@ -26,7 +26,6 @@ export function Navbar({ className }: { className?: string }) {
     { name: "Pricing", link: "#pricing", icon: <CreditCard className="w-4 h-4" /> },
     { name: "Why Us", link: "#why-us", icon: <Rocket className="w-4 h-4" /> },
     { name: "About", link: "#about", icon: <Info className="w-4 h-4" /> },
-    { name: "Contact", link: "#contact", icon: <Mail className="w-4 h-4" /> },
   ];
 
   return (
@@ -42,8 +41,8 @@ export function Navbar({ className }: { className?: string }) {
           <div className="flex items-center gap-2">
             {/* <ThemeToggle /> */}
             <AnimatedThemeToggler />
-            <RainbowButton variant="outline" size="sm" className="hidden sm:flex">
-              Get Started
+            <RainbowButton variant="outline" size="sm" className="hidden sm:flex" asChild>
+              <a href="?subject=START_BUILD#contact">Get Started</a>
             </RainbowButton>
            
           </div>
@@ -78,7 +77,9 @@ export function Navbar({ className }: { className?: string }) {
                     {item.name}
                   </a>
                 ))}
-                <RainbowButton variant="outline" className="w-full mt-4">Get Started</RainbowButton>
+                <RainbowButton variant="outline" className="w-full mt-4" asChild onClick={() => setIsMobileMenuOpen(false)}>
+                  <a href="?subject=START_BUILD#contact">Get Started</a>
+                </RainbowButton>
              </div>
           </MobileNavMenu>
         </MobileNav>

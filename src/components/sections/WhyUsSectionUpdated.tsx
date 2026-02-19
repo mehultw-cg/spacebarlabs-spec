@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import AnalyticalLock from "@/components/vfx/why-us-graphics/analytical-lock";
 import BgNetwork from "@/components/vfx/why-us-graphics/bg-network";
 import ClosedLockFingerprint from "@/components/vfx/why-us-graphics/closed-lock-fingerprint";
+import BoxedFingerprint from "@/components/vfx/why-us-graphics/boxed-fingerprint";
 import CloudMigration from "@/components/vfx/why-us-graphics/cloud-migration";
 import Founders from "@/components/vfx/why-us-graphics/founders";
 import GenericGlobe from "@/components/vfx/why-us-graphics/generic-globe";
@@ -41,7 +42,7 @@ export function WhyUsSectionUpdated() {
           <h2 className={`text-4xl md:text-5xl font-bold mb-4 text-neutral-200 dark:text-white text-shadow-lg/30 ${spacebarFont.className}`}>
             Why Us?
           </h2>
-          <p className="text-neutral-200 dark:text-neutral-400 max-w-2xl mx-auto text-shadow-sm/30">
+          <p className="text-neutral-200 dark:text-neutral-300 italic max-w-2xl mx-auto text-shadow-sm/30">
             We don't just build software. We build trust, security, and independence.
           </p>
         </div>
@@ -212,8 +213,10 @@ const GraphicComponent = ({ graphic }: { graphic?: string }) => {
         case "AnalyticalLock":
             return <AnalyticalLock className={className} strokeWidths={{ rectangles: boldStroke, keyhole: boldStroke, outerLock: extraBoldStroke, innerLockTop: boldStroke }} />;
         case "ClosedLockFingerprint":
-            // Bolder fingerprints
+             // Bolder fingerprints
             return <ClosedLockFingerprint className={className} strokeWidths={{ fingerprint: 3, outerLock: 2.5, lockTop: 2.5 }} />;
+        case "BoxedFingerprint":
+            return <BoxedFingerprint className={className} strokeWidths={{ fingerprint: 3, outer: 2.5 }} />;
         case "ShieldNetwork":
             return <ShieldNetwork className={cn(className, "right-[-10%] bottom-[-15%]")} />;
         case "CloudMigration":
@@ -230,7 +233,7 @@ const GraphicComponent = ({ graphic }: { graphic?: string }) => {
              // Scaled up, opacity removed to match stroke intensity
              return <ServerConstellationSafe className={cn(className, "right-[-20%] scale-150 origin-center")} />;
         case "HeirarchyStars":
-            return <HeirarchyStars className={className} />;
+            return <HeirarchyStars className={cn(className, "scale-[1.8] group-hover/bento:scale-[2.0] origin-center opacity-80 mix-blend-normal dark:mix-blend-screen")} />;
         case "BgNetwork":
             return <BgNetwork className={className} />;
         default:

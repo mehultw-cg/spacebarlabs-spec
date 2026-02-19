@@ -30,6 +30,13 @@ export function ContactSection() {
 
   const protocol = watch("subject");
 
+  const TEMPLATES: Record<string, string> = {
+    "PING_HELLO": "Hi Spacebar,\n\nI've been following your work and really like your approach. I wanted to reach out regarding my current setup.\n\nMy product is essentially _______, and I'd love some advice on scalability and architecture. Looking forward to chatting!",
+    "INIT_MIGRATION": "Hi Spacebar,\n\nOur team is looking to move away from _______ to a more sovereign infrastructure.\n\nOur current stack is mostly _______, and we want to make sure we do this right (zero downtime, no data loss). Can you help us plan this transition?",
+    "REQ_AUDIT": "Hi Spacebar,\n\nWe need a fresh pair of eyes on our system, specifically _______.\n\nWe're concerned about potential vulnerabilities and compliance issues. When would you be available for an audit?",
+    "START_BUILD": "Hi Spacebar,\n\nYour approach to security caught my eye. I'm building a new platform for _______, and I want to get the foundation right from day one.\n\nI'd love your help designing a secure architecture and maybe even implementing the core. Let's build something resilient.",
+  };
+
   const placeholders: Record<string, string> = {
     "PING_HELLO": "Brief us on your mission parameters...",
     "INIT_MIGRATION": "Tell us about your current infrastructure and migration goals...",
@@ -39,8 +46,20 @@ export function ContactSection() {
 
   useEffect(() => {
     const subject = searchParams.get("subject");
-    if (subject) {
-      setValue("subject", subject);
+    const validSubjects = ["PING_HELLO", "INIT_MIGRATION", "REQ_AUDIT", "START_BUILD"];
+    
+    // 1. Handle Subject
+    if (subject && validSubjects.includes(subject)) {
+      setValue("subject", subject as any);
+      
+      // 2. Handle Message (Priority: URL Param > Template > Empty)
+      const messageParam = searchParams.get("message");
+      if (messageParam) {
+           setValue("message", messageParam);
+      } else {
+           // Use template if no specific message is passed
+           setValue("message", TEMPLATES[subject]);
+      }
     }
   }, [searchParams, setValue]);
 
@@ -79,8 +98,8 @@ export function ContactSection() {
 
       <div className="max-w-4xl mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
-          <h2 className={cn("text-4xl font-bold mb-4", spacebarFont.className)}>Get in Touch</h2>
-          <p className="text-neutral-600 dark:text-neutral-400">
+          <h2 className={cn("text-4xl md:text-5xl font-bold mb-4", spacebarFont.className)}>Get in Touch</h2>
+          <p className="text-neutral-200 dark:text-neutral-200 italic text-shadow-sm/30">
             Ready to launch your project? Send us a signal.
           </p>
         </div>
@@ -172,6 +191,7 @@ export function ContactSection() {
                 <textarea
                   {...register("message")}
                   rows={5}
+                  data-lenis-prevent
                   className={cn(
                     "w-full my-2 px-4 py-2 rounded-md bg-neutral-100/20 dark:bg-black/30 border border-neutral-200 dark:border-white/10 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all resize-none font-mono text-sm",
                     errors.message && "border-red-500 focus:ring-red-500/50"

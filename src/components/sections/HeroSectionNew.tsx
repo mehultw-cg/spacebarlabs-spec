@@ -21,22 +21,22 @@ const HERO_CONTENT = [
     id: 1,
     heading: "Security and Privacy by Design",
     subheading: "We design resilient systems that protect your data, your infrastructure, and your long-term independence.",
-    cta1: { text: "Initialize Project", link: "/contact?subject=Init-Project" },
-    cta2: { text: "Our Approach", link: "/why-us" }
+    cta1: { text: "Initialize Project", link: "?subject=START_BUILD#contact" },
+    cta2: { text: "Our Approach", link: "#why-us" }
   },
   {
     id: 2,
     heading: "Reduce Cloud Costs Without Compromising Security",
     subheading: "We help organizations design infrastructure that balances performance, privacy, and long-term cost efficiency.",
-    cta1: { text: "Explore Migration Options", link: "/services?highlight=migration" },
-    cta2: { text: "Learn How It Works", link: "/why-us" }
+    cta1: { text: "Explore Migration Options", link: "#services" },
+    cta2: { text: "Learn How It Works", link: "#why-us" }
   },
   {
     id: 3,
     heading: "Secure Systems. Practical Processes. Measurable Results.",
     subheading: "From architecture to deployment, we integrate security into every stage of system development.",
-    cta1: { text: "Explore Services", link: "/services" },
-    cta2: { text: "Talk to an Engineer", link: "/contact" }
+    cta1: { text: "Explore Services", link: "#services" },
+    cta2: { text: "Talk to an Engineer", link: "?subject=PING_HELLO#contact" }
   }
 ];
 

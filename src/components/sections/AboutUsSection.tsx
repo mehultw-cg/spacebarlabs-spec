@@ -14,16 +14,29 @@ export function AboutUsSection() {
       <div className="py-20 max-w-7xl mx-auto px-4 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
-          <div>
-            <h2 className={cn("text-4xl md:text-5xl text-neutral-100 font-bold mb-6", spacebarFont.className)}>
+          <div className="rounded-lg bg-gradient-to-br from-white/70 to-white/50 dark:from-black/30 dark:to-black/10 backdrop-blur-lg p-8">
+            <h2 className={cn("text-4xl md:text-5xl text-neutral-900 dark:text-neutral-100 font-bold mb-2", spacebarFont.className)}>
               {aboutData.title}
             </h2>
-            <div className="space-y-6 text-neutral-100 text-shadow-lg/60 dark:text-neutral-300 leading-relaxed text-lg">
+            {/* <div className="space-y-6 text-neutral-100 text-shadow-lg/60 dark:text-neutral-300 leading-relaxed text-lg">
               {aboutData.description.map((paragraph, idx) => (
                 <p key={idx}>{paragraph}</p>
               ))}
-            </div>
+            </div> */}
+            <p className="text-neutral-900 dark:text-neutral-100 italic text-shadow-sm/30 mb-4">Designing the foundations of a safer digital world.</p>
+            <div className="space-y-6 text-neutral-900 dark:text-neutral-100 dark:text-shadow-lg/30 dark:text-neutral-300 leading-relaxed text-lg">
+              
 
+<p>SpaceBar Labs is a security-first systems engineering firm focused on reducing operational risk and eliminating unnecessary infrastructure complexity.</p>
+
+<p>We design secure infrastructure, privacy-aware architectures, and practical DevSecOps pipelines — ensuring teams retain control over their systems without dependency.</p>
+
+<p>Our approach is structured, transparent, and documentation-driven.</p>
+<p>We build systems your team can operate confidently — with security embedded from the foundation.</p>
+
+<p>We do not promise invulnerability.</p>
+<p>We deliver measured risk reduction and long-term clarity.</p>
+            </div>
 
 
 

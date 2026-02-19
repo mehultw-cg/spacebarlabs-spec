@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { SpacebarLabsLogo } from "@/components/ui/SpacebarLabsLogo";
 import { IconBrandTwitter, IconBrandGithub, IconBrandLinkedin, IconBrandInstagram } from "@tabler/icons-react";
+import { PrivacyModal, TermsModal, CookieModal } from "./PolicyModals";
 
 export function Footer() {
   const links = [
@@ -13,7 +14,7 @@ export function Footer() {
         { name: "Services", href: "#services" },
         { name: "Pricing", href: "#pricing" },
         { name: "Why Us", href: "#why-us" },
-        { name: "Tech Stack", href: "#tech-stack" },
+        // { name: "Tech Stack", href: "#tech-stack" },
       ],
     },
     {
@@ -21,16 +22,15 @@ export function Footer() {
       items: [
         { name: "About", href: "#about" },
         { name: "Contact", href: "#contact" },
-        { name: "Careers", href: "#" },
         { name: "Blog", href: "#" },
       ],
     },
     {
       title: "Legal",
       items: [
-        { name: "Privacy Policy", href: "#" },
-        { name: "Terms of Service", href: "#" },
-        { name: "Cookie Policy", href: "#" },
+        { name: "Privacy Policy", href: "#", Modal: PrivacyModal },
+        { name: "Terms of Service", href: "#", Modal: TermsModal },
+        { name: "Cookie Policy", href: "#", Modal: CookieModal },
       ],
     },
   ];
@@ -53,20 +53,9 @@ export function Footer() {
                 <SpacebarLabsLogo textClassName="text-white dark:text-white" />
               </Link>
             </div>
-            <p className="text-neutral-300 dark:text-neutral-400 text-sm leading-relaxed max-w-xs">
-              Forging digital legacies with code and creativity. We build the future, one pixel at a time.
+            <p className="text-neutral-200 dark:text-neutral-200 text-sm leading-relaxed max-w-xs">
+              Designing the foundations of a safer digital world.
             </p>
-            <div className="flex gap-4">
-              {socialLinks.map((social, idx) => (
-                <a
-                  key={idx}
-                  href={social.href}
-                  className="w-10 h-10 rounded-full backdrop-blur bg-neutral-100/60 dark:bg-neutral-900 flex items-center justify-center text-neutral-800 dark:text-neutral-400 hover:bg-emerald-400/40 hover:text-white dark:hover:bg-emerald-600/30 dark:hover:text-white transition-all duration-300"
-                >
-                  <social.icon className="w-6 h-6" />
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Links Columns - Glassmorphic Card Group */}
@@ -75,16 +64,32 @@ export function Footer() {
               <div key={idx}>
                 <h4 className="font-bold text-black dark:text-white mb-6">{column.title}</h4>
                 <ul className="space-y-4">
-                  {column.items.map((item, itemIdx) => (
-                    <li key={itemIdx}>
-                      <a
-                        href={item.href}
-                        className="text-neutral-900 dark:text-neutral-400 hover:text-emerald-700 dark:hover:text-emerald-400 text-sm transition-colors"
-                      >
-                        {item.name}
-                      </a>
-                    </li>
-                  ))}
+                  {column.items.map((item, itemIdx) => {
+                    // @ts-ignore
+                    if (item.Modal) {
+                      // @ts-ignore
+                      const Modal = item.Modal;
+                      return (
+                        <li key={itemIdx}>
+                          <Modal>
+                            <button className="text-neutral-900 dark:text-neutral-400 hover:text-emerald-700 dark:hover:text-emerald-400 text-sm transition-colors text-left bg-transparent border-none p-0">
+                              {item.name}
+                            </button>
+                          </Modal>
+                        </li>
+                      );
+                    }
+                    return (
+                      <li key={itemIdx}>
+                        <a
+                          href={item.href}
+                          className="text-neutral-900 dark:text-neutral-400 hover:text-emerald-700 dark:hover:text-emerald-400 text-sm transition-colors"
+                        >
+                          {item.name}
+                        </a>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             ))}
@@ -93,13 +98,13 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-neutral-200 dark:border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-neutral-500 dark:text-neutral-500 text-sm">
+          <p className="text-neutral-200 dark:text-neutral-200 text-sm">
             &copy; {new Date().getFullYear()} SpaceBar Labs. All rights reserved.
           </p>
-          <div className="flex items-center gap-2 text-sm text-neutral-500 dark:text-neutral-500">
-            <span>Made with</span>
+          <div className="flex items-center gap-2 text-sm text-neutral-200 dark:text-neutral-200">
+            <span>Built with</span>
             <span className="text-red-500">♥</span>
-            <span>in the Cosmos</span>
+            <span>for people, not just systems</span>
           </div>
         </div>
       </div>

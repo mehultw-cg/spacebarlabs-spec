@@ -20,6 +20,7 @@ export const metadata: Metadata = {
 import { ThemeProvider } from "@/components/global/theme-provider";
 import { Navbar } from "@/components/global/navbar";
 import { SmoothScroll } from "@/components/ui/smooth-scroll";
+import { BackToTop } from "@/components/ui/back-to-top";
 
 export default function RootLayout({
   children,

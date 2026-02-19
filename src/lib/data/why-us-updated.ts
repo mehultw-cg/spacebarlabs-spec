@@ -20,12 +20,12 @@ export const whyUsData: WhyUsItem[] = [
         id: "card-1",
         title: "Security built into the foundation",
         subheading: "Not added later. Designed from the start.",
-        description: "We architect systems where security is a structural property, not a reactive feature. We do not rely on patching vulnerabilities after deployment. We build systems to minimize them from the beginning.",
+        description: "We architect systems where security is a structural property, not a reactive feature. We do not rely on patching vulnerabilities after deployment. We build systems to minimize them from the beginning. We systematically follow our 19K word security documentation",
         bullets: [
-            "threat-aware system design",
-            "hardened infrastructure",
-            "automated security controls",
-            "long-term resilience planning"
+            "Threat-aware system design",
+            "Hardened infrastructure",
+            "Atomated security controls",
+            "Long-term resilience planning",
         ],
         graphic: "ShieldNetwork",
         colSpan: 3,
@@ -48,7 +48,7 @@ export const whyUsData: WhyUsItem[] = [
         id: "card-3",
         title: "Direct Access to Engineers",
         subheading: "Work directly with the people designing your systems.",
-        graphic: "LineDown",
+        graphic: "HeirarchyStars",
         colSpan: 1,
         rowSpan: 2,
         tier: 3
@@ -63,12 +63,13 @@ export const whyUsData: WhyUsItem[] = [
         subheading: "You own your systems, your infrastructure, and your data.",
         description: "We believe organizations should retain full control over their digital environments. We help clients avoid long-term dependency on vendors, including us.",
         bullets: [
-            "data ownership and control",
-            "flexible infrastructure choices",
-            "private and self-hosted options",
-            "migration independence"
+            "Data ownership and control",
+            "Flexible infrastructure choices",
+            "Private and self-hosted options",
+            "Migration independence",
+            "Secure sovereign systems"
         ],
-        graphic: "ServerConstellationSafe",
+        graphic: "BoxedFingerprint",
         colSpan: 2,
         rowSpan: 3,
         tier: 1
@@ -92,10 +93,11 @@ export const whyUsData: WhyUsItem[] = [
         subheading: "Systems designed for real teams to operate.",
         description: "We build infrastructure that balances security with usability. Secure systems should empower teams, not overwhelm them.",
         bullets: [
-            "operational clarity",
-            "maintainable architectures",
-            "strong documentation",
-            "predictable workflows"
+            "Operational clarity",
+            "First principles engineering",
+            "Maintainable architectures",
+            "Strong documentation",
+            "Predictable workflows"
         ],
         graphic: "UiBrain",
         colSpan: 2,
