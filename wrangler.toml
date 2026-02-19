@@ -1,0 +1,14 @@
+name = "spacebar-next"
+main = ".worker-next/index.mjs"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+# Assets configuration
+[assets]
+directory = ".worker-next/assets"
+binding = "ASSETS"
+
+# Optional: Add KV namespaces or R2 buckets if needed later
+# [[kv_namespaces]]
+# binding = "NEXT_CACHE_WORKERS_KV"
+# id = "<KV_NAMESPACE_ID>"
