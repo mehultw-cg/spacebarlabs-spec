@@ -6,8 +6,39 @@ import { ContactFormSchema } from '@/lib/data/about';
 // In production, this should be process.env.RESEND_API_KEY
 const resend = new Resend(process.env.RESEND_API_KEY || 're_123456789');
 
+const RATE_LIMIT_DURATION = 60 * 1000; // 1 minute
+const RATE_LIMIT_MAX = 10; // 10 requests
+
+// In-memory store for rate limiting (Note: resets on server restart/re-deploy)
+const rateLimitMap = new Map<string, number[]>();
+
+function isRateLimited(ip: string): boolean {
+    const now = Date.now();
+    const windowStart = now - RATE_LIMIT_DURATION;
+    
+    const timestamps = rateLimitMap.get(ip) || [];
+    const validTimestamps = timestamps.filter(t => t > windowStart);
+    
+    if (validTimestamps.length >= RATE_LIMIT_MAX) {
+        return true;
+    }
+    
+    validTimestamps.push(now);
+    rateLimitMap.set(ip, validTimestamps);
+    return false;
+}
+
 export async function POST(request: Request) {
     try {
+        // Simple Rate Limiting Source IP check
+        const ip = request.headers.get('x-forwarded-for') || '127.0.0.1';
+        if (isRateLimited(ip)) {
+            return NextResponse.json(
+                { error: 'Too many requests. Please try again later.' },
+                { status: 429 }
+            );
+        }
+
         const body = await request.json();
 
         // Validate input using Zod schema
