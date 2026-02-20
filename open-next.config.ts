@@ -1,9 +1,17 @@
-import type { OpenNextConfig } from "@opennextjs/cloudflare";
+import { defineCloudflareConfig } from "@opennextjs/cloudflare";
 
-const config: OpenNextConfig = {
-  default: {
-    placement: "smart",
-  },
-};
+export default defineCloudflareConfig();
 
-export default config;
+
+
+
+// Init Gemini
+// import type { OpenNextConfig } from "@opennextjs/cloudflare";
+
+// const config: OpenNextConfig = {
+//   default: {
+//     placement: "smart",
+//   },
+// };
+
+// export default config;
