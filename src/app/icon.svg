@@ -1,0 +1,83 @@
+<svg width="100%" height="100%" viewBox="0 0 685 817" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5">
+  <style>
+    :root {
+      --stroke-color: #0e7490; /* cyan-700 */
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --stroke-color: #a5f3fc; /* cyan-200 */
+      }
+    }
+    .base-stroke {
+      fill: none;
+      stroke: var(--stroke-color);
+    }
+    .filled-ring {
+      fill: var(--stroke-color);
+      fill-opacity: 0.06;
+      stroke: none;
+    }
+    .network-node {
+      fill: var(--stroke-color);
+      fill-opacity: 0.2;
+      stroke: var(--stroke-color);
+    }
+  </style>
+  <g id="Shield-shape">
+    <g id="Outer-Shield">
+      <path class="base-stroke" stroke-width="16" d="M7.979,137c-37.177,490.31 228.995,623.406 332.021,675" />
+      <path class="base-stroke" stroke-width="16" d="M10,135c187.74,-8.564 296.2,-98.91 332,-129" />
+      <path class="base-stroke" stroke-width="16" d="M676.467,136c37.177,490.31 -228.995,623.406 -332.021,675" />
+      <path class="base-stroke" stroke-width="16" d="M674.446,134c-187.74,-8.564 -296.2,-98.91 -332,-129" />
+    </g>
+    <g id="Middle-Shield">
+      <path class="base-stroke" stroke-width="12" d="M36.672,160.55c-33.952,447.78 209.132,569.331 303.221,616.45" />
+      <path class="base-stroke" stroke-width="12" d="M38.518,158.724c171.455,-7.821 270.508,-90.331 303.202,-117.81" />
+      <path class="base-stroke" stroke-width="12" d="M647.175,159.637c33.952,447.78 -209.132,569.331 -303.221,616.45" />
+      <path class="base-stroke" stroke-width="12" d="M645.33,157.81c-171.455,-7.821 -270.508,-90.331 -303.202,-117.81" />
+    </g>
+    <g id="Inner-Shield-Background">
+      <path class="filled-ring" d="M341.532,74.833 c-29.811,25.056 -120.127,100.289 -276.461,107.42 c-30.958,408.288 190.687,519.118 276.479,562.082 c85.792,-42.964 307.437,-153.794 276.479,-562.082 c-156.334,-7.131 -246.65,-82.364 -276.461,-107.42 Z" />
+    </g>
+    <g id="Inner-Shield">
+      <path class="base-stroke" stroke-width="8" d="M63.388,183.918c-30.958,408.288 190.687,519.118 276.479,562.082" />
+      <path class="base-stroke" stroke-width="8" d="M65.071,182.253c156.334,-7.131 246.65,-82.364 276.461,-107.42" />
+      <path class="base-stroke" stroke-width="8" d="M620.047,183.086c30.958,408.288 -190.687,519.118 -276.479,562.082" />
+      <path class="base-stroke" stroke-width="8" d="M618.364,181.42c-156.334,-7.131 -246.65,-82.364 -276.461,-107.42" />
+    </g>
+  </g>
+  <g id="Shield-network">
+    <circle cx="508" cy="253" r="27" class="network-node" stroke-width="4" />
+    <circle cx="337.5" cy="124.5" r="11.5" class="network-node" stroke-width="4" />
+    <circle cx="314" cy="260" r="19" class="network-node" stroke-width="4" />
+    <circle cx="157" cy="260" r="28" class="network-node" stroke-width="4" />
+    
+    <path d="M325,130.325l-145.614,112.857" class="base-stroke" stroke-width="4" />
+    <path d="M350,130l133,107" class="base-stroke" stroke-width="4" />
+    <path d="M316.71,239l18.29,-103" class="base-stroke" stroke-width="4" />
+    <path d="M482,255l-149,3" class="base-stroke" stroke-width="4" />
+    <path d="M322,279l38,94" class="base-stroke" stroke-width="4" />
+    <path d="M407,375l82,-100" class="base-stroke" stroke-width="4" />
+    <path d="M179,279l166,108" class="base-stroke" stroke-width="4" />
+    
+    <circle cx="115" cy="447" r="19" class="network-node" stroke-width="4" />
+    <path d="M152,289l-36.367,139.011" class="base-stroke" stroke-width="4" />
+    <path d="M344,415l-208,27" class="base-stroke" stroke-width="4" />
+    <path d="M130,462l105,89" class="base-stroke" stroke-width="4" />
+    <path d="M168,290l80,252" class="base-stroke" stroke-width="4" />
+    <path d="M277,549l81,-108" class="base-stroke" stroke-width="4" />
+    <path d="M290,568l160,-15" class="base-stroke" stroke-width="4" />
+    <path d="M466,529l-63,-87" class="base-stroke" stroke-width="4" />
+    <path d="M271,594l68,148" class="base-stroke" stroke-width="4" />
+    <path d="M463,572l-124,170" class="base-stroke" stroke-width="4" />
+    <path d="M509,282l-25,236" class="base-stroke" stroke-width="4" />
+    <path d="M422,403l122,-22" class="base-stroke" stroke-width="4" />
+    <path d="M524,278l34,82" class="base-stroke" stroke-width="4" />
+    <path d="M185,262l110,-1" class="base-stroke" stroke-width="4" />
+    
+    <circle cx="381" cy="407" r="39" class="network-node" stroke-width="4" />
+    <circle cx="566" cy="378" r="18" class="network-node" stroke-width="4" />
+    <circle cx="478.5" cy="549.5" r="26.5" class="network-node" stroke-width="4" />
+    <circle cx="260.5" cy="567.5" r="25.5" class="network-node" stroke-width="4" />
+  </g>
+</svg>

@@ -1,9 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
 import { whyUsData } from "@/lib/data/why-us-updated";
 import { cn } from "@/lib/utils";
+import { useInView } from "framer-motion";
 
 // Import all graphics
 import AnalyticalLock from "@/components/vfx/why-us-graphics/analytical-lock";
@@ -47,9 +48,9 @@ export function WhyUsSectionUpdated() {
           </p>
         </div>
 
-        <BentoGrid className="max-w-7xl mx-auto grid-cols-1 md:grid-cols-6 auto-rows-[310px] md:auto-rows-[310px] gap-6">
+        <BentoGrid className="max-w-7xl mx-auto grid-cols-1 md:grid-cols-6 auto-rows-[60vh] md:auto-rows-[310px] gap-6">
           {whyUsData.map((item, i) => (
-            <WhyUsCard key={i} item={item} index={i} />
+             <WhyUsCard key={i} item={item} index={i} />
           ))}
         </BentoGrid>
       </div>
@@ -72,6 +73,19 @@ const WhyUsCard = ({ item, index }: { item: typeof whyUsData[0]; index: number }
     const colClass = colSpanClasses[item.colSpan] || "md:col-span-1";
     const rowClass = rowSpanClasses[item.rowSpan] || "md:row-span-1";
 
+    const ref = useRef<HTMLDivElement>(null);
+    const isInView = useInView(ref, { margin: "-40% 0px -40% 0px" });
+    const [isMobile, setIsMobile] = useState(false);
+    
+    useEffect(() => {
+        const check = () => setIsMobile(window.innerWidth < 768);
+        check();
+        window.addEventListener("resize", check);
+        return () => window.removeEventListener("resize", check);
+    }, []);
+    
+    const activeClass = isMobile && isInView ? "is-active" : "";
+
     // Cycle through colors
     const color = CARD_COLORS[index % CARD_COLORS.length];
     
@@ -89,6 +103,7 @@ const WhyUsCard = ({ item, index }: { item: typeof whyUsData[0]; index: number }
 
     return (
         <BentoGridItem
+            ref={ref}
             // Inject dynamic color variables
             style={{ 
                 "--card-color": color,
@@ -96,9 +111,8 @@ const WhyUsCard = ({ item, index }: { item: typeof whyUsData[0]; index: number }
                 "--shadow-inactive": inactiveShadow,
             } as React.CSSProperties}
             
-            // Header is the background graphic
             header={
-                <div className="absolute inset-0 z-0 overflow-hidden rounded-xl bg-white/10 dark:bg-black/40 group-hover/bento:bg-white/30 dark:group-hover/bento:bg-black/50 transition-colors duration-500">
+                <div className="absolute inset-0 z-0 overflow-hidden rounded-xl bg-white/10 dark:bg-black/40 group-hover/bento:bg-white/30 dark:group-hover/bento:bg-black/50 group-[.is-active]/bento:bg-white/30 dark:group-[.is-active]/bento:bg-black/50 transition-colors duration-500">
                     <GraphicComponent graphic={item.graphic} />
                     {/* Gradient Overlay for text readability - stronger at bottom */}
                     <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent dark:from-black dark:via-black/40 dark:to-transparent opacity-90" />
@@ -108,8 +122,9 @@ const WhyUsCard = ({ item, index }: { item: typeof whyUsData[0]; index: number }
             className={cn(
                 colClass, 
                 rowClass, 
+                activeClass,
                 // Updated className: Fixed height (310px), explicit !shadow-none to reset defaults, then apply custom shadows
-                "group/bento relative overflow-hidden h-full min-h-[310px] border border-neutral-200 dark:border-white/10 transition-all duration-300 [&>div:nth-child(2)]:justify-end [&>div:nth-child(2)]:h-full [&>div:nth-child(2)]:!translate-x-0 !shadow-none shadow-[var(--shadow-inactive)] hover:shadow-[var(--shadow-active)]"
+                "group/bento relative overflow-hidden h-full min-h-[60vh] md:min-h-[310px] border border-neutral-200 dark:border-white/10 transition-all duration-300 [&>div:nth-child(2)]:justify-end [&>div:nth-child(2)]:h-full [&>div:nth-child(2)]:!translate-x-0 !shadow-none shadow-[var(--shadow-inactive)] hover:shadow-[var(--shadow-active)] [&.is-active]:shadow-[var(--shadow-active)]"
             )}
             
             // Render content directly using flex-col justify-end to ensure bottom alignment
@@ -134,7 +149,7 @@ const WhyUsCard = ({ item, index }: { item: typeof whyUsData[0]; index: number }
                     <div className={cn(
                         "transition-all duration-500 ease-in-out overflow-hidden bg-transparent",
                         // Tier 3: Subheading is part of revealed content, so it gets the border top
-                        item.tier === 3 ? "max-h-0 opacity-0 group-hover/bento:max-h-[100px] group-hover/bento:opacity-100 border-t-2 mt-0 pt-0 group-hover/bento:pt-3 group-hover/bento:mt-2" : "max-h-[100px] opacity-100"
+                        item.tier === 3 ? "max-h-0 opacity-0 group-hover/bento:max-h-[100px] group-hover/bento:opacity-100 group-[.is-active]/bento:max-h-[100px] group-[.is-active]/bento:opacity-100 border-t-2 mt-0 pt-0 group-hover/bento:pt-3 group-[.is-active]/bento:pt-3 group-hover/bento:mt-2 group-[.is-active]/bento:mt-2" : "max-h-[100px] opacity-100"
                     )}
                     style={item.tier === 3 ? { borderTopColor: color } : undefined}
                     >
@@ -150,7 +165,7 @@ const WhyUsCard = ({ item, index }: { item: typeof whyUsData[0]; index: number }
                     {/* Description & Buried Content - Hidden initially, slides up */}
                     <div 
                         className={cn(
-                            "max-h-0 opacity-0 group-hover/bento:max-h-[500px] group-hover/bento:opacity-100 transition-all duration-500 ease-in-out overflow-hidden",
+                            "max-h-0 opacity-0 group-hover/bento:max-h-[500px] group-hover/bento:opacity-100 group-[.is-active]/bento:max-h-[500px] group-[.is-active]/bento:opacity-100 transition-all duration-500 ease-in-out overflow-hidden",
                             // Tier 1 & 2: Border is here
                             item.tier !== 3 && "border-t-2"
                         )}
@@ -183,10 +198,10 @@ const GraphicComponent = ({ graphic }: { graphic?: string }) => {
     // Custom hover scaling for the Safe graphic since it has a large base scale
     const isSafe = graphic === "ServerConstellationSafe";
     const hoverClasses = isSafe 
-        ? "group-hover/bento:scale-[1.6] group-hover/bento:opacity-100" 
-        : "group-hover/bento:scale-110 group-hover/bento:opacity-100";
+        ? "group-hover/bento:scale-[1.6] group-[.is-active]/bento:scale-[1.6]" 
+        : "group-hover/bento:scale-110 group-[.is-active]/bento:scale-110";
         
-    const initialClasses = "opacity-60 mix-blend-multiply dark:mix-blend-screen scale-100";
+    const initialClasses = "opacity-40 scale-100"; // Removed mix-blend-screen for massive performance boost
     // Lighter Blue for Dark Mode (Cyan-50 to Cyan-200 range) as requested
     const colorClasses = "text-blue-900 dark:text-cyan-200"; 
     
@@ -233,7 +248,7 @@ const GraphicComponent = ({ graphic }: { graphic?: string }) => {
              // Scaled up, opacity removed to match stroke intensity
              return <ServerConstellationSafe className={cn(className, "right-[-20%] scale-150 origin-center")} />;
         case "HeirarchyStars":
-            return <HeirarchyStars className={cn(className, "scale-[1.8] group-hover/bento:scale-[2.0] origin-center opacity-80 mix-blend-normal dark:mix-blend-screen")} />;
+            return <HeirarchyStars className={cn(className, "scale-[1.8] group-hover/bento:scale-[2.0] origin-center opacity-80")} />;
         case "BgNetwork":
             return <BgNetwork className={className} />;
         default:

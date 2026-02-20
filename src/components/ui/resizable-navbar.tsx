@@ -35,6 +35,7 @@ interface MobileNavProps {
   children: React.ReactNode;
   className?: string;
   visible?: boolean;
+  hiddenOnScroll?: boolean;
 }
 
 interface MobileNavHeaderProps {
@@ -56,12 +57,21 @@ export const Navbar = ({ children, className }: NavbarProps) => {
     offset: ["start start", "end start"],
   });
   const [visible, setVisible] = useState<boolean>(false);
+  const [hiddenOnScroll, setHiddenOnScroll] = useState<boolean>(false);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() || 0;
+    
     if (latest > 100) {
       setVisible(true);
+      if (latest > previous && latest > 150) {
+        setHiddenOnScroll(true);
+      } else {
+        setHiddenOnScroll(false);
+      }
     } else {
       setVisible(false);
+      setHiddenOnScroll(false);
     }
   });
 
@@ -74,8 +84,8 @@ export const Navbar = ({ children, className }: NavbarProps) => {
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
           ? React.cloneElement(
-              child as React.ReactElement<{ visible?: boolean }>,
-              { visible },
+              child as React.ReactElement<{ visible?: boolean; hiddenOnScroll?: boolean }>,
+              { visible, hiddenOnScroll },
             )
           : child,
       )}
@@ -145,7 +155,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
   );
 };
 
-export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
+export const MobileNav = ({ children, className, visible, hiddenOnScroll }: MobileNavProps) => {
   return (
     <motion.div
       animate={{
@@ -157,7 +167,7 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
         paddingRight: visible ? "12px" : "0px",
         paddingLeft: visible ? "12px" : "0px",
         borderRadius: visible ? "4px" : "2rem",
-        y: 0,
+        y: hiddenOnScroll ? 150 : 0,
       }}
       transition={{
         type: "spring",

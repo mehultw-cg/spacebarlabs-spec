@@ -13,7 +13,7 @@ import { spacebarFont } from "@/app/page";
 
 // Import graphics
 import { ReactComponent as RocketLogo } from "@/components/vfx/why-us-graphics/rocket-logo-only";
-import { ReactComponent as ServerConstellation } from "@/components/vfx/why-us-graphics/server-constellation-safe"; 
+import HeirarchyStars from "@/components/vfx/why-us-graphics/heirarchy-stars"; 
 import { ReactComponent as ShieldNetwork } from "@/components/vfx/why-us-graphics/shield-network";
 
 const HERO_CONTENT = [
@@ -42,8 +42,8 @@ const HERO_CONTENT = [
 
 const HERO_IMAGES = [
   { id: 1, component: RocketLogo, scaleClass: "scale-125" }, // Larger Rocket
-  { id: 2, component: ServerConstellation, scaleClass: "scale-100" },
-  { id: 3, component: ShieldNetwork, scaleClass: "scale-65" } // Smaller Shield
+  { id: 2, component: HeirarchyStars, scaleClass: "scale-[1.2] [&_path]:!stroke-[4px] [&_rect]:!stroke-[4px]" },
+  { id: 3, component: ShieldNetwork, scaleClass: "scale-100" } // Smaller Shield
 ];
 
 export function HeroSectionNew() {

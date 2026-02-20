@@ -121,7 +121,7 @@ const PricingCard = ({ item }: { item: typeof pricingData[0] }) => {
     <motion.div
       initial="initial"
       whileHover="hover"
-      className={cn(colSpanClass, "h-full relative group/card")}
+      className={cn(colSpanClass, "h-auto md:h-full relative group/card")}
     >
       {item.favored && (
          <div className="absolute -top-3 -right-3 z-20">
@@ -134,7 +134,7 @@ const PricingCard = ({ item }: { item: typeof pricingData[0] }) => {
       
       <Card
         className={cn(
-          "h-full px-5 flex flex-col backdrop-blur-xl justify-between transition-all duration-300 border hover:shadow-xl border-black/5 dark:border-white/5 dark:bg-gradient-to-tr from-black/10 via-black/20 to-black/10",
+          "h-auto md:h-full min-h-[450px] px-5 flex flex-col backdrop-blur-xl justify-between transition-all duration-300 border hover:shadow-xl border-black/5 dark:border-white/5 dark:bg-gradient-to-tr from-black/10 via-black/20 to-black/10",
           item.favored 
             ? "border-1 border-[var(--color-2)]/40 dark:border-[var(--color-2)]/40 shadow-emerald-500/30 hover:dark:shadow-emerald-500/30" 
             : "border-1 border-neutral-200/50 dark:border-white/10 hover:shadow-xl hover:shadow-emerald-500/30 dark:hover:shadow-neutral-900/50"

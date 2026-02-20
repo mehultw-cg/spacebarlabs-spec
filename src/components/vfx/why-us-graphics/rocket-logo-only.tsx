@@ -11,9 +11,9 @@ interface RocketLogoProps extends SVGProps<SVGSVGElement> {
 
 const RocketLogo = ({
   className,
-  fillColor = "#90cbf9",
+  fillColor = "transparent",
   fillOpacity = 0,
-  strokeColor = "#a4d0f1",
+  strokeColor = "currentColor",
   strokeWidth = "6px",
   style,
   ...props

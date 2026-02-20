@@ -80,6 +80,16 @@ const ShieldNetwork = ({ className, strokeWidths, strokeColor, fillColor, style,
               />
             </g>
           </g>
+          <g id="Outer-Shield-Background">
+            <path
+              d="M10,135c187.74,-8.564 296.2,-98.91 332,-129c35.8,30.09 144.26,120.436 332,129c-37.177,490.31 -228.995,623.406 -332.021,675c-103.026,-51.594 -369.198,-184.69 -331.979,-675Z"
+              style={{
+                fill: "currentColor",
+                fillOpacity: 0.03,
+                stroke: "none"
+              }}
+            />
+          </g>
           <g id="Middle-Shield">
             <g>
               <path
@@ -117,6 +127,9 @@ const ShieldNetwork = ({ className, strokeWidths, strokeColor, fillColor, style,
                 }}
               />
             </g>
+          </g>
+          <g id="Inner-Shield-Background">
+             <path d="M341.532,74.833 c-29.811,25.056 -120.127,100.289 -276.461,107.42 c-30.958,408.288 190.687,519.118 276.479,562.082 c85.792,-42.964 307.437,-153.794 276.479,-562.082 c-156.334,-7.131 -246.65,-82.364 -276.461,-107.42 Z" fill="currentColor" fillOpacity="0.06" stroke="none" />
           </g>
           <g id="Inner-Shield">
             <g>
@@ -163,7 +176,8 @@ const ShieldNetwork = ({ className, strokeWidths, strokeColor, fillColor, style,
             cy={253}
             r={27}
             style={{
-              fill: fillColor || "none",
+              fill: fillColor || "currentColor",
+              fillOpacity: fillColor ? 1 : 0.2,
               stroke: "currentColor",
               strokeWidth: `${networkNodesStroke}px`,
             }}
@@ -173,7 +187,8 @@ const ShieldNetwork = ({ className, strokeWidths, strokeColor, fillColor, style,
             cy={124.5}
             r={11.5}
             style={{
-              fill: fillColor || "none",
+              fill: fillColor || "currentColor",
+              fillOpacity: fillColor ? 1 : 0.2,
               stroke: "currentColor",
               strokeWidth: `${networkNodesStroke}px`,
             }}
@@ -183,7 +198,8 @@ const ShieldNetwork = ({ className, strokeWidths, strokeColor, fillColor, style,
             cy={260}
             r={19}
             style={{
-              fill: fillColor || "none",
+              fill: fillColor || "currentColor",
+              fillOpacity: fillColor ? 1 : 0.2,
               stroke: "currentColor",
               strokeWidth: `${networkNodesStroke}px`,
             }}
@@ -193,7 +209,8 @@ const ShieldNetwork = ({ className, strokeWidths, strokeColor, fillColor, style,
             cy={260}
             r={28}
             style={{
-              fill: fillColor || "none",
+              fill: fillColor || "currentColor",
+              fillOpacity: fillColor ? 1 : 0.2,
               stroke: "currentColor",
               strokeWidth: `${networkNodesStroke}px`,
             }}
@@ -259,7 +276,8 @@ const ShieldNetwork = ({ className, strokeWidths, strokeColor, fillColor, style,
             cy={447}
             r={19}
             style={{
-              fill: fillColor || "none",
+              fill: fillColor || "currentColor",
+              fillOpacity: fillColor ? 1 : 0.2,
               stroke: "currentColor",
               strokeWidth: `${networkNodesStroke}px`,
             }}
@@ -373,7 +391,8 @@ const ShieldNetwork = ({ className, strokeWidths, strokeColor, fillColor, style,
             cy={407}
             r={39}
             style={{
-              fill: fillColor || "none",
+              fill: fillColor || "currentColor",
+              fillOpacity: fillColor ? 1 : 0.2,
               stroke: "currentColor",
               strokeWidth: `${networkNodesStroke}px`,
             }}
@@ -383,7 +402,8 @@ const ShieldNetwork = ({ className, strokeWidths, strokeColor, fillColor, style,
             cy={378}
             r={18}
             style={{
-              fill: fillColor || "none",
+              fill: fillColor || "currentColor",
+              fillOpacity: fillColor ? 1 : 0.2,
               stroke: "currentColor",
               strokeWidth: `${networkNodesStroke}px`,
             }}
@@ -393,7 +413,8 @@ const ShieldNetwork = ({ className, strokeWidths, strokeColor, fillColor, style,
             cy={549.5}
             r={26.5}
             style={{
-              fill: fillColor || "none",
+              fill: fillColor || "currentColor",
+              fillOpacity: fillColor ? 1 : 0.2,
               stroke: "currentColor",
               strokeWidth: `${networkNodesStroke}px`,
             }}
@@ -403,7 +424,8 @@ const ShieldNetwork = ({ className, strokeWidths, strokeColor, fillColor, style,
             cy={567.5}
             r={25.5}
             style={{
-              fill: fillColor || "none",
+              fill: fillColor || "currentColor",
+              fillOpacity: fillColor ? 1 : 0.2,
               stroke: "currentColor",
               strokeWidth: `${networkNodesStroke}px`,
             }}

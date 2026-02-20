@@ -100,7 +100,7 @@ export function ScrollBackground({ children }: ScrollBackgroundProps) {
             />
           </motion.div>
         ))}
-        <div className="absolute bg-transparent inset-0 z-20">
+        <div className="absolute bg-transparent inset-0 z-20 hidden md:block">
           <Starfield speedFactor={0.01} backgroundColor="transparent" />
         </div>
       </div>

@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+import React, { useRef, useState, useEffect } from "react";
+import { motion, AnimatePresence, LayoutGroup, useInView } from "framer-motion";
 import { MagicCard } from "@/components/ui/magic-card";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
@@ -90,6 +90,21 @@ export const MagicBentoCard = ({
   cardIndex = 0,
 }: MagicBentoCardProps) => {
   const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { margin: "-40% 0px -40% 0px" });
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile && isInView && !isExpanded) {
+      if (onToggle) onToggle();
+    }
+  }, [isMobile, isInView, isExpanded, onToggle]);
 
   const handleClick = () => {
     if (onToggle) {
@@ -179,7 +194,7 @@ export const MagicBentoCard = ({
           </motion.h3>
 
           {/* Content area */}
-          <div className="flex-1 min-h-0 overflow-hidden">
+          <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden pr-2 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-thumb]:bg-neutral-300 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-700 [&::-webkit-scrollbar-track]:bg-transparent">
             {/* Description */}
             <motion.p 
               variants={{

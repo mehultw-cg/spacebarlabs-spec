@@ -25,18 +25,9 @@ import { Badge, BadgeProps } from "@/components/ui/badge";
 
 import { cardVariants } from "@/components/ui/card";
 
-export const BentoGridItem = ({
-  className,
-  title,
-  description,
-  detail,
-  header,
-  icon,
-  badges,
-  isExpanded,
-  onClick,
-  style,
-}: {
+import React from "react";
+
+export const BentoGridItem = React.forwardRef<HTMLDivElement, {
   className?: string;
   title?: string | React.ReactNode;
   description?: string | React.ReactNode;
@@ -47,12 +38,26 @@ export const BentoGridItem = ({
   isExpanded?: boolean;
   onClick?: () => void;
   style?: React.CSSProperties;
-}) => {
+  "data-active"?: boolean;
+}>(({
+  className,
+  title,
+  description,
+  detail,
+  header,
+  icon,
+  badges,
+  isExpanded,
+  onClick,
+  style,
+  "data-active": dataActive,
+}, ref) => {
   return (
     <AnimatePresence>
     <motion.div
-      layout
+      ref={ref}
       style={style}
+      data-active={dataActive}
       transition={{
         type: "spring",
         stiffness: 300,
@@ -66,15 +71,15 @@ export const BentoGridItem = ({
       )}
     >
       {header}
-      <motion.div layout className="group-hover/bento:translate-x-2 transition duration-200 flex flex-col justify-between h-full">
+      <div className="group-hover/bento:translate-x-2 transition duration-200 flex flex-col justify-between h-full relative z-10">
         <div>
-          <motion.div layout>{icon}</motion.div>
-          <motion.div layout className="mt-2 mb-2 font-sans font-bold text-neutral-600 dark:text-neutral-200">
+          <div>{icon}</div>
+          <div className="mt-2 mb-2 font-sans font-bold text-neutral-600 dark:text-neutral-200">
             {title}
-          </motion.div>
-          <motion.div layout className="font-sans text-xs font-normal text-neutral-600 dark:text-neutral-300 mb-2">
+          </div>
+          <div className="font-sans text-xs font-normal text-neutral-600 dark:text-neutral-300 mb-2">
             {description}
-          </motion.div>
+          </div>
           
           
             {isExpanded && detail && (
@@ -103,8 +108,10 @@ export const BentoGridItem = ({
             ))}
           </div>
         )}
-      </motion.div>
+      </div>
     </motion.div>
     </AnimatePresence>
   );
-};
+});
+
+BentoGridItem.displayName = "BentoGridItem";
