@@ -113,8 +113,8 @@ export function ContactSection() {
                 <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
                 <div className="w-3 h-3 rounded-full bg-green-500/80" />
               </div>
-              <div className="text-xs text-neutral-500 font-mono opacity-70 hidden sm:block">secure_uplink@spacebar-labs:~/connect</div>
-              <div className="text-[10px] text-emerald-500/80 font-mono tracking-tight">Connection: Encrypted (TLS 1.3)</div>
+              <div className="text-xs text-neutral-700 dark:text-neutral-500 font-mono opacity-70 hidden sm:block">secure_uplink@spacebar-labs:~/connect</div>
+              <div className="text-[10px] text-emerald-700/80 dark:text-emerald-500/80 font-mono tracking-tight">Connection: Encrypted (TLS 1.3)</div>
           </div>
 
           {/* Window Content */}
@@ -203,16 +203,21 @@ export function ContactSection() {
                 )}
               </div>
 
-              <div className="flex justify-between items-center pt-2">
-                 <p className="text-xs text-neutral-400 dark:text-neutral-500 font-mono">0% Spam Probability. We respect your inbox.</p>
-                 <RainbowButton
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="rounded-full font-mono text-sm"
-                  variant="outline"
-                >
-                  {isSubmitting ? "Transmitting..." : "Transmit Securely"}
-                </RainbowButton>
+              <div className="flex flex-col gap-4 pt-2">
+                 <p className="text-sm text-emerald-800 dark:text-emerald-500 font-mono">
+                   Prefer establishing a direct protocol? Route your secure comms to <a href="mailto:hi@spacebar-labs.com" className="font-semibold underline underline-offset-2 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">hi@spacebar-labs.com</a>
+                 </p>
+                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                   <p className="text-xs text-neutral-700 dark:text-neutral-500 font-mono">0% Spam Probability. We respect your inbox.</p>
+                   <RainbowButton
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="rounded-full font-mono text-sm w-full sm:w-auto"
+                    variant="outline"
+                  >
+                    {isSubmitting ? "Transmitting..." : "Transmit Securely"}
+                  </RainbowButton>
+                 </div>
               </div>
             </form>
           </div>

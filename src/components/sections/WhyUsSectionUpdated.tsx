@@ -36,6 +36,17 @@ const CARD_COLORS = [
 ];
 
 export function WhyUsSectionUpdated() {
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+      const mql = window.matchMedia('(max-width: 767px)');
+      setIsMobile(mql.matches);
+      
+      const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+      mql.addEventListener('change', handler);
+      return () => mql.removeEventListener('change', handler);
+  }, []);
+
   return (
     <section id="why-us" className="py-20 bg-transparent text-black dark:text-white">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
@@ -50,7 +61,7 @@ export function WhyUsSectionUpdated() {
 
         <BentoGrid className="max-w-7xl mx-auto grid-cols-1 md:grid-cols-6 auto-rows-[60vh] md:auto-rows-[310px] gap-6">
           {whyUsData.map((item, i) => (
-             <WhyUsCard key={i} item={item} index={i} />
+             <WhyUsCard key={i} item={item} index={i} isMobile={isMobile} />
           ))}
         </BentoGrid>
       </div>
@@ -58,7 +69,7 @@ export function WhyUsSectionUpdated() {
   );
 }
 
-const WhyUsCard = ({ item, index }: { item: typeof whyUsData[0]; index: number }) => {
+const WhyUsCard = ({ item, index, isMobile }: { item: typeof whyUsData[0]; index: number; isMobile: boolean }) => {
     const colSpanClasses: Record<number, string> = {
         1: "md:col-span-1",
         2: "md:col-span-2",
@@ -75,14 +86,6 @@ const WhyUsCard = ({ item, index }: { item: typeof whyUsData[0]; index: number }
 
     const ref = useRef<HTMLDivElement>(null);
     const isInView = useInView(ref, { margin: "-40% 0px -40% 0px" });
-    const [isMobile, setIsMobile] = useState(false);
-    
-    useEffect(() => {
-        const check = () => setIsMobile(window.innerWidth < 768);
-        check();
-        window.addEventListener("resize", check);
-        return () => window.removeEventListener("resize", check);
-    }, []);
     
     const activeClass = isMobile && isInView ? "is-active" : "";
 
@@ -193,7 +196,7 @@ const WhyUsCard = ({ item, index }: { item: typeof whyUsData[0]; index: number }
 
 // Updated GraphicComponent with adjusted colors
 const GraphicComponent = ({ graphic }: { graphic?: string }) => {
-    const baseClasses = "w-full h-full object-cover pointer-events-none absolute transition-all duration-700 ease-in-out";
+    const baseClasses = "w-full h-full object-cover pointer-events-none absolute transition-transform duration-700 ease-in-out will-change-transform transform-gpu";
     
     // Custom hover scaling for the Safe graphic since it has a large base scale
     const isSafe = graphic === "ServerConstellationSafe";
