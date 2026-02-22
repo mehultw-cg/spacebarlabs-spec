@@ -2,24 +2,24 @@
 
 This task list tracks the progress of the 1.5.0 upgrade as defined in `Changes to update.md` and `implementation_plan.md`.
 
-- [ ] **Preparation**
-    - [ ] Create `feature/update-1.5.0` branch
-    - [ ] Verify `openspec` usage (manual creation of files)
-    - [ ] **Setup Font**: Ensure `nasalization-rg.ttf` is available and configured for "Spacebar Labs" logo and Headings.
-    - [ ] **Security Setup**: Configure automated security testing (OWASP/MITRE) in the build/test pipeline.
+- [x] **Preparation**
+    - [x] Create `feature/update-1.5.0` branch
+    - [x] Verify `openspec` usage (manual creation of files)
+    - [x] **Setup Font**: Ensure `nasalization-rg.ttf` is available and configured for "Spacebar Labs" logo and Headings.
+    - [x] **Security Setup**: Configure automated security testing (OWASP/MITRE) in the build/test pipeline.
 
-- [ ] **Global Components**
-    - [ ] Create `SpacebarLabsRectangleLogo.tsx` (Reuse `rocket-logo-only.tsx` + `nasalization-rg.ttf` text).
+- [x] **Global Components**
+    - [x] Create `SpacebarLabsRectangleLogo.tsx` (Reuse `rocket-logo-only.tsx` + `nasalization-rg.ttf` text).
 
-- [ ] **Hero Section**
-    - [ ] Create OpenSpec proposal for Hero update
-    - [ ] Create branch `feature/update-1.5.0-hero`
-    - [ ] Layout: Split into 2 columns (Left: Content, Right: Images)
-    - [ ] Left Column: Implement 3-set rotating Header/Subheader/CTA (3.5s interval)
-    - [ ] Right Column: Implement 3-image carousel (2.5s interval, framer-motion animations)
-        - [ ] Image 1: `rocket-logo-only.tsx` (Refactor for props)
-        - [ ] Image 2: `server-constellation-safe`
-        - [ ] Image 3: `shield-network`
+- [x] **Hero Section**
+    - [x] Create OpenSpec proposal for Hero update
+    - [x] Create branch `feature/update-1.5.0-hero`
+    - [x] Layout: Split into 2 columns (Left: Content, Right: Images)
+    - [x] Left Column: Implement 3-set rotating Header/Subheader/CTA (3.5s interval)
+    - [x] Right Column: Implement 3-image carousel (2.5s interval, framer-motion animations)
+        - [x] Image 1: `rocket-logo-only.tsx` (Refactor for props)
+        - [x] Image 2: `server-constellation-safe`
+        - [x] Image 3: `shield-network`
     - [x] Connect CTAs as appropriate to relevant sections or Contact with prefilled subject/message.
     - [x] Bottom: Tag list + Mission statement paragraph
     - [x] **Responsiveness**: Adjust text sizes (larger on desktop, smaller on mobile).
@@ -35,67 +35,67 @@ This task list tracks the progress of the 1.5.0 upgrade as defined in `Changes t
     - [x] **Responsiveness**: Stack cards on mobile.
     - [x] Verify & Merge to `feature/update-1.5.0`
 
-- [ ] **Pricing Section**
-    - [ ] Create OpenSpec proposal for Pricing update
-    - [ ] Create branch `feature/update-1.5.0-pricing`
-    - [ ] Layout: 3 rows (2-1-2 cards). Middle card spans full row.
-    - [ ] Content: Update text, features, CTAs as specified.
-    - [ ] "Escape Velocity" card: Add "bow tie" / favored indicator.
-    - [ ] Actions: Connect CTAs to Contact form with prefilled subject/message.
-    - [ ] **Responsiveness**: Adjust layout for mobile.
-    - [ ] Verify & Merge to `feature/update-1.5.0`
+- [x] **Pricing Section**
+    - [x] Create OpenSpec proposal for Pricing update
+    - [x] Create branch `feature/update-1.5.0-pricing`
+    - [x] Layout: 3 rows (2-1-2 cards). Middle card spans full row.
+    - [x] Content: Update text, features, CTAs as specified.
+    - [x] "Escape Velocity" card: Add "bow tie" / favored indicator.
+    - [x] Actions: Connect CTAs to Contact form with prefilled subject/message.
+    - [x] **Responsiveness**: Adjust layout for mobile.
+    - [x] Verify & Merge to `feature/update-1.5.0`
 
-- [ ] **Why Us Section**
-    - [ ] Create OpenSpec proposal for Why Us update
-    - [ ] Create branch `feature/update-1.5.0-why-us`
-    - [ ] Grid Layout: 6x4 grid. 3 Tiers of cards.
-    - [ ] Components: Refactor graphic components to accept styles (stroke, fill, etc.)
-        - [ ] `shield-network.tsx`
-        - [ ] `line-down.tsx`
-        - [ ] `closed-lock-fingerprint.tsx`
-        - [ ] `generic-globe.tsx`
-        - [ ] `ui-brain.tsx`
-        - [ ] `server-constellation-safe.tsx`
-        - [ ] `bg-network.tsx`
-        - [ ] `analytical-lock.tsx`
-    - [ ] Animation: Expand content on hover.
-    - [ ] **Responsiveness**: Grid adapts to mobile flow.
-    - [ ] Verify & Merge to `feature/update-1.5.0`
+- [x] **Why Us Section**
+    - [x] Create OpenSpec proposal for Why Us update
+    - [x] Create branch `feature/update-1.5.0-why-us`
+    - [x] Grid Layout: 6x4 grid. 3 Tiers of cards.
+    - [x] Components: Refactor graphic components to accept styles (stroke, fill, etc.)
+        - [x] `shield-network.tsx`
+        - [x] `line-down.tsx`
+        - [x] `closed-lock-fingerprint.tsx`
+        - [x] `generic-globe.tsx`
+        - [x] `ui-brain.tsx`
+        - [x] `server-constellation-safe.tsx`
+        - [x] `bg-network.tsx`
+        - [x] `analytical-lock.tsx`
+    - [x] Animation: Expand content on hover.
+    - [x] **Responsiveness**: Grid adapts to mobile flow.
+    - [x] Verify & Merge to `feature/update-1.5.0`
 
-- [ ] **Tech Stack Section**
-    - [ ] Remove section from homepage.
-    - [ ] Move component to `components` directory (if not already there).
+- [x] **Tech Stack Section**
+    - [x] Remove section from homepage.
+    - [x] Move component to `components` directory (if not already there).
 
-- [ ] **About Section**
-    - [ ] Create OpenSpec proposal for About update
-    - [ ] Create branch `feature/update-1.5.0-about`
-    - [ ] Update content & Value cards.
-    - [ ] Verify & Merge to `feature/update-1.5.0`
+- [x] **About Section**
+    - [x] Create OpenSpec proposal for About update
+    - [x] Create branch `feature/update-1.5.0-about`
+    - [x] Update content & Value cards.
+    - [x] Verify & Merge to `feature/update-1.5.0`
 
-- [ ] **Contact Section**
-    - [ ] Create OpenSpec proposal for Contact update
-    - [ ] Create branch `feature/update-1.5.0-contact`
-    - [ ] Aesthetic: Keep "Terminal/System" theme.
-    - [ ] Update fields: Identity, Coordinates, Protocol (Dropdown), Payload.
-    - [ ] Implement logic to prefill based on incoming links (from Hero/Pricing).
-    - [ ] Verify & Merge to `feature/update-1.5.0`
+- [x] **Contact Section**
+    - [x] Create OpenSpec proposal for Contact update
+    - [x] Create branch `feature/update-1.5.0-contact`
+    - [x] Aesthetic: Keep "Terminal/System" theme.
+    - [x] Update fields: Identity, Coordinates, Protocol (Dropdown), Payload.
+    - [x] Implement logic to prefill based on incoming links (from Hero/Pricing).
+    - [x] Verify & Merge to `feature/update-1.5.0`
 
-- [ ] **Footer Section**
-    - [ ] Create OpenSpec proposal for Footer update
-    - [ ] Create branch `feature/update-1.5.0-footer`
-    - [ ] Logo: Use `SpacebarLabsLogo.tsx`.
-    - [ ] Links: Remove Careers.
-    - [ ] Policies: Generate Privacy, TOS, Cookie Policy (Shadcn modals).
-    - [ ] Verify & Merge to `feature/update-1.5.0`
+- [x] **Footer Section**
+    - [x] Create OpenSpec proposal for Footer update
+    - [x] Create branch `feature/update-1.5.0-footer`
+    - [x] Logo: Use `SpacebarLabsLogo.tsx`.
+    - [x] Links: Remove Careers.
+    - [x] Policies: Generate Privacy, TOS, Cookie Policy (Shadcn modals).
+    - [x] Verify & Merge to `feature/update-1.5.0`
 
-- [ ] **Nav Bar**
-    - [ ] Create OpenSpec proposal for Navbar update
-    - [ ] Create branch `feature/update-1.5.0-navbar`
-    - [ ] Logo: Use `SpacebarLabsLogo.tsx`.
-    - [ ] Mobile: Bottom navbar, menu opens up. Rainbow button style.
-    - [ ] Verify & Merge to `feature/update-1.5.0`
+- [x] **Nav Bar**
+    - [x] Create OpenSpec proposal for Navbar update
+    - [x] Create branch `feature/update-1.5.0-navbar`
+    - [x] Logo: Use `SpacebarLabsLogo.tsx`.
+    - [x] Mobile: Bottom navbar, menu opens up. Rainbow button style.
+    - [x] Verify & Merge to `feature/update-1.5.0`
 
-- [ ] **Final Polish & Merge**
+- [x] **Final Polish & Merge**
     - [ ] Comprehensive testing (Responsiveness, Type safety, Security).
     - [ ] **Automated Tests**: Run `bun run build`, `bun run lint`.
     - [ ] **Security Tests**: Run custom security test suite (Edge cases, OWASP).

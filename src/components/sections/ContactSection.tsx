@@ -9,8 +9,10 @@ import { RainbowButton } from "@/components/ui/rainbow-button";
 import { spacebarFont } from "@/app/page";
 
 import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";
-// ... imports
+import { useEffect, useState } from "react";
+import { Turnstile } from "@marsidev/react-turnstile";
+import confetti from "canvas-confetti";
+import { ShieldCheck } from "lucide-react";
 
 export function ContactSection() {
   const searchParams = useSearchParams();
@@ -27,6 +29,9 @@ export function ContactSection() {
       subject: "PING_HELLO"
     }
   });
+
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const [isSuccess, setIsSuccess] = useState<boolean>(false);
 
   const protocol = watch("subject");
 
@@ -64,26 +69,53 @@ export function ContactSection() {
   }, [searchParams, setValue]);
 
   const onSubmit = async (data: ContactFormValues) => {
+    if (!turnstileToken) {
+       alert("Security verification is pending. Please wait.");
+       return;
+    }
+
     try {
+      const payload = { ...data, turnstileToken };
       const response = await fetch('/api/send', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(payload),
       });
 
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || 'Failed to send message');
+        throw new Error(result.error || 'Failed to transmit message');
       }
 
-      alert("Message sent successfully!");
+      // Trigger standard magic UI confetti wrapper via canvas-confetti
+      const duration = 3 * 1000;
+      const animationEnd = Date.now() + duration;
+      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 50 };
+
+      const randomInRange = (min: number, max: number) => {
+        return Math.random() * (max - min) + min;
+      }
+
+      const interval: any = setInterval(function() {
+        const timeLeft = animationEnd - Date.now();
+
+        if (timeLeft <= 0) {
+          return clearInterval(interval);
+        }
+
+        const particleCount = 50 * (timeLeft / duration);
+        confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } });
+        confetti({ ...defaults, particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } });
+      }, 250);
+
+      setIsSuccess(true);
       reset();
     } catch (error) {
-      console.error("Error sending message:", error);
-      alert("Failed to send message. Please try again.");
+      console.error("Transmission Error:", error);
+      alert("Failed to transmit securely. Please try routing directly via email.");
     }
   };
 
@@ -118,7 +150,24 @@ export function ContactSection() {
           </div>
 
           {/* Window Content */}
-          <div className="p-8">
+          <div className="relative p-8 min-h-[400px]">
+              
+              {/* Success Overlay */}
+              {isSuccess && (
+                <div className="absolute inset-0 z-20 bg-emerald-950/40 dark:bg-emerald-950/70 backdrop-blur-lg flex flex-col items-center justify-center text-center p-8 animate-in fade-in duration-500 rounded-b-xl border-t border-white/5">
+                   <div className="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(16,185,129,0.3)] inline-flex animate-bounce">
+                      <ShieldCheck className="w-8 h-8" />
+                   </div>
+                   <h3 className={cn("text-2xl font-bold text-white mb-2 shadow-black drop-shadow-md", spacebarFont.className)}>Transmission Successful</h3>
+                   <p className="text-emerald-100/90 font-mono text-sm max-w-sm leading-relaxed mb-8 drop-shadow-md">
+                      Secure channel established. Acknowledgment receipt dispatched to your coordinates. We will respond within 48 hours.
+                   </p>
+                   <RainbowButton onClick={() => setIsSuccess(false)} variant="outline" className="text-xs px-6 py-2 h-auto opacity-80 hover:opacity-100">
+                      Reset Terminal
+                   </RainbowButton>
+                </div>
+              )}
+
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-4">
@@ -208,10 +257,17 @@ export function ContactSection() {
                    Prefer establishing a direct protocol? Route your secure comms to <a href="mailto:hi@spacebar-labs.com" className="font-semibold underline underline-offset-2 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">hi@spacebar-labs.com</a>
                  </p>
                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                   <p className="text-xs text-neutral-700 dark:text-neutral-500 font-mono">0% Spam Probability. We respect your inbox.</p>
+                   <div className="flex flex-col gap-1">
+                      <Turnstile 
+                         siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "1x00000000000000000000AA"} 
+                         onSuccess={(token) => setTurnstileToken(token)}
+                         options={{ theme: "auto" }}
+                      />
+                      <p className="text-xs text-neutral-700 dark:text-neutral-500 font-mono pl-1">0% Spam Probability. Secured by Turnstile.</p>
+                   </div>
                    <RainbowButton
                     type="submit"
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || !turnstileToken}
                     className="rounded-full font-mono text-sm w-full sm:w-auto"
                     variant="outline"
                   >

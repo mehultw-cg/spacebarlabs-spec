@@ -27,10 +27,19 @@ export const aboutData: AboutContent = {
 };
 
 export const ContactFormSchema = z.object({
-    name: z.string().min(2, { message: "Name must be at least 2 characters." }),
-    email: z.string().email({ message: "Please enter a valid email address." }),
-    subject: z.string().min(5, { message: "Subject must be at least 5 characters." }),
-    message: z.string().min(10, { message: "Message must be at least 10 characters." }),
+    name: z.string()
+        .min(2, { message: "Name must be at least 2 characters." })
+        .max(100, { message: "Name cannot exceed 100 characters." })
+        .regex(/^[a-zA-Z\s\-\.']+$/, { message: "Name contains invalid characters." }),
+    email: z.string()
+        .email({ message: "Please enter a valid email address." })
+        .max(320, { message: "Email is too long." }),
+    subject: z.string()
+        .min(5, { message: "Subject must be at least 5 characters." })
+        .max(200, { message: "Subject cannot exceed 200 characters." }),
+    message: z.string()
+        .min(10, { message: "Message must be at least 10 characters." })
+        .max(5000, { message: "Message cannot exceed 5000 characters." }),
 });
 
 export type ContactFormValues = z.infer<typeof ContactFormSchema>;
