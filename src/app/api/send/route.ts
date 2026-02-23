@@ -108,7 +108,8 @@ export async function POST(request: Request) {
 
         // Compile React Email to HTML string explicitly to bypass Resend Edge rendering bugs
         const htmlContent = await render(
-            ContactTemplate({ name, email, subject, message })
+            ContactTemplate({ name, email, subject, message }),
+            { pretty: false }
         );
 
         // Send React Email using Resend
@@ -124,6 +125,7 @@ export async function POST(request: Request) {
             // cc: [email], // CC the user so they get their copy and can "Reply All" to continue the thread
             replyTo: email,
             subject: `Secure Protocol Initiated: ${subject}`,
+            // react: ContactTemplate({ name, email, subject, message }),
             html: htmlContent,
         });
 
