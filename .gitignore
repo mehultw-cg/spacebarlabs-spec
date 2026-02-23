@@ -45,3 +45,5 @@ next-env.d.ts
 .github/instructions/snyk_rules.instructions.md
 .open-next
 .wrangler
+
+curl_error.html
