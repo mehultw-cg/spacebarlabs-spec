@@ -2,6 +2,7 @@ import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 import { ContactFormSchema } from '@/lib/data/about';
 import ContactTemplate from '@/emails/ContactTemplate';
+import { render } from '@react-email/render';
 
 // Initialize Resend
 const resend = new Resend(process.env.RESEND_API_KEY || 're_123456789');
@@ -105,6 +106,11 @@ export async function POST(request: Request) {
 
         const { name, email, subject, message } = result.data;
 
+        // Compile React Email to HTML string explicitly to bypass Resend Edge rendering bugs
+        const htmlContent = await render(
+            ContactTemplate({ name, email, subject, message })
+        );
+
         // Send React Email using Resend
         // Setup to establish an email thread between Spacebar and the client.
         const data = await resend.emails.send({
@@ -118,7 +124,7 @@ export async function POST(request: Request) {
             // cc: [email], // CC the user so they get their copy and can "Reply All" to continue the thread
             replyTo: email,
             subject: `Secure Protocol Initiated: ${subject}`,
-            react: ContactTemplate({ name, email, subject, message }),
+            html: htmlContent,
         });
 
         if (data.error) {
