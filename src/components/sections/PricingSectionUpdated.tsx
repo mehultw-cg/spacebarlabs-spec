@@ -27,7 +27,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import { spacebarFont } from "@/app/page";
+import { headingFont, nasaFont } from "@/app/page";
 
 import { cn } from "@/lib/utils";
 
@@ -37,7 +37,7 @@ export function PricingSectionUpdated() {
       <div className="py-20">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-16 space-y-4">
-            <h2 className={`text-4xl md:text-5xl font-bold text-white text-shadow-lg/30 dark:text-white tracking-tight ${spacebarFont.className}`}>
+            <h2 className={`text-4xl md:text-5xl font-bold text-white text-shadow-lg/30 dark:text-white tracking-tight ${nasaFont.className}`}>
               Pricing
             </h2>
             <div className="max-w-3xl mx-auto space-y-6 ">
@@ -96,23 +96,23 @@ const PricingCard = ({ item }: { item: typeof pricingData[0] }) => {
   
   let subject = "PING_HELLO";
   const t = item.title.toLowerCase();
-  let message = `Hi Spacebar, I'm interested in the ${item.title} plan. Open to hearing more about how you can help us achieve _______.`;
+  let message = `Hi Aurorys, I'm interested in the ${item.title} plan. Open to hearing more about how you can help us achieve _______.`;
 
   if (t.includes("architecture")) {
       subject = "START_BUILD";
-      message = "Hi Spacebar, I'm interested in the Secure Architecture plan. I'm building a system for _______ and want to ensure it's secure by design. Can we discuss the implementation details?";
+      message = "Hi Aurorys, I'm interested in the Secure Architecture plan. I'm building a system for _______ and want to ensure it's secure by design. Can we discuss the implementation details?";
   } else if (t.includes("devsecops")) {
       subject = "START_BUILD";
-      message = "Hi Spacebar, I'm interested in the DevSecOps plan. Our deployment pipeline needs some work, specifically regarding _______. Can you help us automate the security checks?";
+      message = "Hi Aurorys, I'm interested in the DevSecOps plan. Our deployment pipeline needs some work, specifically regarding _______. Can you help us automate the security checks?";
   } else if (t.includes("infrastructure")) {
       subject = "INIT_MIGRATION";
-      message = "Hi Spacebar, I'm interested in the Infrastructure Migration plan. We are currently on _______ and want to move to a more sovereign setup. Can you help us plan the migration?";
+      message = "Hi Aurorys, I'm interested in the Infrastructure Migration plan. We are currently on _______ and want to move to a more sovereign setup. Can you help us plan the migration?";
   } else if (t.includes("migration")) {
       subject = "INIT_MIGRATION";
-      message = "Hi Spacebar, I'm interested in the Migration plan. We are currently on _______ and looking to switch providers. Can you help us with zero-downtime migration?";
+      message = "Hi Aurorys, I'm interested in the Migration plan. We are currently on _______ and looking to switch providers. Can you help us with zero-downtime migration?";
   } else if (t.includes("assessment")) {
       subject = "REQ_AUDIT";
-      message = "Hi Spacebar, I'm interested in the Security Assessment plan. We have a system that needs auditing, specifically regarding _______. When can you take a look?";
+      message = "Hi Aurorys, I'm interested in the Security Assessment plan. We have a system that needs auditing, specifically regarding _______. When can you take a look?";
   }
   
   const contactLink = `?subject=${subject}&message=${encodeURIComponent(message)}#contact`;

@@ -297,7 +297,7 @@ export const servicesData: Service[] = [
 // Security note content
 export const securityNote = {
   title: "Our Commitment to Security",
-  content: "At SpaceBar Labs, we are committed to secure coding practices. Every application and piece of work we deliver is developed with security at its core, adhering to best practices from renowned frameworks such as NIST, OWASP, and MITRE ATT&CK. We believe in delivering modern, stunning web creations that are secure by default.",
+  content: "At Aurorys Labs, we are committed to secure coding practices. Every application and piece of work we deliver is developed with security at its core, adhering to best practices from renowned frameworks such as NIST, OWASP, and MITRE ATT&CK. We believe in delivering modern, stunning web creations that are secure by default.",
 };
 
 // Validate the data

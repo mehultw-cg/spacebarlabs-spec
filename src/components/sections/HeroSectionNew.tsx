@@ -9,7 +9,7 @@ import { RainbowButton } from "@/components/ui/rainbow-button";
 import { AuroraText } from "@/components/ui/aurora-text";
 import { Badge } from "@/components/ui/badge";
 
-import { spacebarFont } from "@/app/page";
+import { headingFont } from "@/app/page";
 
 // Import graphics
 import { ReactComponent as RocketLogo } from "@/components/vfx/why-us-graphics/rocket-logo-only";
@@ -109,7 +109,7 @@ export function HeroSectionNew() {
                      className="space-y-8 flex flex-col items-center"
                    >
                      {/* Gradient Header - Green/Purple/Blue hues */}
-                     <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold leading-tight ${spacebarFont.className}`}>
+                     <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold leading-tight ${headingFont.className}`}>
                        <AuroraText 
                           className="text-shadow-sm/5"
                           colors={["#11b579ff", "#1fc1ccff", "#e523dbff", "#3279f4ff"]} // Green, Cyan, Purple loop
@@ -238,7 +238,7 @@ export function HeroSectionNew() {
                 </AuroraText>
              </h3>
              <p className="text-neutral-300 dark:text-neutral-300 text-shadow-lg/30 text-sm leading-relaxed mx-auto font-medium">
-               Spacebar Labs aims to reduce dependency through resilient, private, and secure systems. Education, knowledge transfer, and training are in our DNA.
+               Aurorys Labs aims to reduce dependency through resilient, private, and secure systems. Education, knowledge transfer, and training are in our DNA.
              </p>
            </div>
 

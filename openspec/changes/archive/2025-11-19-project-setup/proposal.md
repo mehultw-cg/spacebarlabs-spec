@@ -1,7 +1,7 @@
 # Project Setup Proposal
 
 ## Why
-To establish a robust and maintainable development foundation for the SpaceBar Labs marketing website, incorporating modern tooling, containerized development, and clear specifications for future enhancements.
+To establish a robust and maintainable development foundation for the Aurorys Labs marketing website, incorporating modern tooling, containerized development, and clear specifications for future enhancements.
 
 ## What Changes
 - Initialize a Next.js 15 project with Bun runtime

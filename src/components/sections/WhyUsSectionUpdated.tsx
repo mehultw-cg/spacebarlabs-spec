@@ -22,7 +22,7 @@ import ServerConstellationSafe from "@/components/vfx/why-us-graphics/server-con
 import ShieldNetwork from "@/components/vfx/why-us-graphics/shield-network";
 import UiBrain from "@/components/vfx/why-us-graphics/ui-brain";
 import { Asterisk } from "lucide-react";
-import { spacebarFont } from "@/app/page";
+import { headingFont, nasaFont } from "@/app/page";
 
 // Card colors from global css vars
 const CARD_COLORS = [
@@ -51,7 +51,7 @@ export function WhyUsSectionUpdated() {
     <section id="why-us" className="py-20 bg-transparent text-black dark:text-white">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="text-center mb-16">
-          <h2 className={`text-4xl md:text-5xl font-bold mb-4 text-neutral-200 dark:text-white text-shadow-lg/30 ${spacebarFont.className}`}>
+          <h2 className={`text-4xl md:text-5xl font-bold mb-4 text-neutral-200 dark:text-white text-shadow-lg/30 ${nasaFont.className}`}>
             Why Us?
           </h2>
           <p className="text-neutral-200 dark:text-neutral-300 italic max-w-2xl mx-auto text-shadow-sm/30">
@@ -100,9 +100,9 @@ const WhyUsCard = ({ item, index, isMobile }: { item: typeof whyUsData[0]; index
         return `${r} ${g} ${b}`; // Return only RGB values for Tailwind opacity modifier usage if needed, OR just return full rgba
     };
     
-    // We'll use full RGBA strings for variables
-    const activeShadow = `0 10px 40px -10px rgba(${hexToRgba(color, 1).replace(/ /g, ', ')}, 0.5)`;
-    const inactiveShadow = `0 4px 20px -5px rgba(${hexToRgba(color, 1).replace(/ /g, ', ')}, 0.1)`;
+    // performance boost: dramatically reduced blur radii and alpha (40px -> 16px, 0.5 -> 0.2)
+    const activeShadow = `0 8px 16px -4px rgba(${hexToRgba(color, 1).replace(/ /g, ', ')}, 0.2)`;
+    const inactiveShadow = `0 2px 8px -2px rgba(${hexToRgba(color, 1).replace(/ /g, ', ')}, 0.05)`;
 
     return (
         <BentoGridItem
@@ -126,8 +126,7 @@ const WhyUsCard = ({ item, index, isMobile }: { item: typeof whyUsData[0]; index
                 colClass, 
                 rowClass, 
                 activeClass,
-                // Updated className: Fixed height (310px), explicit !shadow-none to reset defaults, then apply custom shadows
-                "group/bento relative overflow-hidden h-full min-h-[60vh] md:min-h-[310px] border border-neutral-200 dark:border-white/10 transition-all duration-300 [&>div:nth-child(2)]:justify-end [&>div:nth-child(2)]:h-full [&>div:nth-child(2)]:!translate-x-0 !shadow-none shadow-[var(--shadow-inactive)] hover:shadow-[var(--shadow-active)] [&.is-active]:shadow-[var(--shadow-active)]"
+                "group/bento relative overflow-hidden h-full min-h-[60vh] md:min-h-[310px] border border-neutral-200 dark:border-white/10 transition-[box-shadow,border-color] duration-300 [&>div:nth-child(2)]:justify-end [&>div:nth-child(2)]:h-full [&>div:nth-child(2)]:!translate-x-0 !shadow-none shadow-[var(--shadow-inactive)] hover:shadow-[var(--shadow-active)] hover:border-[var(--card-color)] [&.is-active]:shadow-[var(--shadow-active)] [&.is-active]:border-[var(--card-color)]"
             )}
             
             // Render content directly using flex-col justify-end to ensure bottom alignment
@@ -150,9 +149,9 @@ const WhyUsCard = ({ item, index, isMobile }: { item: typeof whyUsData[0]; index
                     
                     {/* Subheading Container */}
                     <div className={cn(
-                        "transition-all duration-500 ease-in-out overflow-hidden bg-transparent",
-                        // Tier 3: Subheading is part of revealed content, so it gets the border top
-                        item.tier === 3 ? "max-h-0 opacity-0 group-hover/bento:max-h-[100px] group-hover/bento:opacity-100 group-[.is-active]/bento:max-h-[100px] group-[.is-active]/bento:opacity-100 border-t-2 mt-0 pt-0 group-hover/bento:pt-3 group-[.is-active]/bento:pt-3 group-hover/bento:mt-2 group-[.is-active]/bento:mt-2" : "max-h-[100px] opacity-100"
+                        "transition-[max-height,opacity] duration-300 ease-in-out overflow-hidden bg-transparent border-t-2 mt-2 pt-3", // Removed mt/pt animation
+                        item.tier === 3 ? "max-h-0 opacity-0 group-hover/bento:max-h-[100px] group-hover/bento:opacity-100 group-[.is-active]/bento:max-h-[100px] group-[.is-active]/bento:opacity-100" : "max-h-[100px] opacity-100",
+                        item.tier !== 3 && "border-transparent mt-0 pt-0" // Hide border gap for non-tier 3 where border is on description
                     )}
                     style={item.tier === 3 ? { borderTopColor: color } : undefined}
                     >
@@ -168,9 +167,9 @@ const WhyUsCard = ({ item, index, isMobile }: { item: typeof whyUsData[0]; index
                     {/* Description & Buried Content - Hidden initially, slides up */}
                     <div 
                         className={cn(
-                            "max-h-0 opacity-0 group-hover/bento:max-h-[500px] group-hover/bento:opacity-100 group-[.is-active]/bento:max-h-[500px] group-[.is-active]/bento:opacity-100 transition-all duration-500 ease-in-out overflow-hidden",
-                            // Tier 1 & 2: Border is here
-                            item.tier !== 3 && "border-t-2"
+                            "transition-[max-height,opacity] duration-300 ease-in-out overflow-hidden",
+                            item.tier !== 3 && "border-t-2 mt-2 pt-2",
+                            "max-h-0 opacity-0 group-hover/bento:max-h-[500px] group-hover/bento:opacity-100 group-[.is-active]/bento:max-h-[500px] group-[.is-active]/bento:opacity-100"
                         )}
                         style={item.tier !== 3 ? { borderTopColor: color } : undefined}
                     >

@@ -13,21 +13,21 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "🚀 SpaceBar Labs | CyberSecurity Services | Secure Private Cloud Architecture & Infrastructure",
-  description: "Craft your future with secure, resilient, and efficiently engineered cloud infrastructure. SpaceBar Labs specializes in privacy-by-design, high-performance architecture, and DevSecOps Cybersecurity services.",
-  keywords: ["CyberSecurity","DevSecOps", "Cloud Architecture", "Edge Computing", "Privacy", "Security", "Infrastructure", "SpaceBar Labs", "Cyber Security", "Security Architecture", "Sovereign Systems", "Cloud Migration", "Cloud", "VPS", "Cloud Security"],
+  title: "🚀 Aurorys Labs | CyberSecurity Services | Secure Private Cloud Architecture & Infrastructure",
+  description: "Craft your future with secure, resilient, and efficiently engineered cloud infrastructure. Aurorys Labs specializes in privacy-by-design, high-performance architecture, and DevSecOps Cybersecurity services.",
+  keywords: ["CyberSecurity","DevSecOps", "Cloud Architecture", "Edge Computing", "Privacy", "Security", "Infrastructure", "Aurorys Labs", "Cyber Security", "Security Architecture", "Sovereign Systems", "Cloud Migration", "Cloud", "VPS", "Cloud Security"],
   openGraph: {
-    title: "SpaceBar Labs | CyberSecurity Services | Secure Private Cloud Architecture & Infrastructure",
-    description: "Craft your future with secure, resilient, and efficiently engineered cloud infrastructure. SpaceBar Labs specializes in privacy-by-design, high-performance architecture, and DevSecOps Cybersecurity services.",
+    title: "Aurorys Labs | CyberSecurity Services | Secure Private Cloud Architecture & Infrastructure",
+    description: "Craft your future with secure, resilient, and efficiently engineered cloud infrastructure. Aurorys Labs specializes in privacy-by-design, high-performance architecture, and DevSecOps Cybersecurity services.",
     type: "website",
-    url: "https://spacebar-labs.com",
+    url: "https://aurorys-labs.com",
     locale: "en_US",
-    siteName: "SpaceBar Labs",
+    siteName: "Aurorys Labs",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SpaceBar Labs | CyberSecurity Services | Secure Private Cloud Architecture & Infrastructure",
-    description: "Craft your future with secure, resilient, and efficiently engineered cloud infrastructure. SpaceBar Labs specializes in privacy-by-design, high-performance architecture, and DevSecOps Cybersecurity services.",
+    title: "Aurorys Labs | CyberSecurity Services | Secure Private Cloud Architecture & Infrastructure",
+    description: "Craft your future with secure, resilient, and efficiently engineered cloud infrastructure. Aurorys Labs specializes in privacy-by-design, high-performance architecture, and DevSecOps Cybersecurity services.",
   }
 };
 

@@ -3,7 +3,7 @@
 import React, { Suspense } from "react";
 import { aboutData } from "@/lib/data/about";
 import { ContactSection } from "@/components/sections/ContactSection";
-import { spacebarFont } from "@/app/page";
+import { headingFont, nasaFont } from "@/app/page";
 import { cn } from "@/lib/utils";
 import { BorderBeam } from "@/components/ui/border-beam";
 
@@ -15,7 +15,7 @@ export function AboutUsSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
           <div className="rounded-lg bg-gradient-to-br from-white/70 to-white/50 dark:from-black/30 dark:to-black/10 backdrop-blur-lg p-8">
-            <h2 className={cn("text-4xl md:text-5xl text-neutral-900 dark:text-neutral-100 font-bold mb-2", spacebarFont.className)}>
+            <h2 className={cn("text-4xl md:text-5xl text-neutral-900 dark:text-neutral-100 font-bold mb-2", nasaFont.className)}>
               {aboutData.title}
             </h2>
             {/* <div className="space-y-6 text-neutral-100 text-shadow-lg/60 dark:text-neutral-300 leading-relaxed text-lg">
@@ -27,7 +27,7 @@ export function AboutUsSection() {
             <div className="space-y-6 text-neutral-900 dark:text-neutral-100 dark:text-shadow-lg/30 dark:text-neutral-300 leading-relaxed text-lg">
               
 
-<p>SpaceBar Labs is a security-first systems engineering firm focused on reducing operational risk and eliminating unnecessary infrastructure complexity.</p>
+<p>Aurorys Labs is a security-first systems engineering firm focused on reducing operational risk and eliminating unnecessary infrastructure complexity.</p>
 
 <p>We design secure infrastructure, privacy-aware architectures, and practical DevSecOps pipelines — ensuring teams retain control over their systems without dependency.</p>
 
@@ -64,7 +64,7 @@ export function AboutUsSection() {
                <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
                  <img
                     src="/webp/secure-cosmic-server.webp"
-                    alt="SpaceBar Labs Team"
+                    alt="Aurorys Labs Team"
                     className="w-full h-full object-cover"
                     onError={(e) => {
                       e.currentTarget.src = "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80";

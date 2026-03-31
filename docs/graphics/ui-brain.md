@@ -88,7 +88,7 @@ import UiBrain from "@/components/vfx/why-us-graphics/ui-brain";
 
 - Communicates that design isn't just visual—it's cognitive
 - Represents intersection of aesthetics and intelligence
-- Aligns with SpaceBar Labs' identity (astrophysics + development)
+- Aligns with Aurorys Labs' identity (astrophysics + development)
 
 ### Color Choice
 

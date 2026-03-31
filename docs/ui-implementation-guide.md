@@ -1,6 +1,6 @@
-# UI Implementation Guide for SpaceBar Labs Landing Page
+# UI Implementation Guide for Aurorys Labs Landing Page
 
-This guide details the specific components and implementation strategies for building the SpaceBar Labs landing page, based on the `landing-page-ux-hierarchy.md`. It focuses on using shadcn/ui as the primary component library, with potential integrations from Aceternity UI for premium elements.
+This guide details the specific components and implementation strategies for building the Aurorys Labs landing page, based on the `landing-page-ux-hierarchy.md`. It focuses on using shadcn/ui as the primary component library, with potential integrations from Aceternity UI for premium elements.
 
 ## Core Principles
 

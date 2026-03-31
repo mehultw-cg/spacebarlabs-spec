@@ -12,11 +12,19 @@ import { PricingSectionUpdated } from "@/components/sections/PricingSectionUpdat
 import { WhyUsSectionUpdated } from "@/components/sections/WhyUsSectionUpdated";
 import localFont from "next/font/local";
 
-export const spacebarFont = localFont({
+export const headingFont = localFont({
   src: [
-    { path: "../lib/fonts/nasalization-rg.ttf" },
+    { path: "../../public/fonts/Satoshi-Variable.ttf" },
   ],
-  variable: "--font-spacebar",
+  variable: "--font-heading",
+});
+
+
+export const nasaFont = localFont({
+  src: [
+    { path: "../../public/fonts/nasalization-rg.ttf" },
+  ],
+  variable: "--font-nasa",
 });
 
 export default function Home() {
@@ -51,7 +59,7 @@ export default function Home() {
         {/* Footer - Placeholder for now */}
         {/* <footer className="py-12 px-4 border-t bg-black text-white border-neutral-800">
           <div className="max-w-7xl mx-auto text-center text-neutral-500">
-            <p>&copy; 2025 SpaceBar Labs. All rights reserved.</p>
+            <p>&copy; 2025 Aurorys Labs. All rights reserved.</p>
           </div>
         </footer> */}
         <Footer />

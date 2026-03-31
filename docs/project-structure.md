@@ -1,6 +1,6 @@
 # Project Structure Overview
 
-This document provides an overview of the project structure for the SpaceBar Labs marketing website.
+This document provides an overview of the project structure for the Aurorys Labs marketing website.
 
 ```
 spacebar-spec/

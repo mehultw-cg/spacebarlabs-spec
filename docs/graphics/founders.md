@@ -81,7 +81,7 @@ import Founders from "@/components/vfx/why-us-graphics/founders";
 
 ### Why Constellation Metaphor?
 
-1. **Astronomy Brand**: Fits SpaceBar Labs' space/astrophysics identity
+1. **Astronomy Brand**: Fits Aurorys Labs' space/astrophysics identity
 2. **Connection**: Constellations are patterns of connection—founders working together
 3. **Guidance**: Stars/constellations have guided navigation for millennia—founders guide clients
 

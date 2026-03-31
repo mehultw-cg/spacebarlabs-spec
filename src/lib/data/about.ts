@@ -11,9 +11,9 @@ export const AboutContentSchema = z.object({
 export type AboutContent = z.infer<typeof AboutContentSchema>;
 
 export const aboutData: AboutContent = {
-    title: "About Spacebar Labs",
+    title: "About Aurorys Labs",
     description: [
-        "Spacebar Labs is a security-focused engineering firm dedicated to building resilient digital infrastructure.",
+        "Aurorys Labs is a security-focused engineering firm dedicated to building resilient digital infrastructure.",
         "We believe technology should empower individuals and organizations while respecting privacy, ownership, and long-term sustainability.",
         "Our work combines practical engineering discipline with a deep commitment to human-centric system design.",
         "We partner with clients to create secure foundations that can evolve confidently over time."

@@ -1,0 +1,79 @@
+# Aurorys Labs VPS Deployment Guide
+
+This guide walks you through deploying the `aurorys-labs` Next.js application to a standard Ubuntu/Debian VPS using Docker and CI/CD.
+
+## 1. Prerequisites on VPS
+Ensure your VPS has Docker and Docker Compose installed:
+```bash
+# Install Docker
+curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh
+
+# Install Docker Compose (usually bundled with modern Docker as `docker compose`)
+```
+
+## 2. Environment Variables (`.env.production`)
+You must create a `.env.production` file on your VPS at the root of your project directory. This file will be loaded by Docker Compose.
+
+```env
+# SECURITY
+TURNSTILE_SECRET_KEY=your_cloudflare_turnstile_secret_key
+NEXT_PUBLIC_TURNSTILE_SITE_KEY=your_cloudflare_turnstile_site_key
+
+# EMAIL SYSTEM (Resend)
+RESEND_API_KEY=re_your_resend_api_key
+```
+> [!IMPORTANT]
+> To ensure emails send properly, `auroryslabs.com` MUST be verified in your Resend Dashboard via DNS records. Otherwise, Resend will silently drop outbound emails to external domains.
+
+## 3. Server Configuration Highlights
+We have automated the Next.js `standalone` mode.
+- [next.config.ts](file:///Users/darx/syncything-data/Active_Work/projects/next/spacebar-spec/next.config.ts) was updated with `output: "standalone"`.
+- The [Dockerfile](file:///Users/darx/syncything-data/Active_Work/projects/next/spacebar-spec/Dockerfile) implements a multi-stage build that only copies the minimal required files into a lightweight Alpine image.
+
+## 4. Running the Application
+
+### Manual Launch
+To start the application on the VPS:
+```bash
+# Pull the latest code (assuming you are doing this manually)
+git pull origin main
+
+# Build and start the container in detached mode
+docker compose up --build -d
+```
+
+### CI/CD Workflow Setup
+For a CI/CD pipeline (e.g., GitHub Actions), use this generic script in your deployment step:
+```bash
+ssh user@your-vps-ip << 'EOF'
+  cd /path/to/project
+  git pull origin main
+  docker compose build
+  docker compose up -d
+  # Prune old dangling images to save disk space
+  docker image prune -f
+EOF
+```
+
+## 5. Contact Form and Email System Security
+The contact API ([src/app/api/send/route.ts](file:///Users/darx/syncything-data/Active_Work/projects/next/spacebar-spec/src/app/api/send/route.ts)) is fortified for VPS environments:
+1. **Turnstile Verification:** Validates the captcha token server-side before processing.
+2. **CORS Enforcement:** The API strictly rejects cross-origin requests, only allowing `https://auroryslabs.com`.
+3. **In-Memory Rate Limiting:** Limits spam bursts (maximum 10 requests per minute per IP). **Note:** In Docker, this resets natively if the container restarts.
+4. **React Email Rendering:** Explicitly calls `@react-email/render` to generate HTML *before* handing it to Resend, ensuring flawless compilation that doesn't rely on Edge runtimes.
+
+## 6. Reverse Proxy (Optional but Recommended)
+The Docker container exposes port `3000`. In a production environment, you should route port `80` and `443` to `3000` via Nginx, Traefik, or Caddy.
+
+Example `Caddyfile` (Caddy handles free automatic HTTPS):
+```
+auroryslabs.com, www.auroryslabs.com {
+    reverse_proxy localhost:3000
+}
+```
+
+## Health Checks
+Test the deployment by verifying:
+- **UI:** The site loads without errors.
+- **Form:** Submitting the contact form returns a success confetti, and the email lands in your `site-requests@auroryslabs.com` inbox. If the email doesn't arrive, check `docker compose logs web`.

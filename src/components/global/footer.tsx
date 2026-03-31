@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { SpacebarLabsLogo } from "@/components/ui/SpacebarLabsLogo";
+import { AurorysLabsLogo } from "@/components/ui/AurorysLabsLogo";
 import { IconBrandTwitter, IconBrandGithub, IconBrandLinkedin, IconBrandInstagram } from "@tabler/icons-react";
 import { PrivacyModal, TermsModal, CookieModal } from "./PolicyModals";
 
@@ -50,7 +50,7 @@ export function Footer() {
           <div className="lg:col-span-1 space-y-6">
             <div className="flex items-center gap-2">
               <Link href="/">
-                <SpacebarLabsLogo textClassName="text-white dark:text-white" />
+                <AurorysLabsLogo textClassName="text-white dark:text-white" />
               </Link>
             </div>
             <p className="text-neutral-200 dark:text-neutral-200 text-sm leading-relaxed max-w-xs">
@@ -99,7 +99,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-neutral-200 dark:border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-neutral-200 dark:text-neutral-200 text-sm">
-            &copy; {new Date().getFullYear()} SpaceBar Labs. All rights reserved.
+            &copy; {new Date().getFullYear()} Aurorys Labs. All rights reserved.
           </p>
           <div className="flex items-center gap-2 text-sm text-neutral-200 dark:text-neutral-200">
             <span>Built with</span>

@@ -47,8 +47,8 @@ export const ContactTemplate = ({
           {`
             @import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;600&family=Geist+Mono:wght@400;600&display=swap');
             @font-face {
-              font-family: 'Nasalization';
-              src: url('https://spacebar-labs.com/fonts/nasalization-rg.ttf') format('truetype');
+              font-family: 'Satoshi';
+              src: url('https://aurorys-labs.com/fonts/Satoshi-Variable.ttf') format('truetype');
               font-weight: normal;
               font-style: normal;
             }
@@ -70,7 +70,7 @@ export const ContactTemplate = ({
                 </Column>
                 <Column align="center">
                   <Text className="text-[#8b8b8b] text-[12px] m-0 font-mono tracking-tight text-center">
-                    secure_uplink@spacebar-labs
+                    secure_uplink@aurorys-labs
                   </Text>
                 </Column>
                 <Column align="right" style={{ width: "80px" }}>
@@ -134,9 +134,9 @@ export const ContactTemplate = ({
                   <Column align="left" style={{ width: "55%" }}>
                      <Heading 
                         className="text-white text-[24px] font-normal text-left p-0 m-0 tracking-tight"
-                        style={{ fontFamily: 'Nasalization, "Arial Black", sans-serif' }}
+                        style={{ fontFamily: 'Satoshi, "Arial Black", sans-serif' }}
                       >
-                        Spacebar Labs
+                        Aurorys Labs
                       </Heading>
                   </Column>
                 </Row>
@@ -149,7 +149,7 @@ export const ContactTemplate = ({
               </Text>
               
               <Text className="text-[#d4d4d4] text-[15px] leading-[24px] m-0 mb-4">
-                Thank you for reaching out and initiating a secure protocol with Spacebar Labs.
+                Thank you for reaching out and initiating a secure protocol with Aurorys Labs.
               </Text>
               <Text className="text-[#d4d4d4] text-[15px] leading-[24px] m-0 mb-8">
                 This email thread will serve as our primary communication channel moving forward. 
@@ -186,9 +186,9 @@ export const ContactTemplate = ({
               </Text>
               <Text 
                 className="text-emerald-500 text-[16px] font-normal m-0 mb-2 tracking-wide" 
-                style={{ fontFamily: 'Nasalization, "Arial Black", sans-serif' }}
+                style={{ fontFamily: 'Satoshi, "Arial Black", sans-serif' }}
               >
-                Spacebar Labs Team
+                Aurorys Labs Team
               </Text>
               <Text className="text-[#737373] text-[13px] leading-[20px] m-0 italic max-w-[85%]">
                 We are here to engineer resilient, sovereign infrastructure and high-performance digital solutions.

@@ -156,6 +156,15 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
 };
 
 export const MobileNav = ({ children, className, visible, hiddenOnScroll }: MobileNavProps) => {
+  const [isTablet, setIsTablet] = React.useState(false);
+  React.useEffect(() => {
+    const mql = window.matchMedia('(min-width: 640px)');
+    setIsTablet(mql.matches);
+    const handler = (e: MediaQueryListEvent) => setIsTablet(e.matches);
+    mql.addEventListener('change', handler);
+    return () => mql.removeEventListener('change', handler);
+  }, []);
+
   return (
     <motion.div
       animate={{
@@ -167,7 +176,7 @@ export const MobileNav = ({ children, className, visible, hiddenOnScroll }: Mobi
         paddingRight: visible ? "12px" : "0px",
         paddingLeft: visible ? "12px" : "0px",
         borderRadius: "4rem",
-        y: hiddenOnScroll ? 150 : 0,
+        y: hiddenOnScroll ? (isTablet ? -150 : 150) : 0,
       }}
       transition={{
         type: "spring",
@@ -241,7 +250,7 @@ export const MobileNavToggle = ({
 };
 
 import Link from "next/link";
-import { SpacebarLabsLogo } from "@/components/ui/SpacebarLabsLogo";
+import { AurorysLabsLogo } from "@/components/ui/AurorysLabsLogo";
 
 // ...
 
@@ -251,7 +260,7 @@ export const NavbarLogo = () => {
       href="/"
       className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
     >
-      <SpacebarLabsLogo />
+      <AurorysLabsLogo />
     </Link>
   );
 };

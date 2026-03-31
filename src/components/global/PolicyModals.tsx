@@ -18,7 +18,7 @@ export function PrivacyModal({ children }: { children: React.ReactNode }) {
       <DialogContent data-lenis-prevent className="w-[95vw] max-w-[95vw] max-h-[85vh] overflow-y-auto bg-white/70 dark:bg-black/60 backdrop-blur-xl border-neutral-200 dark:border-neutral-800">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold mb-2">{privacyPolicy.title}</DialogTitle>
-          <DialogDescription>Effective Date: {new Date().toLocaleDateString()}</DialogDescription>
+          <DialogDescription>Effective Date: 3/26/2026</DialogDescription>
         </DialogHeader>
         <div className="space-y-6 text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed mt-4">
           <div className="text-base">{privacyPolicy.intro}</div>
@@ -41,7 +41,7 @@ export function TermsModal({ children }: { children: React.ReactNode }) {
       <DialogContent data-lenis-prevent className="w-[95vw] max-w-[95vw] max-h-[85vh] overflow-y-auto bg-white/70 dark:bg-black/60 backdrop-blur-xl border-neutral-200 dark:border-neutral-800">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold mb-2">{termsOfService.title}</DialogTitle>
-          <DialogDescription>Last Updated: {new Date().toLocaleDateString()}</DialogDescription>
+          <DialogDescription>Last Updated: 3/26/2026</DialogDescription>
         </DialogHeader>
         <div className="space-y-6 text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed mt-4">
           <div className="text-base">{termsOfService.intro}</div>
@@ -73,7 +73,7 @@ export function CookieModal({ children }: { children: React.ReactNode }) {
       <DialogContent data-lenis-prevent className="w-[95vw] max-w-[95vw] max-h-[85vh] overflow-y-auto bg-white/70 dark:bg-black/60 backdrop-blur-xl border-neutral-200 dark:border-neutral-800">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold mb-2">{cookiePolicy.title}</DialogTitle>
-          <DialogDescription>Effective Date: {new Date().toLocaleDateString()}</DialogDescription>
+          <DialogDescription>Effective Date: 3/26/2026</DialogDescription>
         </DialogHeader>
         <div className="space-y-6 text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed mt-4">
           <div className="text-base">{cookiePolicy.intro}</div>

@@ -4,7 +4,7 @@ export const securityCommitment = {
   title: "Security & Privacy Commitment",
   content: (
     <>
-      At Spacebar Labs, security and privacy are built into every layer of our work. We follow proven frameworks such as OWASP, NIST, and MITRE while focusing on practical, maintainable systems that clients truly own and understand. Our approach emphasizes long-term resilience, transparency, and independence rather than vendor lock-in.
+      At Aurorys Labs, security and privacy are built into every layer of our work. We follow proven frameworks such as OWASP, NIST, and MITRE while focusing on practical, maintainable systems that clients truly own and understand. Our approach emphasizes long-term resilience, transparency, and independence rather than vendor lock-in.
     </>
   ),
   tags: [
@@ -22,7 +22,7 @@ export const privacyPolicy = {
     <>
       <strong>Your privacy is not our product.</strong>
       <br /><br />
-      At Spacebar Labs, we believe digital privacy is a fundamental human right, not a feature. We collect only the minimal information necessary to provide our services, protect communications, and maintain security. We do not sell, broker, or monetize personal data in any form.
+      At Aurorys Labs, we believe digital privacy is a fundamental human right, not a feature. We collect only the minimal information necessary to provide our services, protect communications, and maintain security. We do not sell, broker, or monetize personal data in any form.
       <br /><br />
       Our systems are designed around privacy-first architecture, data ownership, and transparency. You always retain control over your information.
     </>
@@ -46,7 +46,7 @@ export const termsOfService = {
       title: "1. Conditions of Use",
       content: (
         <>
-          By accessing this website we assume you accept these terms and conditions. Do not continue to use Spacebar Labs if you do not agree to take all of the terms and conditions stated on this page.
+          By accessing this website we assume you accept these terms and conditions. Do not continue to use Aurorys Labs if you do not agree to take all of the terms and conditions stated on this page.
         </>
       )
     },
@@ -54,7 +54,7 @@ export const termsOfService = {
       title: "2. Intellectual Property",
       content: (
         <>
-          The Service and its original content, features, and functionality are and will remain the exclusive property of Spacebar Labs and its licensors.
+          The Service and its original content, features, and functionality are and will remain the exclusive property of Aurorys Labs and its licensors.
         </>
       )
     }
@@ -66,7 +66,7 @@ export const termsOfService = {
         <>
           <strong>Security is a shared responsibility.</strong>
           <br /><br />
-          Spacebar Labs provides expert guidance, architecture design, implementation support, and training based on industry best practices. However, the ongoing operation, maintenance, and enforcement of security controls ultimately remain the responsibility of the client.
+          Aurorys Labs provides expert guidance, architecture design, implementation support, and training based on industry best practices. However, the ongoing operation, maintenance, and enforcement of security controls ultimately remain the responsibility of the client.
           <br /><br />
           While we work to significantly reduce risks, exposure, and attack surfaces, no system can be guaranteed to be completely secure. Cybersecurity is an evolving landscape, and threats continuously change over time.
         </>
@@ -76,7 +76,7 @@ export const termsOfService = {
       title: "Liability Clarity",
       content: (
         <>
-          Our services are designed to improve security posture, not to eliminate risk entirely. Spacebar Labs cannot be held liable for security incidents resulting from operational decisions, policy deviations, third-party vulnerabilities, or factors outside our control.
+          Our services are designed to improve security posture, not to eliminate risk entirely. Aurorys Labs cannot be held liable for security incidents resulting from operational decisions, policy deviations, third-party vulnerabilities, or factors outside our control.
           <br /><br />
           We focus on empowering clients through education, documentation, and knowledge transfer, enabling long-term resilience rather than dependency.
         </>

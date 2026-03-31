@@ -35,10 +35,10 @@ export async function POST(request: Request) {
         // Only allow POST requests originating from our domain in production.
         const origin = request.headers.get('origin');
         const isDevelopment = process.env.NODE_ENV === 'development';
-        // Allow localhost for dev, but strictly enforce spacebar-labs.com for prod
+        // Allow localhost for dev, but strictly enforce aurorys-labs.com for prod
         const allowedOrigins = [
-            'https://spacebar-labs.com', 
-            'https://www.spacebar-labs.com', 
+            'https://auroryslabs.com', 
+            'https://www.auroryslabs.com', 
             'http://localhost:3000',
             'http://localhost:3078' // Docker binding
         ];
@@ -113,14 +113,14 @@ export async function POST(request: Request) {
         );
 
         // Send React Email using Resend
-        // Setup to establish an email thread between Spacebar and the client.
+        // Setup to establish an email thread between Aurorys and the client.
         const data = await resend.emails.send({
-            // Note: Until spacebar-labs.com is verified in your Resend Dashboard, 
+            // Note: Until auroryslabs.com is verified in your Resend Dashboard, 
             // you must 'from' onboarding@resend.dev.
-            from: 'Spacebar Labs <requests@spacebar-labs.com>', 
+            from: 'Aurorys Labs <requests@auroryslabs.com>', 
             // Note: In Sandbox mode, this MUST be the email address you signed up to Resend with!
             // Change it below to your actual email for testing until you verify the domain.
-            to: ['site-requests@spacebar-labs.com'], 
+            to: ['site-requests@auroryslabs.com'], 
             // Sandbox prevents sending to arbitrary emails, so we disable the CC for now:
             // cc: [email], // CC the user so they get their copy and can "Reply All" to continue the thread
             replyTo: email,

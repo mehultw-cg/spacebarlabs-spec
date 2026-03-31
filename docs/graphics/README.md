@@ -54,7 +54,7 @@ interface GraphicsProps extends SVGProps<SVGSVGElement> {
 Default `stroke-cyan-200 dark:stroke-cyan-700`:
 - **Light mode**: Light cyan, subtle and clean
 - **Dark mode**: Darker cyan, maintains contrast
-- **Theme**: Matches SpaceBar Labs' space/astronomy branding
+- **Theme**: Matches Aurorys Labs' space/astronomy branding
 
 ### Fill Usage
 

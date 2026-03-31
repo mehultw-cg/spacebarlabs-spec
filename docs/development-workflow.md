@@ -1,6 +1,6 @@
  # Development Workflow Guide
 
-This guide outlines the standard development workflow for the SpaceBar Labs marketing website project.
+This guide outlines the standard development workflow for the Aurorys Labs marketing website project.
 
 ## Prerequisites
 

@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { spacebarFont } from "@/app/page";
+import { headingFont } from "@/app/page";
 
 //USPs
   // - Secure by default
@@ -57,7 +57,7 @@ export function PricingSection() {
 
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-16">
-            <h2 className={`text-4xl md:text-5xl font-bold mb-4 text-neutral-200 text-shadow-lg/30 dark:text-white ${spacebarFont.className}`}>
+            <h2 className={`text-4xl md:text-5xl font-bold mb-4 text-neutral-200 text-shadow-lg/30 dark:text-white ${headingFont.className}`}>
               Pricing
             </h2>
             <p className="text-neutral-200 dark:text-neutral-300 italic text-shadow-sm/30 max-w-2xl mx-auto">

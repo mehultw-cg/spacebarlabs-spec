@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { ContactFormSchema, ContactFormValues } from "@/lib/data/about";
 import { cn } from "@/lib/utils";
 import { RainbowButton } from "@/components/ui/rainbow-button";
-import { spacebarFont } from "@/app/page";
+import { headingFont, nasaFont } from "@/app/page";
 
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -36,10 +36,10 @@ export function ContactSection() {
   const protocol = watch("subject");
 
   const TEMPLATES: Record<string, string> = {
-    "PING_HELLO": "Hi Spacebar,\n\nI've been following your work and really like your approach. I wanted to reach out regarding my current setup.\n\nMy product is essentially _______, and I'd love some advice on scalability and architecture. Looking forward to chatting!",
-    "INIT_MIGRATION": "Hi Spacebar,\n\nOur team is looking to move away from _______ to a more sovereign infrastructure.\n\nOur current stack is mostly _______, and we want to make sure we do this right (zero downtime, no data loss). Can you help us plan this transition?",
-    "REQ_AUDIT": "Hi Spacebar,\n\nWe need a fresh pair of eyes on our system, specifically _______.\n\nWe're concerned about potential vulnerabilities and compliance issues. When would you be available for an audit?",
-    "START_BUILD": "Hi Spacebar,\n\nYour approach to security caught my eye. I'm building a new platform for _______, and I want to get the foundation right from day one.\n\nI'd love your help designing a secure architecture and maybe even implementing the core. Let's build something resilient.",
+    "PING_HELLO": "Hi Aurorys,\n\nI've been following your work and really like your approach. I wanted to reach out regarding my current setup.\n\nMy product is essentially _______, and I'd love some advice on scalability and architecture. Looking forward to chatting!",
+    "INIT_MIGRATION": "Hi Aurorys,\n\nOur team is looking to move away from _______ to a more sovereign infrastructure.\n\nOur current stack is mostly _______, and we want to make sure we do this right (zero downtime, no data loss). Can you help us plan this transition!",
+    "REQ_AUDIT": "Hi Aurorys,\n\nWe need a fresh pair of eyes on our system, specifically _______.\n\nWe're concerned about potential vulnerabilities and compliance issues. When would you be available for an audit?",
+    "START_BUILD": "Hi Aurorys,\n\nYour approach to security caught my eye. I'm building a new platform for _______, and I want to get the foundation right from day one.\n\nI'd love your help designing a secure architecture and maybe even implementing the core. Let's build something resilient.",
   };
 
   const placeholders: Record<string, string> = {
@@ -130,7 +130,7 @@ export function ContactSection() {
 
       <div className="max-w-4xl mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
-          <h2 className={cn("text-4xl md:text-5xl font-bold mb-4", spacebarFont.className)}>Get in Touch</h2>
+          <h2 className={cn("text-4xl md:text-5xl font-bold mb-4", nasaFont.className)}>Get in Touch</h2>
           <p className="text-neutral-200 dark:text-neutral-200 italic text-shadow-sm/30">
             Ready to launch your project? Send us a signal.
           </p>
@@ -145,7 +145,7 @@ export function ContactSection() {
                 <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
                 <div className="w-3 h-3 rounded-full bg-green-500/80" />
               </div>
-              <div className="text-xs text-neutral-700 dark:text-neutral-500 font-mono opacity-70 hidden sm:block">secure_uplink@spacebar-labs:~/connect</div>
+              <div className="text-xs text-neutral-700 dark:text-neutral-500 font-mono opacity-70 hidden sm:block">secure_uplink@aurorys-labs:~/connect</div>
               <div className="text-[10px] text-emerald-700/80 dark:text-emerald-500/80 font-mono tracking-tight">Connection: Encrypted (TLS 1.3)</div>
           </div>
 
@@ -158,7 +158,7 @@ export function ContactSection() {
                    <div className="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(16,185,129,0.3)] inline-flex animate-bounce">
                       <ShieldCheck className="w-8 h-8" />
                    </div>
-                   <h3 className={cn("text-2xl font-bold text-white mb-2 shadow-black drop-shadow-md", spacebarFont.className)}>Transmission Successful</h3>
+                   <h3 className={cn("text-2xl font-bold text-white mb-2 shadow-black drop-shadow-md", headingFont.className)}>Transmission Successful</h3>
                    <p className="text-emerald-100/90 font-mono text-sm max-w-sm leading-relaxed mb-8 drop-shadow-md">
                       Secure channel established. Acknowledgment receipt dispatched to your coordinates. We will respond within 48 hours.
                    </p>
@@ -254,7 +254,7 @@ export function ContactSection() {
 
               <div className="flex flex-col gap-4 pt-2">
                  <p className="text-sm text-emerald-800 dark:text-emerald-500 font-mono">
-                   Prefer establishing a direct protocol? Route your secure comms to <a href="mailto:hi@spacebar-labs.com" className="font-semibold underline underline-offset-2 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">hi@spacebar-labs.com</a>
+                   Prefer establishing a direct protocol? Route your secure comms to <a href="mailto:hi@auroryslabs.com" className="font-semibold underline underline-offset-2 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">hi@auroryslabs.com</a>
                  </p>
                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                    <div className="flex flex-col gap-1">

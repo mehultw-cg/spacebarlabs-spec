@@ -1,5 +1,5 @@
 /**
- * Security Fuzzing Script for Spacebar Labs Contact Form API (/api/send)
+ * Security Fuzzing Script for Aurorys Labs Contact Form API (/api/send)
  * 
  * Tests boundary conditions, malicious injections, and rate-limiting schemas 
  * to ensure robust Next.js API route protection.
@@ -66,7 +66,7 @@ const payloads = [
 ];
 
 async function runTests() {
-  console.log("🚀 Initializing Spacebar Labs Offensive Security Fuzzer...\n");
+  console.log("🚀 Initializing Aurorys Labs Offensive Security Fuzzer...\n");
   
   let passed = 0;
   let failed = 0;

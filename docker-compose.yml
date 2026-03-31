@@ -1,19 +1,17 @@
+version: '3.8'
+
 services:
   web:
-    build:
+    build: 
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
+    image: aurorys-labs-web:latest
+    container_name: aurorys-labs-web
+    restart: always
     ports:
-      - "3078:3000"
+      - "3000:3000"
+    env_file:
+      - .env.production
     environment:
-      # Improve watcher reliability on Docker Desktop/WSL2
-      - CHOKIDAR_USEPOLLING=true
-      - WATCHPACK_POLLING=true
-      # Optional: help dev websockets on some setups
-      - WDS_SOCKET_HOST=127.0.0.1
-      - WDS_SOCKET_PORT=0
-    volumes:
-      - .:/app
-      # Mask container build/deps so bind mount doesn't overwrite
-      - /app/node_modules
-      - /app/.next
+      - NODE_ENV=production
+    # If placing behind NGINX or Traefik, network them here.

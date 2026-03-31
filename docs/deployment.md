@@ -1,6 +1,6 @@
 # Deployment Process
 
-This document outlines the deployment process for the SpaceBar Labs marketing website.
+This document outlines the deployment process for the Aurorys Labs marketing website.
 
 ## Prerequisites for Deployment
 

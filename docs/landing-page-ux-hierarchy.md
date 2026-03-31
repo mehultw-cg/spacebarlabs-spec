@@ -1,6 +1,6 @@
 # Landing Page UI/UX Hierarchical Layout & Implementation Guide
 
-This document outlines the hierarchical structure, user journey, and detailed UI breakdown for the SpaceBar Labs landing page.
+This document outlines the hierarchical structure, user journey, and detailed UI breakdown for the Aurorys Labs landing page.
 
 ## 1. Overall Page Layout & Structure (Hierarchical View)
 
@@ -49,7 +49,7 @@ spacebar-spec-landing-page/
 ## 2. User Journey
 
 1.  **Discovery:** User lands on the page via a search engine, social media link, or direct URL.
-2.  **First Impression (Hero):** The hero section immediately communicates who SpaceBar Labs is and what they do (software development, security, innovation).
+2.  **First Impression (Hero):** The hero section immediately communicates who Aurorys Labs is and what they do (software development, security, innovation).
 3.  **Interest (Services):** User scrolls to the Services section to understand the specific offerings. Icons and short descriptions provide a quick overview.
 4.  **Consideration (Pricing):** User checks the Pricing section to see if the services fit their budget and needs. "Get Quote" CTA encourages engagement.
 5.  **Exploration (Future Sections):** User might explore "About Us" to learn more about the team, "Testimonials" for social proof, or "Contact" to get in touch.
@@ -64,13 +64,13 @@ spacebar-spec-landing-page/
 **Hierarchy:**
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│ [Logo: SpaceBar Labs] [Nav Links: Home, Services, Pricing,  │
+│ [Logo: Aurorys Labs] [Nav Links: Home, Services, Pricing,  │
 │ About, Contact] [CTA Button: Get Started] [Theme Toggle]    │
 └─────────────────────────────────────────────────────────────┘
 ```
 
 **UI Components:**
--   **Logo:** SpaceBar Labs (text-based or custom icon).
+-   **Logo:** Aurorys Labs (text-based or custom icon).
 -   **Navigation Links:** Home (optional if on homepage), Services, Pricing, About, Contact.
 -   **Primary CTA Button:** "Get Started" or "Contact Us".
 -   **Theme Toggle:** Switch between light and dark mode (`src/components/common/ThemeToggle.tsx`).
@@ -115,7 +115,7 @@ spacebar-spec-landing-page/
 
 ### 3.3. Services Section (`src/components/sections/ServicesSection.tsx`)
 
-**Purpose:** Showcase the range of services offered by SpaceBar Labs.
+**Purpose:** Showcase the range of services offered by Aurorys Labs.
 
 **Hierarchy:**
 ```

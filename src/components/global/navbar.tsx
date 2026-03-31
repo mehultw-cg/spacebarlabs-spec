@@ -48,7 +48,7 @@ export function Navbar({ className }: { className?: string }) {
           </div>
         </NavBody>
 
-        <MobileNav className="bottom-4">
+        <MobileNav className="bottom-4 sm:bottom-auto">
           <MobileNavHeader>
             <NavbarLogo />
             <div className="flex items-center gap-2">
@@ -63,7 +63,7 @@ export function Navbar({ className }: { className?: string }) {
           <MobileNavMenu
             isOpen={isMobileMenuOpen}
             onClose={() => setIsMobileMenuOpen(false)}
-            className="bottom-20 top-auto origin-bottom"
+            className="bottom-20 top-auto origin-bottom sm:top-16 sm:bottom-auto sm:origin-top"
           >
              <div className="flex flex-col gap-4 w-full">
                 {navItems.map((item, idx) => (
