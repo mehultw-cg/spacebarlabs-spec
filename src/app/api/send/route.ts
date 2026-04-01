@@ -77,20 +77,28 @@ export async function POST(request: Request) {
             );
         }
         
-        // Verify Turnstile Token
+        // Verify Turnstile Token robustly
         const verifyEndpoint = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+        const formData = new URLSearchParams();
+        // Fallback to dummy key only if the env var is completely missing
+        formData.append('secret', process.env.TURNSTILE_SECRET_KEY || '1x0000000000000000000000000000000AA');
+        formData.append('response', turnstileToken);
+        if (ip) formData.append('remoteip', ip);
+
         const verifyResponse = await fetch(verifyEndpoint, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: `secret=${process.env.TURNSTILE_SECRET_KEY || '1x0000000000000000000000000000000AA'}&response=${turnstileToken}`
+            body: formData,
         });
         
         const verifyData = await verifyResponse.json();
+        
         if (!verifyData.success) {
+            console.error("[SECURITY] Turnstile backend verification failed:", verifyData);
             return NextResponse.json(
-                { error: 'Security verification failed.' },
+                { 
+                    error: 'Security verification failed.', 
+                    cf_codes: verifyData['error-codes'] // Returning safely to identify the exact cause
+                },
                 { status: 400 }
             );
         }
@@ -122,7 +130,7 @@ export async function POST(request: Request) {
             // Change it below to your actual email for testing until you verify the domain.
             to: ['requests@auroryslabs.com'], 
             // Sandbox prevents sending to arbitrary emails, so we disable the CC for now:
-            // cc: [email], // CC the user so they get their copy and can "Reply All" to continue the thread
+            cc: [email], // CC the user so they get their copy and can "Reply All" to continue the thread
             replyTo: email,
             subject: `Secure Protocol Initiated: ${subject}`,
             // react: ContactTemplate({ name, email, subject, message }),
