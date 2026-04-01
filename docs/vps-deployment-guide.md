@@ -31,8 +31,6 @@ We use Next.js `standalone` mode to minimize image size and maximize performance
 
 ## 4. Automation Workflow (GitHub + Coolify + Cloudflare)
 
-The heavy lifting (building) is done on GitHub to save your VPS resources.
-
 ### Step A: GitHub Actions
 Every time you push to `feature/vps-deployment` (or your main branch), GitHub will:
 1. Build the Docker image.
@@ -48,14 +46,24 @@ To make deployments completely hands-off:
 1. In Coolify, go to your Profile **Settings** -> **API Tokens** and create a token.
 2. In your Coolify service, go to **Settings** -> **Webhooks** and copy the **Deploy Webhook URL**.
 3. In GitHub Secrets, add:
-   - `COOLIFY_WEBHOOK_URL`
-   - `COOLIFY_API_TOKEN`
+   - `COOLIFY_WEBHOOK_URL`: Paste the URL.
+   - `COOLIFY_API_TOKEN`: Paste the token.
 
 ### Step D: Cloudflare Cache Purge
 The pipeline is configured to wait 60 seconds after the build to allow Coolify time to restart, then it purges the Cloudflare edge cache automatically.
 1. In GitHub Secrets, add:
    - `CLOUDFLARE_ZONE_ID`
    - `CLOUDFLARE_API_TOKEN` (Permission: Zone: Cache Purge)
+
+### Step E: Version Tracking & Rollbacks
+We use a **Dual-Tagging** strategy in GitHub Actions:
+- **`latest` Tag:** Every new build overwrites this tag. Coolify watches this to ensure the production site always has the freshest code.
+- **`sha-xxxx` Tag:** Every build also gets a unique tag based on the Git commit. This is your permanent version history.
+
+**To perform a Rollback:**
+1. Go to your **GitHub Container Registry** and find a previous stable `sha-xxxx` tag.
+2. In Coolify, change the **Image Name** from `...:latest` to `...:sha-xxxx`.
+3. Re-deploy. Coolify will fetch that specific historical version and the site will revert instantly.
 
 ---
 

@@ -39,7 +39,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           # Creates tags based on branch, tag, and SHA
           tags: |
-            type=raw,value=latest,enable={{is_default_branch}}
+            type=raw,value=latest,enable=true
             type=sha
 
       - name: Build and push Docker image
