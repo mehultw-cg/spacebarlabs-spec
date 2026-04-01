@@ -120,7 +120,7 @@ export async function POST(request: Request) {
             from: 'Aurorys Labs <requests@auroryslabs.com>', 
             // Note: In Sandbox mode, this MUST be the email address you signed up to Resend with!
             // Change it below to your actual email for testing until you verify the domain.
-            to: ['site-requests@auroryslabs.com'], 
+            to: ['requests@auroryslabs.com'], 
             // Sandbox prevents sending to arbitrary emails, so we disable the CC for now:
             // cc: [email], // CC the user so they get their copy and can "Reply All" to continue the thread
             replyTo: email,

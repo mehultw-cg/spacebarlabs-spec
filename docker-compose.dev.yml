@@ -1,0 +1,23 @@
+# Development Docker Orchestration
+# Usage: docker compose -f docker-compose.dev.yml up --build
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: aurorys-labs-dev
+    volumes:
+      - .:/app
+      - /app/node_modules # Anonymous volume to persist container's node_modules
+      - /app/.next        # Anonymous volume to persist container's build cache
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - NEXT_TELEMETRY_DISABLED=1
+      # Watchpack polling helps next.js detect changes inside Docker volumes more reliably
+      - WATCHPACK_POLLING=true
+    env_file:
+      - .env

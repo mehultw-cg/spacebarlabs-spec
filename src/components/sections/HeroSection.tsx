@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { BorderBeam } from "@/components/ui/border-beam";
 import { AuroraText } from "../ui/aurora-text";
 import { RainbowButton } from "../ui/rainbow-button";
-import Starfield from "../vfx/Starfield";
+// import Starfield from "../vfx/Starfield";
 import Image from "next/image";
 import HeroConstellation from "../vfx/HeroConstellations";
 

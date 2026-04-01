@@ -6,12 +6,14 @@ RUN bun install --frozen-lockfile
 
 # Stage 2: Build the application with Bun
 FROM oven/bun:1-alpine AS builder
+ARG NEXT_PUBLIC_TURNSTILE_SITE_KEY
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 # Next.js collects completely anonymous telemetry data about general usage.
 ENV NEXT_TELEMETRY_DISABLED 1
+ENV NEXT_PUBLIC_TURNSTILE_SITE_KEY=$NEXT_PUBLIC_TURNSTILE_SITE_KEY
 
 # Generate the Next.js standalone output
 RUN bun run build

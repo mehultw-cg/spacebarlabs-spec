@@ -122,10 +122,10 @@ export function ContactSection() {
   return (
     <section id="contact" className="py-20 bg-transparent text-black dark:text-white relative overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-1/3 left-1/3 w-56 h-56 bg-(--color-1)/20 rounded-full blur-[3.5rem]" />
-        <div className="absolute top-[70%] left-[25%] w-64 h-64 bg-(--color-5)/20 rounded-full blur-3xl" />
-        <div className="absolute -bottom-[2%] right-1/4 w-96 h-96 bg-(--color-4)/20 rounded-full blur-3xl" />
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-50">
+        <div className="absolute top-1/3 left-1/3 w-96 h-96 bg-[radial-gradient(circle,rgba(var(--color-1-rgb),0.15)_0%,transparent_70%)]" />
+        <div className="absolute top-[70%] left-[25%] w-[30rem] h-[30rem] bg-[radial-gradient(circle,rgba(var(--color-5-rgb),0.1)_0%,transparent_70%)]" />
+        <div className="absolute -bottom-[2%] right-1/4 w-[40rem] h-[40rem] bg-[radial-gradient(circle,rgba(var(--color-4-rgb),0.1)_0%,transparent_70%)]" />
       </div>
 
       <div className="max-w-4xl mx-auto px-4 relative z-10">

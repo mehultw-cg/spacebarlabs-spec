@@ -11,12 +11,14 @@ interface ScrollBackgroundProps {
 const BACKGROUND_IMAGES = [
   '/horsehead.webp',    // 0%
   '/webp/Tarantula_nebula_sm.webp',    // 25%
+  // '/webp/CentaurusA_hbsp.webp',    // 75%
+  // '/webp/RhoOphiuchi_newStars_sm_bot_cr.webp',    // 75%
+  '/webp/weic2519a.webp',    // 75%
   '/webp/L1572_protostar_sm.webp',     // 50%
-  '/webp/RhoOphiuchi_newStars_sm_mid_cr.webp',    // 75%
   '/webp/Stephans_Quintet_composite_sm.webp',    // 85%
 ];
 
-const SCROLL_THRESHOLDS = [0, 0.25, 0.55, 0.7, 0.8];
+const SCROLL_THRESHOLDS = [0, 0.20, 0.4, 0.55, 0.8];
 
 export function ScrollBackground({ children }: ScrollBackgroundProps) {
   const [activeIndex, setActiveIndex] = useState(0);

@@ -22,10 +22,10 @@ export function HeroSection() {
         className="object-cover"
       /> */}
         {/* Background Effects */}
-        <Starfield
+        {/* <Starfield
           speedFactor={0.0075}
           backgroundColor="transparent"
-        />
+        /> */}
 
         {/* <div className="absolute inset-0 w-full h-full bg-white dark:bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div> */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">

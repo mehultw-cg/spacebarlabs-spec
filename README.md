@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Aurorys Labs
 
-## Getting Started
+Aurorys Labs is a specialized engineering firm focused on building trust, security, and digital independence. We design and implement resilient infrastructure, perform deep security audits, and facilitate seamless migrations to sovereign, self-managed digital environments.
 
-First, run the development server:
+## Core Mission
+Our mission is to empower organizations with software that doesn't just work, but stays secure and independent from restrictive platforms. We specialize in:
+- **Resilient Architectures**: Designing systems that scale without compromising security.
+- **Digital Sovereignty**: Migrating away from legacy cloud-lock-in to independent, self-hosted infrastructure.
+- **Security Audits**: In-depth analysis and hardening of core protocols and applications.
 
+---
+
+## Development Guide
+
+### Local Development
+To run this project locally, ensure you have **Bun** installed.
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Install dependencies
+bun install
+
+# Start development server
+bun run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Build & Deployment
+For a production-ready environment, **Docker** is the preferred method.
+- **CI/CD**: This project utilizes GitHub Actions to build and push sterile, optimized Docker images to the GitHub Container Registry (GHCR).
+- **Environment**: The final image is a lightweight Next.js standalone server running natively on Bun for maximum performance.
+- **Deployment**: We deploy to self-managed infrastructure using container orchestration to ensure high availability and data sovereignty.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+*© 2026 Aurorys Labs. Secure Protocol Initiated.*

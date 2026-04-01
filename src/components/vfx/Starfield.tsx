@@ -15,7 +15,7 @@ const Starfield = React.memo(function Starfield({
     speedFactor = 0.02,
     backgroundColor = 'transparent',
     starColor = DEFAULT_STAR_COLOR,
-    starCount = 3000
+    starCount = 800
 }: Props) {
 
     useEffect(() => {
@@ -61,9 +61,7 @@ const Starfield = React.memo(function Starfield({
                 };
 
                 const putPixel = (x: number, y: number, size: number, brightness: number) => {
-                    const rgb =
-                        'rgba(' + starColor[0] + ',' + starColor[1] + ',' + starColor[2] + ',' + brightness + ')';
-                    c.fillStyle = rgb;
+                    c.fillStyle = `rgba(${starColor[0]}, ${starColor[1]}, ${starColor[2]}, ${brightness})`;
                     c.fillRect(x, y, size, size);
                 };
 
@@ -149,7 +147,6 @@ const Starfield = React.memo(function Starfield({
                 zIndex: 0,
                 opacity: 1,
                 pointerEvents: 'none',
-                mixBlendMode: 'screen',
             }}
         ></canvas>
     );
