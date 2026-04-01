@@ -93,7 +93,6 @@ export async function POST(request: Request) {
         const verifyData = await verifyResponse.json();
         
         if (!verifyData.success) {
-            console.error("[SECURITY] Turnstile backend verification failed:", verifyData);
             return NextResponse.json(
                 { 
                     error: 'Security verification failed.', 
@@ -123,11 +122,7 @@ export async function POST(request: Request) {
         // Send React Email using Resend
         // Setup to establish an email thread between Aurorys and the client.
         const data = await resend.emails.send({
-            // Note: Until auroryslabs.com is verified in your Resend Dashboard, 
-            // you must 'from' onboarding@resend.dev.
-            from: 'Aurorys Labs <requests@auroryslabs.com>', 
-            // Note: In Sandbox mode, this MUST be the email address you signed up to Resend with!
-            // Change it below to your actual email for testing until you verify the domain.
+            from: 'Aurorys Labs <requests@notifications.auroryslabs.com>', 
             to: ['requests@auroryslabs.com'], 
             // Sandbox prevents sending to arbitrary emails, so we disable the CC for now:
             cc: [email], // CC the user so they get their copy and can "Reply All" to continue the thread
