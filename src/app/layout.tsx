@@ -16,11 +16,15 @@ export const metadata: Metadata = {
   title: "🚀 Aurorys Labs | CyberSecurity Services | Secure Private Cloud Architecture & Infrastructure",
   description: "Craft your future with secure, resilient, and efficiently engineered cloud infrastructure. Aurorys Labs specializes in privacy-by-design, high-performance architecture, and DevSecOps Cybersecurity services.",
   keywords: ["CyberSecurity","DevSecOps", "Cloud Architecture", "Edge Computing", "Privacy", "Security", "Infrastructure", "Aurorys Labs", "Cyber Security", "Security Architecture", "Sovereign Systems", "Cloud Migration", "Cloud", "VPS", "Cloud Security"],
+  icons: {
+    icon: "/logo_1.svg",
+    apple: "/logo_1.svg",
+  },
   openGraph: {
     title: "Aurorys Labs | CyberSecurity Services | Secure Private Cloud Architecture & Infrastructure",
     description: "Craft your future with secure, resilient, and efficiently engineered cloud infrastructure. Aurorys Labs specializes in privacy-by-design, high-performance architecture, and DevSecOps Cybersecurity services.",
     type: "website",
-    url: "https://aurorys-labs.com",
+    url: "https://auroryslabs.com",
     locale: "en_US",
     siteName: "Aurorys Labs",
   },

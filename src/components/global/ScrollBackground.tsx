@@ -70,38 +70,46 @@ export function ScrollBackground({ children }: ScrollBackgroundProps) {
     <div ref={containerRef} className="relative min-h-screen">
       {/* Background layers */}
       <div className="fixed inset-0 -z-10 bg-black">
-        {BACKGROUND_IMAGES.map((src, index) => (
-          <motion.div
-            key={`${index}-${src}`}
-            className="absolute inset-0"
-            style={{
-              zIndex: index === activeIndex ? 1 : 0
-            }}
-            initial={false}
-            animate={{
-              opacity: index === activeIndex ? 1 : 0
-            }}
-            transition={{
-              duration: 1.5,
-              ease: "easeInOut"
-            }}
-          >
+        {BACKGROUND_IMAGES.map((src, index) => {
+          const isActive = index === activeIndex;
+          // Performance: Only render the active layer and the ones that might be transitioning
+          // This prevents the browser from maintaining 5+ high-res full-screen layers in memory.
+          if (!isActive && Math.abs(index - activeIndex) > 1) return null;
+
+          return (
             <motion.div
-              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              key={`${index}-${src}`}
+              className="absolute inset-0 will-change-[opacity]"
               style={{
-                backgroundImage: `url(${src})`,
+                zIndex: isActive ? 1 : 0
               }}
+              initial={false}
               animate={{
-                scale: [1, 1.1, 1]
+                opacity: isActive ? 1 : 0
               }}
               transition={{
-                duration: 30,
-                ease: "easeInOut",
-                repeat: Infinity,
+                duration: 1.5,
+                ease: "easeInOut"
               }}
-            />
-          </motion.div>
-        ))}
+            >
+              <motion.div
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat transform-gpu"
+                style={{
+                  backgroundImage: `url(${src})`,
+                }}
+                // Performance: Only animate scale for the VISIBLE image
+                animate={isActive ? {
+                  scale: [1, 1.05, 1]
+                } : { scale: 1 }}
+                transition={{
+                  duration: 20,
+                  ease: "linear",
+                  repeat: Infinity,
+                }}
+              />
+            </motion.div>
+          );
+        })}
         <div className="absolute bg-transparent inset-0 z-20 hidden md:block">
           <Starfield speedFactor={0.01} backgroundColor="transparent" />
         </div>
